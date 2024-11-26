@@ -5,7 +5,7 @@ import { MapPage, NotificationsPage, OrdersPage, RoutePage } from '.';
 import { COLORS } from '@/constants/colors';
 
 interface FirstBarSideProps {
-  active: number; // Define the active prop as a number, or change it to boolean if necessary
+  active: number;
 }
 
 export const transitionDuration = '0.5s';

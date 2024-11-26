@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import MainPage from '@/pages/MainPage';
 import OrderPage from '@/pages/OrderPage';
+import { t } from 'i18next';
 
 const router = createBrowserRouter([
   {
@@ -9,9 +10,9 @@ const router = createBrowserRouter([
     element: <MainPage />,
     children: [
       { path: 'orders', element: <OrderPage /> },
-      { path: 'map', element: <h1>maps</h1> },
-      { path: 'notifications', element: <h1>notifications</h1> },
-      { path: 'route', element: <h1>route</h1> },
+      { path: 'map', element: <h1>{t('greeting')}</h1> },
+      { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
+      { path: 'route', element: <h1>{t('routes')}</h1> },
     ],
   },
 ]);
