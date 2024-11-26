@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import exampleReducer from '@/redux/slices/exampleSlice';
+import pagesReducer from '@/redux/slices/pagesSlice';
 
 export const store = configureStore({
   reducer: {
     example: exampleReducer,
+    pages: pagesReducer,
   },
 });
 

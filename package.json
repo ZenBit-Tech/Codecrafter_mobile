@@ -54,7 +54,7 @@
     "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.3.0"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": "eslint . --fix",
