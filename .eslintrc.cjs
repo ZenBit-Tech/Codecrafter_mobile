@@ -20,7 +20,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['react-refresh', 'prettier', 'typesafe'],
+  plugins: ['react-refresh', 'prettier', 'typesafe', 'import'],
 
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'error',
@@ -30,6 +30,19 @@ module.exports = {
         selector: ['variable', 'function'],
         format: ['camelCase', 'PascalCase'],
       },
+    ],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+      { blankLine: 'always', prev: 'directive', next: '*' },
+      { blankLine: 'any', prev: 'directive', next: 'directive' },
+      { blankLine: 'always', prev: ['case', 'default'], next: '*' },
     ],
     'no-magic-numbers': [
       'error',
@@ -61,6 +74,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'import/extensions': 0,
     'import/no-relative-parent-imports': 'error',
+    'import/no-cycle': 0,
     'import/order': [
       'error',
       {
@@ -85,6 +99,14 @@ module.exports = {
           order: 'asc',
           caseInsensitive: true,
         },
+      },
+    ],
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
       },
     ],
     'react/react-in-jsx-scope': 0,

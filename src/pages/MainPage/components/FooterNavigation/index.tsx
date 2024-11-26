@@ -1,16 +1,16 @@
 import React from 'react';
 
 import {
-  NavbarContainer,
-  IconsContainer,
-  BarContainer,
   BarCap,
-  BarMiddle,
   BarCircle,
+  BarContainer,
+  BarMiddle,
   FirstBarSide,
+  FourthBarSide,
+  IconsContainer,
+  NavbarContainer,
   SecondBarSide,
   ThirdBarSide,
-  FourthBarSide,
 } from './styles';
 
 import luggageIcon from '@/assets/icons/luggage.svg';

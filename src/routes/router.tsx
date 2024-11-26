@@ -1,8 +1,8 @@
+import { t } from 'i18next';
 import { createBrowserRouter } from 'react-router-dom';
 
 import MainPage from '@/pages/MainPage';
 import OrderPage from '@/pages/OrderPage';
-import { t } from 'i18next';
 
 const router = createBrowserRouter([
   {

@@ -11,4 +11,5 @@ const MainPage = (): ReactNode => {
     </>
   );
 };
+
 export default MainPage;
