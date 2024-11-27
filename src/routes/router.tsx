@@ -1,7 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import ExamplePage from '@/pages/ExamplePage';
+import { RouteDetails } from '@/components/Details/RouteDetails';
+import { RoutesList } from '@/components/Lists/RoutLists';
 
-const router = createBrowserRouter([{ path: '', element: <ExamplePage /> }]);
+const router = createBrowserRouter([
+  {
+    path: '',
+    element: <RoutesList />,
+  },
+  {
+    path: 'routes/:id',
+    element: <RouteDetails />,
+  },
+]);
 
 export default router;
