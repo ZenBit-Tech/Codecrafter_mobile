@@ -32,8 +32,11 @@ const theme = createTheme({
     fontWeightLight: FONT.fontWeight.small,
     fontFamily: FONT.family,
     h1: {
-      fontSize: '26px',
+      fontSize: FONT.fontSize.extraLarge,
       fontWeight: FONT.fontWeight.large,
+      '@media not (max-width:320px)': {
+        fontSize: '26px',
+      },
     },
     h2: {
       fontSize: FONT.fontSize.extraLarge,
@@ -54,7 +57,6 @@ const theme = createTheme({
       fontWeight: FONT.fontWeight.small,
       color: COLORS.text.dark,
     },
-
     subtitle2: {
       fontSize: FONT.fontSize.small,
       fontWeight: FONT.fontWeight.small,
@@ -75,6 +77,10 @@ const theme = createTheme({
             backgroundColor: styleTheme.palette.primary.main,
             borderRadius: styleTheme.shape.borderRadius,
             color: COLORS.text.white,
+            '&:hover': {
+              backgroundColor: styleTheme.palette.primary.dark, // Darker shade on hover
+              color: COLORS.text.white, // Keep the text white
+            },
           }),
         },
         {
@@ -85,6 +91,9 @@ const theme = createTheme({
             backgroundColor: 'transparent',
             color: styleTheme.palette.primary.main,
             border: `1px solid ${styleTheme.palette.primary.main}`,
+            '&:hover': {
+              backgroundColor: styleTheme.palette.primary.light, // Light shade on hover
+            },
           }),
         },
         {
@@ -94,6 +103,9 @@ const theme = createTheme({
             textTransform: 'none',
             backgroundColor: COLORS.status.completed.bg,
             color: COLORS.status.completed.text,
+            '&:hover': {
+              backgroundColor: COLORS.text.extraLight, // Slightly lighter background
+            },
           }),
         },
       ],

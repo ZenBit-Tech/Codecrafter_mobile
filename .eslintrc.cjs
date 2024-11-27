@@ -116,7 +116,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'react/require-default-props': 'warn',
-    'typesafe/no-throw-sync-func': 'warn',
+    'typesafe/no-throw-sync-func': 'off',
     'typesafe/no-await-without-trycatch': 'warn',
     'typesafe/promise-catch': 'error',
   },

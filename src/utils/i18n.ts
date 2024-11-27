@@ -57,17 +57,17 @@ const resources = {
       auth: {
         loginLinkSuccess:
           'Message successfully sent to {{email}}, please check your email.',
-        loginLinkFailure:
-          'Failed to send the login link. Please try again later.',
+        loginCodeFailure:
+          'Failed to send the verification code. Please try again later.',
         userNotExistError:
           "User with this email doesn't exist. Please try again later.",
         unknownError: 'An unknown error occurred.',
-        invalidExpiredLink: 'Invalid or expired link.',
+        invalidExpiredVerificationCode: 'Invalid or expired verification code.',
         verificationError:
           'An error occurred during verification. Please try again.',
       },
       signin: {
-        welcomeMessage: 'Welcome to Smartporters! 👋',
+        welcomeMessage: 'Welcome to Smartporters!',
         instructions: 'Please sign in to your account and start the delivery',
         email: 'Email',
         submit: 'Sign In',

@@ -10,7 +10,15 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   plugins: [
     react(),
-    svgr(),
+    svgr({
+      svgrOptions: {
+        exportType: 'default',
+        ref: true,
+        svgo: true,
+        titleProp: true,
+      },
+      include: '*/*.svg',
+    }),
   ],
   resolve: {
     alias: {
