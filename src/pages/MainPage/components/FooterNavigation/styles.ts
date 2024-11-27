@@ -4,10 +4,6 @@ import { MapPage, NotificationsPage, OrdersPage, RoutePage } from '.';
 
 import { COLORS } from '@/constants/colors';
 
-interface FirstBarSideProps {
-  active: number;
-}
-
 export const transitionDuration = '0.5s';
 
 export const NavbarContainer = styled.nav`
@@ -59,25 +55,26 @@ export const BarMiddle = styled.div`
   display: flex;
 `;
 
-export const FirstBarSide = styled.div<FirstBarSideProps>`
-  flex-grow: ${({ active }): number => (active === RoutePage ? 0 : 1)};
+export const FirstBarSide = styled.div<{ $active?: number }>`
+  flex-grow: ${({ $active }): number => ($active === RoutePage ? 0 : 1)};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
-export const SecondBarSide = styled.div<FirstBarSideProps>`
-  flex-grow: ${({ active }): number =>
-    active === RoutePage || active === OrdersPage ? 0 : 1};
+export const SecondBarSide = styled.div<{ $active?: number }>`
+  flex-grow: ${({ $active }): number =>
+    $active === RoutePage || $active === OrdersPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
-export const ThirdBarSide = styled.div<FirstBarSideProps>`
-  flex-grow: ${({ active }): number =>
-    active === MapPage || active === NotificationsPage ? 0 : 1};
+export const ThirdBarSide = styled.div<{ $active?: number }>`
+  flex-grow: ${({ $active }): number =>
+    $active === MapPage || $active === NotificationsPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
-export const FourthBarSide = styled.div<FirstBarSideProps>`
-  flex-grow: ${({ active }): number => (active === NotificationsPage ? 0 : 1)};
+export const FourthBarSide = styled.div<{ $active?: number }>`
+  flex-grow: ${({ $active }): number =>
+    $active === NotificationsPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;

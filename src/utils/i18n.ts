@@ -48,6 +48,7 @@ const resources = {
         logo: 'Logo',
         key: 'Key',
         lock: 'Lock',
+        profilePicture: 'Profile Picture',
       },
       notFound: {
         header: 'Page Not Found',

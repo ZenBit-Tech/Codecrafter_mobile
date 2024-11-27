@@ -59,11 +59,11 @@ const BottomNavbar = (): JSX.Element => {
       <BarContainer>
         <BarCap />
         <BarMiddle>
-          <FirstBarSide active={selected} />
-          <SecondBarSide active={selected} />
+          <FirstBarSide $active={selected} />
+          <SecondBarSide $active={selected} />
           <BarCircle />
-          <ThirdBarSide active={selected} />
-          <FourthBarSide active={selected} />
+          <ThirdBarSide $active={selected} />
+          <FourthBarSide $active={selected} />
         </BarMiddle>
         <BarCap />
       </BarContainer>
