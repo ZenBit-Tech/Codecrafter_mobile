@@ -57,17 +57,17 @@ const resources = {
       auth: {
         loginLinkSuccess:
           'Message successfully sent to {{email}}, please check your email.',
-        loginLinkFailure:
-          'Failed to send the login link. Please try again later.',
+        loginCodeFailure:
+          'Failed to send the verification code. Please try again later.',
         userNotExistError:
           "User with this email doesn't exist. Please try again later.",
         unknownError: 'An unknown error occurred.',
-        invalidExpiredLink: 'Invalid or expired link.',
+        invalidExpiredVerificationCode: 'Invalid or expired verification code.',
         verificationError:
           'An error occurred during verification. Please try again.',
       },
       signin: {
-        welcomeMessage: 'Welcome to Smartporters! 👋',
+        welcomeMessage: 'Welcome to Smartporters!',
         instructions: 'Please sign in to your account and start the delivery',
         email: 'Email',
         submit: 'Sign In',
@@ -147,6 +147,27 @@ const resources = {
         deleted_successfully: 'Admin deleted successfully',
         delete_failed: 'Failed to delete admin',
         unexpected_error: 'An unexpected error occurred',
+      },
+      route: {
+        startRouteTitle: 'Start the route',
+        startRouteDescription: 'Are you sure you want to start the route now?',
+        route: 'Route',
+        routeDistance: 'Route distance',
+        collectionDate: 'Collection date',
+        routeTime: 'Route time',
+        startButton: 'Start',
+        cancelButton: 'Cancel',
+        startRouteButton: 'Start the route',
+        routeId: 'Route ID',
+        status: 'Status',
+        distance: 'Distance',
+        loading: 'Loading...',
+        errorFetchingRouteDetails: 'Error fetching route details',
+        routeNotFound: 'Route not found.',
+        routeTimeDate: '12:00-22:00',
+      },
+      distance: {
+        km: 'km',
       },
     },
   },

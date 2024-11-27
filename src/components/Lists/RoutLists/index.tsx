@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { RouteResponse } from '@/interfaces/RouteResponse';
@@ -7,38 +8,38 @@ import { useGetRoutesQuery } from '@/redux/slices/route/routeSlice';
 export const RoutesList: React.FC = () => {
   const { data: routes, isLoading, error } = useGetRoutesQuery();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>{t('route.loading')}</p>;
   }
 
   if (error) {
-    return <p>Error fetching routes: {JSON.stringify(error, null)}</p>;
+    return (
+      <p>
+        {t('route.errorFetchingRouteDetails')}: {JSON.stringify(error, null)}
+      </p>
+    );
   }
 
   if (!routes || routes.length === 0) {
-    return <p>No routes found.</p>;
+    return <p>{t('route.routeNotFound')}</p>;
   }
 
   return (
     <ul>
       {routes.map((route: RouteResponse) => (
         <li key={route.id}>
-          <button
-            type='button'
-            style={{
-              cursor: 'pointer',
-              background: 'none',
-              border: 'none',
-              color: 'blue',
-              textAlign: 'left',
-              padding: 0,
-            }}
-            onClick={() => navigate(`/routes/${route.id}`)}
-          >
-            <h3>Route ID: {route.id}</h3>
-            <p>Status: {route.status}</p>
-            <p>Distance: {route.distance} km</p>
+          <button type='button' onClick={() => navigate(`/routes/${route.id}`)}>
+            <h3>
+              {t('route.routeId')}: {route.id}
+            </h3>
+            <p>
+              {t('route.status')}: {route.status}
+            </p>
+            <p>
+              {t('route.distance')}: {route.distance} {t('distance.km')}
+            </p>
           </button>
         </li>
       ))}

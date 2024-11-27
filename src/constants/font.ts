@@ -5,6 +5,7 @@ export const FONT = {
     medium: 15,
     large: 18,
     extraLarge: 22,
+    title: 26,
   },
   fontWeight: {
     small: 400,

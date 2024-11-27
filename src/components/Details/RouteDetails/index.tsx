@@ -1,46 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { RouteStartModal } from '@/components/Modals/RouteStartModal';
+import { ConfirmButton } from '@/components/Modals/RouteStartModal/styles.ts';
 import { useGetRoutesQuery } from '@/redux/slices/route/routeSlice';
+import { calculateRouteTime } from '@/utils/calculateRouteTime.ts';
 
 export const RouteDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data: routes, isLoading, error } = useGetRoutesQuery();
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>{t('route.loading')}</p>;
   }
 
   if (error) {
-    return <p>Error fetching route details: {JSON.stringify(error, null)}</p>;
+    return (
+      <p>
+        {t('route.errorFetchingRouteDetails')}: {JSON.stringify(error, null)}
+      </p>
+    );
   }
 
-  const selectedRoute = routes?.find((r) => r.id.toString() === id); // Переименовали переменную
+  const selectedRoute = routes?.find((r) => r.id.toString() === id);
 
   if (!selectedRoute) {
-    return <p>Route not found.</p>;
+    return <p>{t('route.routeNotFound')}</p>;
   }
+
+  const routeTime = calculateRouteTime(
+    selectedRoute.submission_date,
+    selectedRoute.arrival_date
+  );
+
+  const handleStart = (): void => {
+    setModalOpen(false);
+  };
 
   return (
     <div>
-      <h3>Route ID: {selectedRoute.id}</h3>
-      <p>Status: {selectedRoute.status}</p>
-      <p>Distance: {selectedRoute.distance} km</p>
+      <h3>
+        {t('route.routeId')}: {selectedRoute.id}
+      </h3>
       <p>
-        Submission Date:{' '}
-        {new Date(selectedRoute.submission_date).toLocaleDateString()}
+        {t('route.status')}: {selectedRoute.status}
       </p>
       <p>
-        Arrival Date:{' '}
-        {new Date(selectedRoute.arrival_date).toLocaleDateString()}
+        {t('route.distance')}: {selectedRoute.distance} {t('distance.km')}
       </p>
-      <h4>User Info:</h4>
-      <p>Name: {selectedRoute.user_id.full_name}</p>
-      <p>Email: {selectedRoute.user_id.email}</p>
-      <p>Phone: {selectedRoute.user_id.phone_number}</p>
-      <h4>Company Info:</h4>
-      <p>Company Name: {selectedRoute.company_id.name}</p>
-      <p>Company Email: {selectedRoute.company_id.email}</p>
+      <ConfirmButton type='button' onClick={() => setModalOpen(true)}>
+        {t('route.startRouteButton')}
+      </ConfirmButton>
+
+      <RouteStartModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onConfirm={handleStart}
+        routeDetails={{
+          id: selectedRoute.id.toString(),
+          distance: selectedRoute.distance,
+          submissionDate: new Date(
+            selectedRoute.submission_date
+          ).toLocaleDateString(),
+          routeTime,
+        }}
+      />
     </div>
   );
 };

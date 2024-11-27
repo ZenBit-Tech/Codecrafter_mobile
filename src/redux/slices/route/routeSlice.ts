@@ -5,7 +5,7 @@ import { RouteResponse } from '@/interfaces/RouteResponse';
 
 export const routesApi = createApi({
   reducerPath: 'routes',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   endpoints: (builder) => ({
     getRoutes: builder.query<RouteResponse[], void>({
       query: () => '/routes',
