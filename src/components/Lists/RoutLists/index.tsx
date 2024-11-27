@@ -25,7 +25,7 @@ export const RoutesList: React.FC = () => {
       {routes.map((route: RouteResponse) => (
         <li key={route.id}>
           <button
-            type='button' // Указан явный тип кнопки
+            type='button'
             style={{
               cursor: 'pointer',
               background: 'none',
