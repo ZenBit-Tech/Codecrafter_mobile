@@ -8,6 +8,7 @@ import Button from '@/components/Button';
 
 const ExamplePage = (): ReactNode => {
   const { clicked, handleClick } = useExamplePage();
+
   return (
     <ExampleWrapper>
       <h1>{t('pageTitle')}</h1>
