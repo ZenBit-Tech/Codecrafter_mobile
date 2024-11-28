@@ -1,16 +1,44 @@
 import { t } from 'i18next';
 import { createBrowserRouter } from 'react-router-dom';
 
+import ProtectedRoute from './ProtectedRoute';
+import RestrictedRoute from './RestrictedRoute';
+
 import ExamplePage from '@/pages/ExamplePage';
 import MainPage from '@/pages/MainPage';
+import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
 import SignInPage from '@/pages/SignIn';
+import VerificationPage from '@/pages/VerificationPage';
 
 const router = createBrowserRouter([
-  { path: '/', element: <SignInPage /> },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+  {
+    path: '/',
+    element: (
+      <RestrictedRoute>
+        <SignInPage />
+      </RestrictedRoute>
+    ),
+  },
+  {
+    path: '/verification',
+    element: (
+      <RestrictedRoute>
+        <VerificationPage />
+      </RestrictedRoute>
+    ),
+  },
   {
     path: '/app',
-    element: <MainPage />,
+    element: (
+      <ProtectedRoute>
+        <MainPage />
+      </ProtectedRoute>
+    ),
     children: [
       { path: 'orders', element: <OrderPage /> },
       { path: 'map', element: <h1>{t('greeting')}</h1> },

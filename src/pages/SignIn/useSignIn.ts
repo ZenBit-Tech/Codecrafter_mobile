@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { sendVerificationCode } from '@/api/userActions';
 import { SignInFormData, UseSignInReturnType } from '@/interfaces/SignIn';
@@ -7,8 +8,11 @@ import { SignInFormData, UseSignInReturnType } from '@/interfaces/SignIn';
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const useSignIn = (): UseSignInReturnType => {
+  const navigate = useNavigate();
   const [attemptCount, setAttemptCount] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+
+  const maxTries = 5;
 
   const {
     control,
@@ -30,19 +34,18 @@ const useSignIn = (): UseSignInReturnType => {
   const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
     if (isLocked) return;
 
-    const maxAttempts = 5;
-
     const { email } = data;
 
     try {
       const isSent = await sendVerificationCode(email)();
 
-      if (!isSent) {
+      if (isSent) {
+        navigate('/verification', { state: { email } });
+      } else {
         setAttemptCount((prev) => prev + 1);
-      }
-
-      if (attemptCount + 1 >= maxAttempts) {
-        setIsLocked(true);
+        if (attemptCount + 1 >= maxTries) {
+          setIsLocked(true);
+        }
       }
     } catch (error) {
       throw new Error('Error occurred while sending verification code');
@@ -56,6 +59,7 @@ const useSignIn = (): UseSignInReturnType => {
     if (errors.email) {
       return errors.email.message;
     }
+
     return '';
   };
 

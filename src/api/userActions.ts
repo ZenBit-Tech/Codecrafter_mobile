@@ -10,11 +10,14 @@ export const sendVerificationCode =
   (email: string) => async (): Promise<boolean> => {
     try {
       const response = await axiosInstance.get(`/auth/driver/${email}`);
+
       if (response.data.status) {
         toast.success(i18n.t('auth.loginLinkSuccess', { email }));
+
         return true;
       }
       toast.error(i18n.t('auth.loginCodeFailure'));
+
       return false;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -22,6 +25,7 @@ export const sendVerificationCode =
       } else {
         toast.error(i18n.t('auth.unknownError'));
       }
+
       return false;
     }
   };
@@ -32,13 +36,16 @@ export const verifyCode =
     try {
       const response = await axiosInstance.post('/auth/driver/otp-verify', {
         email,
-        verificationCode,
+        otp: verificationCode,
       });
+
+      console.log(email, verificationCode);
 
       const { token, role } = response.data;
 
       if (token) {
         dispatch(setAccessToken({ token, role }));
+        toast.success(i18n.t('verification.otpSubmitted'));
       } else {
         toast.error(i18n.t('auth.invalidExpiredVerificationCode'));
       }
