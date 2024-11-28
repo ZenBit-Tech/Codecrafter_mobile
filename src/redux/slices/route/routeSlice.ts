@@ -1,24 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { RouteResponse } from '@/interfaces/RouteResponse';
 
-export const routesApi = createApi({
-  reducerPath: 'routes',
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
-  endpoints: (builder) => ({
-    getRoutes: builder.query<RouteResponse[], void>({
-      query: () => '/routes',
-    }),
-  }),
-});
+interface RoutesState {
+  routes: RouteResponse[];
+  loading: boolean;
+  error: string | null;
+}
 
-export const { useGetRoutesQuery } = routesApi;
+const initialState: RoutesState = {
+  routes: [],
+  loading: false,
+  error: null,
+};
 
 const routesSlice = createSlice({
   name: 'routes',
-  initialState: [],
-  reducers: {},
+  initialState,
+  reducers: {
+    setRoutes: (state, action) => {
+      state.routes = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
+  },
 });
 
+export const { setRoutes, setLoading, setError } = routesSlice.actions;
 export default routesSlice.reducer;

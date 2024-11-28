@@ -2,22 +2,29 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { RouteResponse } from '@/interfaces/RouteResponse';
-import { useGetRoutesQuery } from '@/redux/slices/route/routeSlice';
+import { useRoutes } from '@/components/Lists/RoutLists/useRoutes.ts';
+
+interface Route {
+  id: number;
+  status: string;
+  distance: number;
+  submission_date: string;
+  arrival_date: string;
+}
 
 export const RoutesList: React.FC = () => {
-  const { data: routes, isLoading, error } = useGetRoutesQuery();
-  const navigate = useNavigate();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { routes, loading, error } = useRoutes();
 
-  if (isLoading) {
+  if (loading) {
     return <p>{t('route.loading')}</p>;
   }
 
   if (error) {
     return (
       <p>
-        {t('route.errorFetchingRouteDetails')}: {JSON.stringify(error, null)}
+        {t('route.errorFetchingRouteDetails')}: {error}
       </p>
     );
   }
@@ -28,7 +35,7 @@ export const RoutesList: React.FC = () => {
 
   return (
     <ul>
-      {routes.map((route: RouteResponse) => (
+      {routes.map((route: Route) => (
         <li key={route.id}>
           <button type='button' onClick={() => navigate(`/routes/${route.id}`)}>
             <h3>

@@ -2,30 +2,31 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { useRoutes } from '@/components/Lists/RoutLists/useRoutes.ts';
 import { RouteStartModal } from '@/components/Modals/RouteStartModal';
-import { ConfirmButton } from '@/components/Modals/RouteStartModal/styles.ts';
-import { useGetRoutesQuery } from '@/redux/slices/route/routeSlice';
-import { calculateRouteTime } from '@/utils/calculateRouteTime.ts';
+import { ConfirmButton } from '@/components/Modals/RouteStartModal/styles';
+import { calculateRouteTime } from '@/utils/calculateRouteTime';
 
 export const RouteDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: routes, isLoading, error } = useGetRoutesQuery();
-  const [isModalOpen, setModalOpen] = useState(false);
   const { t } = useTranslation();
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  if (isLoading) {
+  const { routes, loading, error } = useRoutes();
+
+  if (loading) {
     return <p>{t('route.loading')}</p>;
   }
 
   if (error) {
     return (
       <p>
-        {t('route.errorFetchingRouteDetails')}: {JSON.stringify(error, null)}
+        {t('route.errorFetchingRouteDetails')}: {error}
       </p>
     );
   }
 
-  const selectedRoute = routes?.find((r) => r.id.toString() === id);
+  const selectedRoute = routes?.find((route) => route.id.toString() === id);
 
   if (!selectedRoute) {
     return <p>{t('route.routeNotFound')}</p>;
@@ -35,10 +36,6 @@ export const RouteDetails: React.FC = () => {
     selectedRoute.submission_date,
     selectedRoute.arrival_date
   );
-
-  const handleStart = (): void => {
-    setModalOpen(false);
-  };
 
   return (
     <div>
@@ -58,7 +55,7 @@ export const RouteDetails: React.FC = () => {
       <RouteStartModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        onConfirm={handleStart}
+        onConfirm={() => setModalOpen(false)}
         routeDetails={{
           id: selectedRoute.id.toString(),
           distance: selectedRoute.distance,
