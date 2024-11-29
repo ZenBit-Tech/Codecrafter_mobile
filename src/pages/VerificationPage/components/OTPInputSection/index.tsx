@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import OTPInput from 'react-otp-input';
@@ -29,6 +29,7 @@ const OTPInputSection: React.FC<OTPInputSectionProps> = ({
   numInputs,
 }) => {
   const { t } = useTranslation();
+  const isLargeScreen = useMediaQuery('(min-width:321px)');
 
   const twoDigitThreshold = 10;
 
@@ -55,7 +56,7 @@ const OTPInputSection: React.FC<OTPInputSectionProps> = ({
               />
             );
           }}
-          inputStyle={otpInputStyle}
+          inputStyle={otpInputStyle(isLargeScreen)}
           inputType='number'
         />
       </Box>

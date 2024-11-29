@@ -46,7 +46,7 @@ const SignInPage: React.FC = () => {
         </Box>
 
         <Box sx={rightBoxStyles}>
-          <Typography sx={{ alignItems: 'start' }} gutterBottom variant='h1'>
+          <Typography sx={{ alignItems: 'start' }} gutterBottom variant='h2'>
             {t('signin.welcomeMessage')}
           </Typography>
           <Typography sx={{ alignItems: 'start' }} gutterBottom variant='body1'>

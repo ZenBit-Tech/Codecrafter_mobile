@@ -34,14 +34,10 @@ const theme = createTheme({
     h1: {
       fontSize: FONT.fontSize.extraLarge,
       fontWeight: FONT.fontWeight.large,
-      '@media not (max-width:320px)': {
-        fontSize: '26px',
-      },
     },
     h2: {
-      fontSize: FONT.fontSize.extraLarge,
+      fontSize: FONT.fontSize.large,
       fontWeight: FONT.fontWeight.large,
-      color: COLORS.text.dark,
     },
     body1: {
       fontSize: FONT.fontSize.medium,

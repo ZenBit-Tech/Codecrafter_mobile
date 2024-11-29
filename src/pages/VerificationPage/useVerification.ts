@@ -41,7 +41,7 @@ const useVerification = (
     if (!email) {
       navigate('/');
     }
-  }, []);
+  }, [email, navigate]);
 
   useEffect((): (() => void) | void => {
     if (timeLeft > 0) {

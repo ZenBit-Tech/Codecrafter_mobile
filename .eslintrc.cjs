@@ -119,6 +119,7 @@ module.exports = {
     'typesafe/no-throw-sync-func': 'off',
     'typesafe/no-await-without-trycatch': 'warn',
     'typesafe/promise-catch': 'error',
+    'react/require-default-props': 'off',
   },
   overrides: [
     {

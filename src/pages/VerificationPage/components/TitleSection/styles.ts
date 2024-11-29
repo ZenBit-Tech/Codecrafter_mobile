@@ -13,7 +13,6 @@ export const titleStyles: SxProps<Theme> = {
   color: (theme) => theme.palette.text.primary,
   marginBottom: 1,
   lineHeight: '28px',
-  size: FONT.fontSize.extraLarge,
   fontWeight: FONT.fontWeight.large,
 };
 

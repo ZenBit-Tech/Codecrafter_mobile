@@ -39,8 +39,6 @@ export const verifyCode =
         otp: verificationCode,
       });
 
-      console.log(email, verificationCode);
-
       const { token, role } = response.data;
 
       if (token) {
