@@ -1,6 +1,8 @@
 import { t } from 'i18next';
 import { createBrowserRouter } from 'react-router-dom';
 
+import { RouteDetails } from '@/components/Details/RouteDetails';
+import { RoutesList } from '@/components/Lists/RoutLists';
 import ExamplePage from '@/pages/ExamplePage';
 import MainPage from '@/pages/MainPage';
 import OrderPage from '@/pages/OrderPage';
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
     ],
   },
   { path: '/example', element: <ExamplePage /> },
+  { path: 'routes', element: <RoutesList /> },
+  { path: 'routes/:id', element: <RouteDetails /> },
 ]);
 
 export default router;

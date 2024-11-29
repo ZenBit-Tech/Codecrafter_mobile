@@ -3,6 +3,7 @@ export const COLORS = {
   gray: '#F6F6F6',
   green: 'rgb(40, 199, 111)',
   purple: '#7367F0',
+  hoverPurple: '#6c60ea',
   lightPurple: '#E8DEF829',
   text: {
     border: 'rgb(75, 70, 92, 0.2)',
@@ -40,6 +41,12 @@ export const COLORS = {
     },
   },
   background: {
-    logoBlock: 'rgb(248, 247, 250)',
+    logoBlock: 'rgb(223,223,223)',
+  },
+  border: {
+    dark: 'rgba(95, 99, 104, 1)',
+  },
+  boxShadow: {
+    dark: 'rgba(0, 0, 0, 0.1)',
   },
 };
