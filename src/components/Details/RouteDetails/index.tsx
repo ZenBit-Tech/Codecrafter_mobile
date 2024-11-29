@@ -1,10 +1,12 @@
+import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { useRoutes } from '@/components/Lists/RoutLists/useRoutes.ts';
 import { RouteStartModal } from '@/components/Modals/RouteStartModal';
-import { ConfirmButton } from '@/components/Modals/RouteStartModal/styles';
+import { COLORS } from '@/constants/colors.ts';
+import { FONT } from '@/constants/font.ts';
 import { calculateRouteTime } from '@/utils/calculateRouteTime';
 
 export const RouteDetails: React.FC = () => {
@@ -48,9 +50,26 @@ export const RouteDetails: React.FC = () => {
       <p>
         {t('route.distance')}: {selectedRoute.distance} {t('distance.km')}
       </p>
-      <ConfirmButton type='button' onClick={() => setModalOpen(true)}>
-        {t('route.startRouteButton')}
-      </ConfirmButton>
+
+      <Box display='flex' flexDirection='column' gap={2} alignItems='center'>
+        <Button
+          variant='contained'
+          onClick={() => setModalOpen(true)}
+          sx={{
+            textTransform: 'none',
+            borderRadius: '8px',
+            fontWeight: FONT.fontWeight.medium,
+            width: '173px',
+            backgroundColor: COLORS.purple,
+            '&:hover': {
+              backgroundColor: COLORS.hoverPurple,
+            },
+            mt: 1,
+          }}
+        >
+          {t('route.startRouteButton')}
+        </Button>
+      </Box>
 
       <RouteStartModal
         isOpen={isModalOpen}
