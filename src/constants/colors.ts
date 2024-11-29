@@ -41,7 +41,7 @@ export const COLORS = {
     },
   },
   background: {
-    logoBlock: 'rgb(248, 247, 250)',
+    logoBlock: 'rgb(223,223,223)',
   },
   border: {
     dark: 'rgba(95, 99, 104, 1)',
