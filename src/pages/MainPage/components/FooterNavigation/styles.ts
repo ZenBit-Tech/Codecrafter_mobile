@@ -60,24 +60,28 @@ export const FirstBarSide = styled.div<{ $active?: number }>`
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
+
 export const SecondBarSide = styled.div<{ $active?: number }>`
   flex-grow: ${({ $active }): number =>
     $active === RoutePage || $active === OrdersPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
+
 export const ThirdBarSide = styled.div<{ $active?: number }>`
   flex-grow: ${({ $active }): number =>
     $active === MapPage || $active === NotificationsPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
+
 export const FourthBarSide = styled.div<{ $active?: number }>`
   flex-grow: ${({ $active }): number =>
     $active === NotificationsPage ? 0 : 1};
   background: ${COLORS.gray};
   transition: flex-grow ${transitionDuration} ease;
 `;
+
 export const BarCircle = styled.div`
   position: relative;
   top: -1.75rem;

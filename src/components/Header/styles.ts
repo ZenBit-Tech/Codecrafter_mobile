@@ -15,6 +15,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   background-color: ${COLORS.white};
 `;
+
 export const StyledPageName = styled.div`
   position: absolute;
   top: 50%;
@@ -22,6 +23,7 @@ export const StyledPageName = styled.div`
   transform: translate(-50%, -50%);
   white-space: nowrap;
 `;
+
 export const BackIconWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'hasBackIcon',
 })<{
