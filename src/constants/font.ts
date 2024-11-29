@@ -1,10 +1,10 @@
 export const FONT = {
-  family: '"Public Sans", sans-serif',
+  family: '"Inter", "Public Sans", sans-serif',
   fontSize: {
-    small: 13,
-    medium: 15,
-    large: 18,
-    extraLarge: 22,
+    small: 14,
+    medium: 16,
+    large: 24,
+    extraLarge: 32,
   },
   fontWeight: {
     small: 400,
