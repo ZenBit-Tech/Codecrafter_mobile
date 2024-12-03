@@ -1,4 +1,4 @@
-import { Container, Typography, Box } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -12,10 +12,10 @@ import Logo from '@/pages/SignIn/components/LoginLogo';
 import TextInputWithRef from '@/pages/SignIn/components/TextInputRef';
 import {
   containerStyles,
-  mainBoxStyles,
-  leftBoxStyles,
-  rightBoxStyles,
   inputBoxStyles,
+  leftBoxStyles,
+  mainBoxStyles,
+  rightBoxStyles,
 } from '@/pages/SignIn/styles';
 import useSignIn from '@/pages/SignIn/useSignIn';
 
@@ -46,7 +46,7 @@ const SignInPage: React.FC = () => {
         </Box>
 
         <Box sx={rightBoxStyles}>
-          <Typography sx={{ alignItems: 'start' }} gutterBottom variant='h1'>
+          <Typography sx={{ alignItems: 'start' }} gutterBottom variant='h2'>
             {t('signin.welcomeMessage')}
           </Typography>
           <Typography sx={{ alignItems: 'start' }} gutterBottom variant='body1'>

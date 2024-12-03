@@ -64,8 +64,7 @@ const resources = {
           "User with this email doesn't exist. Please try again later.",
         unknownError: 'An unknown error occurred.',
         invalidExpiredVerificationCode: 'Invalid or expired verification code.',
-        verificationError:
-          'An error occurred during verification. Please try again.',
+        verificationError: 'Code expired or not found. Please try again.',
       },
       signin: {
         welcomeMessage: 'Welcome to Smartporters!',
@@ -79,6 +78,17 @@ const resources = {
           incorrectEmail: 'Email incorrect.',
           required: 'Email is required.',
         },
+      },
+      verification: {
+        title: 'Verification',
+        description:
+          'We have sent an OTP verification code to your email, please enter it below',
+        resendCode: "Didn't receive a code?",
+        otpExpired: 'Code expired!',
+        otpWillExpire: 'Will expire in 00:{{time}}',
+        submitButton: 'Verify',
+        otpInvalid: 'Please enter a valid 6-digit OTP.',
+        otpSubmitted: 'OTP Submitted successfully!',
       },
       navigation: {
         dashboard: 'Dashboard',

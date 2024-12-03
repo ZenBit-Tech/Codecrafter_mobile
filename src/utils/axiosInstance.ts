@@ -15,6 +15,7 @@ axiosInstance.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `${accessToken}`;
     }
+
     return config;
   },
   (error) => Promise.reject(error)
@@ -29,6 +30,7 @@ axiosInstance.interceptors.response.use(
       store.dispatch(logout());
       history.push('/');
     }
+
     return Promise.reject(error);
   }
 );

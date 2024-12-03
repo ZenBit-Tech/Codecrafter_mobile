@@ -34,14 +34,10 @@ const theme = createTheme({
     h1: {
       fontSize: FONT.fontSize.extraLarge,
       fontWeight: FONT.fontWeight.large,
-      '@media not (max-width:320px)': {
-        fontSize: '26px',
-      },
     },
     h2: {
-      fontSize: FONT.fontSize.extraLarge,
+      fontSize: FONT.fontSize.large,
       fontWeight: FONT.fontWeight.large,
-      color: COLORS.text.dark,
     },
     body1: {
       fontSize: FONT.fontSize.medium,
@@ -78,8 +74,8 @@ const theme = createTheme({
             borderRadius: styleTheme.shape.borderRadius,
             color: COLORS.text.white,
             '&:hover': {
-              backgroundColor: styleTheme.palette.primary.dark, // Darker shade on hover
-              color: COLORS.text.white, // Keep the text white
+              backgroundColor: styleTheme.palette.primary.dark,
+              color: COLORS.text.white,
             },
           }),
         },
@@ -92,7 +88,7 @@ const theme = createTheme({
             color: styleTheme.palette.primary.main,
             border: `1px solid ${styleTheme.palette.primary.main}`,
             '&:hover': {
-              backgroundColor: styleTheme.palette.primary.light, // Light shade on hover
+              backgroundColor: styleTheme.palette.primary.light,
             },
           }),
         },
@@ -104,7 +100,7 @@ const theme = createTheme({
             backgroundColor: COLORS.status.completed.bg,
             color: COLORS.status.completed.text,
             '&:hover': {
-              backgroundColor: COLORS.text.extraLight, // Slightly lighter background
+              backgroundColor: COLORS.text.extraLight,
             },
           }),
         },
