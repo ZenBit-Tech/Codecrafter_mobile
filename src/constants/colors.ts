@@ -44,4 +44,12 @@ export const COLORS = {
   background: {
     logoBlock: 'rgb(248, 247, 250)',
   },
+  schemes: {
+    outlineVariant: '#CAC4D0',
+    outline: '#79747E',
+    secondary: '#625B71',
+  },
+  accent: {
+    accent50: '#F1F0FE',
+  },
 };

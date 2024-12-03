@@ -89,6 +89,17 @@ const resources = {
       },
       orders: {
         welcome: 'Orders page',
+        nextMonth: 'Next Month',
+        prevMonth: 'Previous Month',
+        showAllDays: 'Show all days in month',
+        call: 'call',
+        orderNo: 'Order No.',
+        route: 'Route',
+        phoneNumber: 'Phone Number:',
+        collectionTime: 'Collection Time:',
+        customerName: 'Customer Name:',
+        noOrders: 'No orders available for this date',
+        arrowIcon: 'Arrow Icon',
       },
       adminList: {
         title: 'Admin List',

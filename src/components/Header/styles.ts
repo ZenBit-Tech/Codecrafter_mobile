@@ -14,6 +14,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: ${COLORS.white};
+  z-index: 2;
 `;
 
 export const StyledPageName = styled.div`
