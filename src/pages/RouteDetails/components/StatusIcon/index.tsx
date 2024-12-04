@@ -14,16 +14,29 @@ interface StatusIconProps {
 const StatusIcon: React.FC<{ status: string }> = ({
   status,
 }: StatusIconProps) => {
+  const iconSize = 20;
+
   const iconMap: Record<string, JSX.Element> = {
     failed: (
-      <AiOutlineCloseCircle color={COLORS.status.icons.failed} size={20} />
+      <AiOutlineCloseCircle
+        color={COLORS.status.icons.failed}
+        size={iconSize}
+      />
     ),
     completed: (
-      <AiOutlineCheckCircle color={COLORS.status.icons.completed} size={20} />
+      <AiOutlineCheckCircle
+        color={COLORS.status.icons.completed}
+        size={iconSize}
+      />
     ),
-    atRisk: <AiOutlineWarning color={COLORS.status.icons.atRisk} size={20} />,
+    atRisk: (
+      <AiOutlineWarning color={COLORS.status.icons.atRisk} size={iconSize} />
+    ),
     upcoming: (
-      <AiOutlineInfoCircle color={COLORS.status.icons.upcoming} size={20} />
+      <AiOutlineInfoCircle
+        color={COLORS.status.icons.upcoming}
+        size={iconSize}
+      />
     ),
   };
 
