@@ -53,14 +53,14 @@ const theme = createTheme({
       color: COLORS.text.dark,
     },
     subtitle1: {
-      fontSize: FONT.fontSize.medium,
+      fontSize: FONT.fontSize.extraLarge,
       fontWeight: FONT.fontWeight.small,
-      color: COLORS.text.dark,
+      color: COLORS.text.onSurface,
     },
     subtitle2: {
-      fontSize: FONT.fontSize.small,
+      fontSize: FONT.fontSize.extraLarge,
       fontWeight: FONT.fontWeight.small,
-      color: COLORS.text.light,
+      color: COLORS.text.onSurface,
     },
   },
   shape: {

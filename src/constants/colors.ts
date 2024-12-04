@@ -5,6 +5,7 @@ export const COLORS = {
   purple: '#7367F0',
   hoverPurple: '#6c60ea',
   lightPurple: '#E8DEF829',
+  transparentViolet: 'rgba(115, 103, 240, 0.16)',
   text: {
     border: 'rgb(75, 70, 92, 0.2)',
     extraLight: 'rgb(75, 70, 92, 0.08)',
@@ -12,6 +13,7 @@ export const COLORS = {
     medium: 'rgb(75, 70, 92, 0.8)',
     dark: 'rgba(75, 70, 92, 1)',
     white: 'rgb(255, 255, 255)',
+    onSurface: 'rgba(29, 27, 32, 1)',
   },
   main: {
     dark: 'rgb(115, 103, 240)',

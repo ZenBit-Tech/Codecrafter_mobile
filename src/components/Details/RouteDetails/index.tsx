@@ -1,10 +1,10 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { UniversalModal } from 'src/components/Modals/UniversalModal';
 
 import { useRoutes } from '@/components/Lists/RoutLists/useRoutes.ts';
-import { RouteStartModal } from '@/components/Modals/RouteStartModal';
 import { COLORS } from '@/constants/colors.ts';
 import { FONT } from '@/constants/font.ts';
 import { calculateRouteTime } from '@/utils/calculateRouteTime';
@@ -39,6 +39,10 @@ export const RouteDetails: React.FC = () => {
     selectedRoute.arrival_date
   );
 
+  const handleConfirm: () => void = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div>
       <h3>
@@ -71,18 +75,31 @@ export const RouteDetails: React.FC = () => {
         </Button>
       </Box>
 
-      <RouteStartModal
+      <UniversalModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        onConfirm={() => setModalOpen(false)}
-        routeDetails={{
-          id: selectedRoute.id.toString(),
-          distance: selectedRoute.distance,
-          submissionDate: new Date(
-            selectedRoute.submission_date
-          ).toLocaleDateString(),
-          routeTime,
-        }}
+        onConfirm={handleConfirm}
+        title={t('route.startRouteDescription')}
+        content={
+          <Box>
+            <Typography>
+              {t('route.route')} #{selectedRoute.id}
+            </Typography>
+            <Typography>
+              {t('route.routeDistance')} {selectedRoute.distance}
+              {t('distance.km')}
+            </Typography>
+            <Typography>
+              {t('route.collectionDate')}
+              {new Date(selectedRoute.submission_date).toLocaleDateString()}
+            </Typography>
+            <Typography>
+              {t('route.routeTime')} {routeTime}
+            </Typography>
+          </Box>
+        }
+        confirmButtonText={t('route.startButton')}
+        cancelButtonText={t('route.cancelButton')}
       />
     </div>
   );
