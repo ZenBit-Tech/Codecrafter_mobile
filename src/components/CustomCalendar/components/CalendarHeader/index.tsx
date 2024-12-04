@@ -18,7 +18,16 @@ const CalendarHeader: FC<CalendarHeaderProps> = ({
   handleHeaderClick,
 }) => {
   return (
-    <div onClick={handleHeaderClick}>
+    <div
+      onClick={handleHeaderClick}
+      role='button'
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleHeaderClick();
+        }
+      }}
+    >
       <span>{format(date, 'MMMM')}</span>
       <StyledImage
         $isExpanded={isExpanded}
