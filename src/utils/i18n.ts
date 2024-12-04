@@ -110,6 +110,16 @@ const resources = {
         customerName: 'Customer Name:',
         noOrders: 'No orders available for this date',
         arrowIcon: 'Arrow Icon',
+        statuses: {
+          completed: 'Completed at',
+          upcoming: 'Coming in',
+          failed: 'Failed at',
+          atRisk: 'At risk time',
+        },
+      },
+      routes: {
+        route: 'Route',
+        start: 'Start the Route',
       },
       adminList: {
         title: 'Admin List',
