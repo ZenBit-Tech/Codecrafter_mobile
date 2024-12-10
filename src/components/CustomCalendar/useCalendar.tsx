@@ -34,7 +34,9 @@ const useCalendar = (): {
 
   const renderTileContent = (date: Date, view: string): ReactElement | null => {
     if (view === 'month') {
-      return <StyledWeekday>{format(date, 'EEE')}</StyledWeekday>;
+      return (
+        <StyledWeekday>{isExpanded ? '' : format(date, 'EEE')}</StyledWeekday>
+      );
     }
 
     return null;
