@@ -180,6 +180,26 @@ const resources = {
         delete_failed: 'Failed to delete admin',
         unexpected_error: 'An unexpected error occurred',
       },
+      failReason: {
+        pageTitle: 'Failed',
+        reportTitle: 'Report the reason of failure',
+        reportSubtitle:
+          'Provide the reason for the failed delivery to ensure appropriate actions are taken',
+        reasons: {
+          notAvailable: "Customer isn't available at home",
+          bagsNotReady: "The bags aren't ready for pickup",
+          other: 'Other reason',
+          explain: 'Explain your reason',
+          required: 'This field is required.',
+          minLength:
+            'The reason must be at least {{minLetters}} characters long.',
+          maxLength: 'The reason must not exceed {{maxLetters}} characters.',
+        },
+        actions: {
+          cancel: 'Cancel',
+          send: 'Send to dispatcher',
+        },
+      },
     },
   },
 };
