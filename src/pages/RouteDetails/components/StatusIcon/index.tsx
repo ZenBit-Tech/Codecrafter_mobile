@@ -17,22 +17,30 @@ const StatusIcon: React.FC<{ status: string }> = ({
   const iconSize = 20;
 
   const iconMap: Record<string, JSX.Element> = {
-    failed: (
+    Failed: (
       <AiOutlineCloseCircle
         color={COLORS.status.icons.failed}
         size={iconSize}
       />
     ),
-    completed: (
+    Completed: (
       <AiOutlineCheckCircle
         color={COLORS.status.icons.completed}
         size={iconSize}
       />
     ),
-    atRisk: (
+    'At Risk': (
       <AiOutlineWarning color={COLORS.status.icons.atRisk} size={iconSize} />
     ),
-    upcoming: (
+
+    'Not Arrived': (
+      <AiOutlineCloseCircle
+        color={COLORS.status.icons.notArrived}
+        size={iconSize}
+      />
+    ),
+
+    Upcoming: (
       <AiOutlineInfoCircle
         color={COLORS.status.icons.upcoming}
         size={iconSize}

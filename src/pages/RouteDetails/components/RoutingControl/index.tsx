@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 
 import 'leaflet-routing-machine';
@@ -20,9 +20,10 @@ const RoutingControl: React.FC<RouteControlProps> = ({
   addresses,
 }: RouteControlProps) => {
   const map = useMap();
+  const routingControlRef = useRef<L.Routing.Control>();
 
   useEffect(() => {
-    const control = L.Routing.control({
+    routingControlRef.current = L.Routing.control({
       waypoints: addresses.map((point) => L.latLng(point.lat, point.lng)),
       routeWhileDragging: true,
       show: false,
@@ -31,7 +32,9 @@ const RoutingControl: React.FC<RouteControlProps> = ({
     } as ExtendedRoutingControlOptions).addTo(map);
 
     return (): void => {
-      map.removeControl(control);
+      if (routingControlRef.current) {
+        map.removeControl(routingControlRef.current);
+      }
     };
   }, [addresses, map]);
 

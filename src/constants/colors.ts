@@ -26,6 +26,7 @@ export const COLORS = {
       completed: '#009951',
       failed: '#B3261E',
       atRisk: '#BF6A02',
+      notArrived: '#BF5A50',
     },
     completed: {
       bg: 'rgba(168, 170, 174, 0.16)',

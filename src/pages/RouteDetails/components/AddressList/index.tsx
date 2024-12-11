@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import { t } from 'i18next';
-import React from 'react';
 
 import {
   addressBoxStyles,
@@ -10,7 +9,7 @@ import {
 } from './styles';
 
 import StatusIcon from '@/pages/RouteDetails/components/StatusIcon';
-import { useDottedLine } from '@/pages/RouteDetails/useDottedLine';
+import { useDottedLine } from '@/pages/RouteDetails/hooks/useDottedLine';
 import { Address } from '@/types/route';
 
 interface AddressListProps {
@@ -35,11 +34,12 @@ const AddressList: React.FC<AddressListProps> = ({
             className='status-icon'
             sx={statusIconStyles}
           >
-            <StatusIcon status={item.status} />
+            <StatusIcon status={item.status.trim()} />
           </Box>
           <Box sx={addressDetailsStyles}>
             <Typography variant='body1' component='p'>
-              <strong>Collection address:</strong> {item.address}
+              <strong>{t('orders.collectionAddress')}</strong>
+              <br /> {item.address}
             </Typography>
             <Typography variant='body2' component='p'>
               <strong>{t(`orders.statuses.${item.status}`)}:</strong>{' '}
