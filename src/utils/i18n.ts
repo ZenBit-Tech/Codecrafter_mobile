@@ -107,6 +107,7 @@ const resources = {
         route: 'Route',
         phoneNumber: 'Phone Number:',
         collectionTime: 'Collection Time:',
+        collectionAddress: 'Collection address:',
         customerName: 'Customer Name:',
         noOrders: 'No orders available for this date',
         arrowIcon: 'Arrow Icon',

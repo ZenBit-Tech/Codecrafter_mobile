@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import { t } from 'i18next';
-import React from 'react';
 
 import {
   addressBoxStyles,
@@ -39,7 +38,7 @@ const AddressList: React.FC<AddressListProps> = ({
           </Box>
           <Box sx={addressDetailsStyles}>
             <Typography variant='body1' component='p'>
-              <strong>Collection address:</strong>
+              <strong>{t('orders.collectionAddress')}</strong>
               <br /> {item.address}
             </Typography>
             <Typography variant='body2' component='p'>

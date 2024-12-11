@@ -13,8 +13,8 @@ interface UseFetchRouteReturnType {
 export const useFetchRoute = (
   userId: number | undefined
 ): UseFetchRouteReturnType => {
-  const dispatch = useAppDispatch();
   const [isRouteLoading, setIsRouteLoading] = useState(false);
+  const dispatch = useAppDispatch();
 
   const fetchRoute = useCallback(async () => {
     if (!userId) return;

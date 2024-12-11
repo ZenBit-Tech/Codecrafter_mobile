@@ -8,7 +8,9 @@ interface FitBoundsProps {
   addresses: Address[];
 }
 
-const FitBounds: React.FC<FitBoundsProps> = ({ addresses }: FitBoundsProps) => {
+const FitBounds: React.FC<FitBoundsProps> = ({
+  addresses,
+}: FitBoundsProps): JSX.Element | null => {
   const map = useMap();
 
   useEffect(() => {
