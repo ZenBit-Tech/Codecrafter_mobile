@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import OrderItem from './components/OrderItem';
 import { OrderPageWrapper } from './styles';
@@ -34,6 +34,14 @@ const orderData = [
 ];
 
 const OrderPage = (): ReactNode => {
+  const [currentDate, setCurrentDate] = useState(() => {
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+    return today;
+  });
+
   return (
     <>
       <Header
@@ -41,7 +49,10 @@ const OrderPage = (): ReactNode => {
         username={t('profilePicture')}
       />
       <OrderPageWrapper>
-        <CustomCalendar />
+        <CustomCalendar
+          currentDate={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
         {(!orderData || orderData.length === 0) && (
           <Typography>{t('orders.noOrders')}</Typography>
         )}

@@ -9,6 +9,7 @@ import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
 import RouteDetails from '@/pages/RouteDetails';
+import RoutesPage from '@/pages/RoutesPage';
 import SignInPage from '@/pages/SignIn';
 import VerificationPage from '@/pages/VerificationPage';
 
@@ -42,9 +43,9 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: 'orders', element: <OrderPage /> },
-      { path: 'map', element: <h1>{t('greeting')}</h1> },
+      { path: 'map', element: <RouteDetails /> },
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
-      { path: 'route', element: <RouteDetails /> },
+      { path: 'routes', element: <RoutesPage /> },
     ],
   },
   { path: '/example', element: <ExamplePage /> },

@@ -17,13 +17,14 @@ import luggageIcon from '@/assets/icons/luggage.svg';
 import map from '@/assets/icons/map.svg';
 import notification from '@/assets/icons/notification.svg';
 import path from '@/assets/icons/path.svg';
+import {
+  MAP_PAGE_NUMBER,
+  NOTIFICATION_PAGE_NUMBER,
+  ORDERS_PAGE_NUMBER,
+  ROUTE_PAGE_NUMBER,
+} from '@/constants/pageNumbers';
 import Tab from '@/pages/MainPage/components/Tab';
 import { useAppSelector } from '@/redux/hooks';
-
-export const RoutePage = 1;
-export const OrdersPage = 2;
-export const MapPage = 3;
-export const NotificationsPage = 4;
 
 const BottomNavbar = (): JSX.Element => {
   const selected = useAppSelector((state) => state.pages.pageSelected);
@@ -32,28 +33,28 @@ const BottomNavbar = (): JSX.Element => {
     <NavbarContainer data-selected={selected}>
       <IconsContainer>
         <Tab
-          title='route'
-          index={RoutePage}
+          title='routes'
+          index={ROUTE_PAGE_NUMBER}
           iconSrc={path}
-          active={selected === RoutePage}
+          active={selected === ROUTE_PAGE_NUMBER}
         />
         <Tab
           title='orders'
-          index={OrdersPage}
+          index={ORDERS_PAGE_NUMBER}
           iconSrc={luggageIcon}
-          active={selected === OrdersPage}
+          active={selected === ORDERS_PAGE_NUMBER}
         />
         <Tab
           title='map'
-          index={MapPage}
+          index={MAP_PAGE_NUMBER}
           iconSrc={map}
-          active={selected === MapPage}
+          active={selected === MAP_PAGE_NUMBER}
         />
         <Tab
           title='notifications'
-          index={NotificationsPage}
+          index={NOTIFICATION_PAGE_NUMBER}
           iconSrc={notification}
-          active={selected === NotificationsPage}
+          active={selected === NOTIFICATION_PAGE_NUMBER}
         />
       </IconsContainer>
       <BarContainer>

@@ -1,5 +1,5 @@
 import { addMonths, format, subMonths } from 'date-fns';
-import { ReactElement, useState } from 'react';
+import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import { OnArgs } from 'react-calendar';
 import { Value } from 'react-calendar/dist/esm/shared/types.js';
 
@@ -8,7 +8,13 @@ import { StyledWeekday } from './styles';
 
 import { SHORT_MONTH, SHORT_WEEKDAY } from '@/constants/dateFormats';
 
-const useCalendar = (): {
+const useCalendar = ({
+  currentDate,
+  setCurrentDate,
+}: {
+  currentDate: Date;
+  setCurrentDate: Dispatch<SetStateAction<Date>>;
+}): {
   currentDate: Date;
   isExpanded: boolean;
   prevLabel: string;
@@ -19,13 +25,6 @@ const useCalendar = (): {
   renderTileContent: (date: Date, view: string) => ReactElement | null;
   handleDateChange: (newDate: Value) => void;
 } => {
-  const [currentDate, setCurrentDate] = useState(() => {
-    const today = new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-    return today;
-  });
   const [isExpanded, setIsExpanded] = useState(false);
   const [prevLabel, setPrevLabel] = useState(
     `${format(subMonths(currentDate, 1), SHORT_MONTH)}`

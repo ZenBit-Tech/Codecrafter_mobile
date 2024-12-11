@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { getPageFromUrl } from '@/utils/pageUtils';
+
 interface CounterState {
   pageSelected: number;
 }
 
 const initialState: CounterState = {
-  pageSelected: 2,
+  pageSelected: getPageFromUrl(),
 };
 
 export const pagesSlice = createSlice({
