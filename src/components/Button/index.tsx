@@ -7,7 +7,15 @@ import { useTranslation } from 'react-i18next';
 
 export interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   label: string;
-  variant: 'text' | 'outlined' | 'contained' | 'colored' | 'lined' | 'grey';
+  variant:
+    | 'text'
+    | 'outlined'
+    | 'contained'
+    | 'colored'
+    | 'lined'
+    | 'linedGrey'
+    | 'outlineVariant'
+    | 'grey';
 }
 
 const Button: React.FC<ButtonProps> = ({ label, variant, ...props }) => {
