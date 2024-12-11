@@ -17,11 +17,11 @@ export const StyledCalendar = styled.div<{ $isExpanded: boolean }>`
     overflow: hidden;
     margin-bottom: 18px;
     transition: all 0.3s;
-    height: ${(props): string => (props.$isExpanded ? '490' : '150')}px;
+    height: ${(props): string => (props.$isExpanded ? '400' : '150')}px;
     padding: 14px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .react-calendar__tile {
@@ -34,20 +34,30 @@ export const StyledCalendar = styled.div<{ $isExpanded: boolean }>`
     }
   }
 
-  .react-calendar__tile--active {
-    background-color: ${COLORS.white}!important;
-    color: ${COLORS.purple}!important;
-  }
-
-  .react-calendar__month-view__weekdays,
+  ${(props): string =>
+    props.$isExpanded
+      ? ''
+      : `.react-calendar__month-view__weekdays,
   .displayNone {
     display: none !important;
-  }
+  }`}
 
   .react-calendar__month-view__days,
   .react-calendar__navigation {
     display: flex;
     justify-content: space-between;
+  }
+  .react-calendar__month-view__days__day--weekend {
+    color: ${COLORS.status.icons.failed}!important;
+  }
+
+  .react-calendar__month-view__days__day--neighboringMonth {
+    color: ${COLORS.darkGrey} !important;
+  }
+
+  .react-calendar__tile--active {
+    background-color: ${COLORS.white}!important;
+    color: ${COLORS.purple}!important;
   }
 
   .react-calendar__navigation__next2-button,

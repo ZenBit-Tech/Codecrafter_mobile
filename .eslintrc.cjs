@@ -128,5 +128,11 @@ module.exports = {
         'no-param-reassign': 'off',
       },
     },
+    {
+      files: ["src/constants/**/*.{js,ts,tsx}"],
+      rules: {
+        "@typescript-eslint/naming-convention": "off",
+      },
+    },
   ],
 };
