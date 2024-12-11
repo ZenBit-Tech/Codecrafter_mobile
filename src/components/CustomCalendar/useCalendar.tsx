@@ -6,6 +6,8 @@ import { Value } from 'react-calendar/dist/esm/shared/types.js';
 import CalendarHeader from './components/CalendarHeader';
 import { StyledWeekday } from './styles';
 
+import { SHORT_MONTH, SHORT_WEEKDAY } from '@/constants/dateFormats';
+
 const useCalendar = (): {
   currentDate: Date;
   isExpanded: boolean;
@@ -26,16 +28,18 @@ const useCalendar = (): {
   });
   const [isExpanded, setIsExpanded] = useState(false);
   const [prevLabel, setPrevLabel] = useState(
-    `${format(subMonths(currentDate, 1), 'MMM')}`
+    `${format(subMonths(currentDate, 1), SHORT_MONTH)}`
   );
   const [nextLabel, setNextLabel] = useState(
-    `${format(addMonths(currentDate, 1), 'MMM')}`
+    `${format(addMonths(currentDate, 1), SHORT_MONTH)}`
   );
 
   const renderTileContent = (date: Date, view: string): ReactElement | null => {
     if (view === 'month') {
       return (
-        <StyledWeekday>{isExpanded ? '' : format(date, 'EEE')}</StyledWeekday>
+        <StyledWeekday>
+          {isExpanded ? '' : format(date, SHORT_WEEKDAY)}
+        </StyledWeekday>
       );
     }
 
@@ -47,8 +51,8 @@ const useCalendar = (): {
     activeStartDate,
   }: OnArgs): void => {
     if (activeStartDate && (action === 'next' || action === 'prev')) {
-      setPrevLabel(`${format(subMonths(activeStartDate, 1), 'MMM')}`);
-      setNextLabel(`${format(addMonths(activeStartDate, 1), 'MMM')}`);
+      setPrevLabel(`${format(subMonths(activeStartDate, 1), SHORT_MONTH)}`);
+      setNextLabel(`${format(addMonths(activeStartDate, 1), SHORT_MONTH)}`);
       setCurrentDate(activeStartDate);
     }
   };

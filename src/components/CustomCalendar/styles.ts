@@ -34,11 +34,6 @@ export const StyledCalendar = styled.div<{ $isExpanded: boolean }>`
     }
   }
 
-  .react-calendar__tile--active {
-    background-color: ${COLORS.white}!important;
-    color: ${COLORS.purple}!important;
-  }
-
   ${(props): string =>
     props.$isExpanded
       ? ''
@@ -53,11 +48,16 @@ export const StyledCalendar = styled.div<{ $isExpanded: boolean }>`
     justify-content: space-between;
   }
   .react-calendar__month-view__days__day--weekend {
-    color: ${COLORS.status.icons.failed} !important;
+    color: ${COLORS.status.icons.failed}!important;
   }
 
   .react-calendar__month-view__days__day--neighboringMonth {
     color: ${COLORS.darkGrey} !important;
+  }
+
+  .react-calendar__tile--active {
+    background-color: ${COLORS.white}!important;
+    color: ${COLORS.purple}!important;
   }
 
   .react-calendar__navigation__next2-button,
