@@ -1,5 +1,6 @@
-import { Box, Typography, useMediaQuery } from '@mui/material';
 import React from 'react';
+
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import OTPInput from 'react-otp-input';
 

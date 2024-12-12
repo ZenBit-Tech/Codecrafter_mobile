@@ -1,5 +1,6 @@
-import { t } from 'i18next';
 import { FC, useState } from 'react';
+
+import { t } from 'i18next';
 
 import RouteItem from './components/RouteItem';
 import { OrdersContainer } from './styles';
@@ -9,7 +10,7 @@ import Header from '@/components/Header';
 import { StatusEnum } from '@/constants/status';
 
 const RoutesPage: FC = () => {
-  const [currentDate, setCurrentDate] = useState(() => {
+  const [currentDate, setCurrentDate] = useState<Date>(() => {
     const today = new Date();
 
     today.setHours(0, 0, 0, 0);

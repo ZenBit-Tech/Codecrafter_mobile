@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import styled from 'styled-components';
 
 import { COLORS } from '@/constants/colors';
@@ -27,4 +28,8 @@ export const StyledRouteInfoItem = styled.div`
   @media only screen and (max-width: 400px) {
     width: 120px;
   }
+`;
+
+export const StyledTypography = styled(Typography)`
+  color: ${COLORS.schemes.outline};
 `;

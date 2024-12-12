@@ -1,6 +1,7 @@
+import { FC } from 'react';
+
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
-import { FC } from 'react';
 
 import { BackIconWrapper, HeaderWrapper, StyledPageName } from './styles';
 

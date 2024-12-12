@@ -1,6 +1,7 @@
+import { ReactNode, useState } from 'react';
+
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
-import { ReactNode, useState } from 'react';
 
 import OrderItem from './components/OrderItem';
 import { OrderPageWrapper } from './styles';
@@ -34,7 +35,7 @@ const orderData = [
 ];
 
 const OrderPage = (): ReactNode => {
-  const [currentDate, setCurrentDate] = useState(() => {
+  const [currentDate, setCurrentDate] = useState<Date>(() => {
     const today = new Date();
 
     today.setHours(0, 0, 0, 0);

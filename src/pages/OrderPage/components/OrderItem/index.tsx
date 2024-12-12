@@ -1,5 +1,6 @@
-import { t } from 'i18next';
 import { FC } from 'react';
+
+import { t } from 'i18next';
 
 import { IconWrapper, OrderDetails, OrderItemWrapper } from './styles';
 

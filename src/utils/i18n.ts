@@ -132,6 +132,7 @@ const resources = {
           onTime: 'On Time',
           failed: 'Failed',
           upcoming: 'Upcoming',
+        },
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',

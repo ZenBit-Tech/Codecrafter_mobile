@@ -1,6 +1,7 @@
+import React, { useEffect, useMemo } from 'react';
+
 import { Box } from '@mui/material';
 import { t } from 'i18next';
-import React, { useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
 import { ToastContainer } from 'react-toastify';

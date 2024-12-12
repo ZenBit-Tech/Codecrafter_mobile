@@ -1,15 +1,16 @@
+import { FC } from 'react';
+
 import { Typography } from '@mui/material';
 import { format } from 'date-fns';
 import { t } from 'i18next';
-import { FC } from 'react';
 
 import {
   StyledRouteInfo,
   StyledRouteInfoItem,
   StyledRouteItem,
+  StyledTypography,
 } from './styles';
 
-import { COLORS } from '@/constants/colors';
 import { SHORT_MONTH } from '@/constants/dateFormats';
 import { StatusEnum } from '@/constants/status';
 import StatusComponent from '@/pages/RoutesPage/components/StatusComponent';
@@ -41,32 +42,28 @@ const RouteItem: FC<RouteItemProps> = ({
       <StyledRouteInfo>
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.route')}</Typography>
-          <Typography sx={{ color: COLORS.schemes.outline }}>
-            #{addPadding(routeId, idPadding)}
-          </Typography>
+          <StyledTypography>#{addPadding(routeId, idPadding)}</StyledTypography>
         </StyledRouteInfoItem>
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.distance')}:</Typography>
-          <Typography sx={{ color: COLORS.schemes.outline }}>
-            {distance} km
-          </Typography>
+          <StyledTypography>{distance} km</StyledTypography>
         </StyledRouteInfoItem>
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.date')}:</Typography>
-          <Typography sx={{ color: COLORS.schemes.outline }}>
+          <StyledTypography>
             {routeDate.getDay()} {format(routeDate, SHORT_MONTH)}{' '}
             {routeDate.getFullYear()}
-          </Typography>
+          </StyledTypography>
         </StyledRouteInfoItem>
 
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.time')}:</Typography>
-          <Typography sx={{ color: COLORS.schemes.outline }}>
+          <StyledTypography>
             {addPadding(routeTime.arrivalDate.getHours(), timePadding)}:
             {addPadding(routeTime.arrivalDate.getMinutes(), timePadding)} -
             {addPadding(routeTime.submissionDate.getHours(), timePadding)}:
             {addPadding(routeTime.submissionDate.getMinutes(), timePadding)}
-          </Typography>
+          </StyledTypography>
         </StyledRouteInfoItem>
       </StyledRouteInfo>
       <StatusComponent status={status} />
