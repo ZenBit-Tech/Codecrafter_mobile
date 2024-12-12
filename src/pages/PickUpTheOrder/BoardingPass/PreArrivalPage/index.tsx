@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import { ActionBtns } from './components/ActionBtns';
 import { CheckList } from './components/CheckList';
 
 import Header from '@/components/Header';
@@ -16,6 +17,7 @@ export const PreArrivalPage: FC = () => {
         username={user?.full_name || ''}
       />
       <CheckList />
+      <ActionBtns />
     </>
   );
 };

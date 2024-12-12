@@ -53,4 +53,5 @@ export const warningParagraph: SxProps<Theme> = {
   marginLeft: '12px',
   letterSpacing: '0.4px',
   lineHeight: '1.3',
+  marginBottom: '22px',
 };
