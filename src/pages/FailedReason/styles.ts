@@ -23,7 +23,7 @@ export const Container = styled(Box)(({ theme }: { theme: Theme }) => ({
 export const Title = styled(Typography)(({ theme }: { theme: Theme }) => ({
   marginBottom: '16px',
   textAlign: 'center',
-  fontSize: FONT.fontSize.mediumLarge,
+  fontSize: FONT.fontSize.mediumPlus,
   color: COLORS.darkGrayPurple,
   [theme.breakpoints.up('sm')]: {
     fontSize: FONT.fontSize.large,
@@ -39,7 +39,7 @@ export const Subtitle = styled(Typography)(({ theme }: { theme: Theme }) => ({
   textAlign: 'center',
   color: COLORS.darkGrayPurple,
   [theme.breakpoints.up('sm')]: {
-    fontSize: FONT.fontSize.mediumLarge,
+    fontSize: FONT.fontSize.mediumPlus,
     marginBottom: '40px',
   },
   [theme.breakpoints.up('md')]: {
@@ -64,7 +64,7 @@ export const ButtonContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
 export const ReasonButton = styled(Button)(({ theme }: { theme: Theme }) => ({
   padding: '14px',
   borderRadius: '8px',
-  fontSize: FONT.fontSize.mediumLarge,
+  fontSize: FONT.fontSize.mediumPlus,
   [theme.breakpoints.up('sm')]: {
     flex: '1 0 calc(33.33% - 16px)',
     maxWidth: 'calc(33.33% - 16px)',
