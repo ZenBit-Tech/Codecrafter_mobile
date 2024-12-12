@@ -9,6 +9,9 @@ import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
+import { BoardingPassVerificationPage } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage';
+import { IdentityVerification } from '@/pages/PickUpTheOrder/BoardingPass/IdentityVerification';
+import { PreArrivalPage } from '@/pages/PickUpTheOrder/BoardingPass/PreArrivalPage';
 import RouteDetails from '@/pages/RouteDetails';
 import RoutesPage from '@/pages/RoutesPage';
 import SignInPage from '@/pages/SignIn';
@@ -48,6 +51,22 @@ const router = createBrowserRouter([
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       { path: 'routes', element: <RoutesPage /> },
       { path: 'map/failed', element: <FailedReasonPage /> },
+      {
+        path: 'orders',
+        element: <OrderPage />,
+      },
+      { path: 'map', element: <h1>{t('greeting')}</h1> },
+      { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
+      {
+        path: 'route',
+        element: <RouteDetails />,
+      },
+      { path: 'pre-arrival', element: <PreArrivalPage /> },
+      { path: 'identity-verification', element: <IdentityVerification /> },
+      {
+        path: 'boarding-pass-verification',
+        element: <BoardingPassVerificationPage />,
+      },
     ],
   },
   { path: '/example', element: <ExamplePage /> },
