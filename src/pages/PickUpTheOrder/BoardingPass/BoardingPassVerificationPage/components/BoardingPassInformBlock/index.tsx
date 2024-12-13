@@ -1,7 +1,9 @@
 import { Box, Checkbox, Typography } from '@mui/material';
 import dayjs from 'dayjs';
+import { t } from 'i18next';
 import { FC } from 'react';
 
+import { TicketModal } from './components/TicketModal';
 import {
   boardingPassVerificationContainer,
   confirmInformContainer,
@@ -16,11 +18,14 @@ import {
 } from './styles';
 import { useGetOrder } from './useGetOrder';
 
+import BackIcon from '@/assets/icons/back.svg';
 import Button from '@/components/Button';
 import { DATE_FORMAT, FULL_TIME } from '@/constants/dateFormats';
+import { useToggleVisible } from '@/hooks/useToggleVisible';
 
 export const BoardingPassInformBlock: FC = () => {
   const { orderInform } = useGetOrder();
+  const [isTicketVisible, toggleIsTicketVisible] = useToggleVisible();
   const date = dayjs(orderInform?.collection_date).format(DATE_FORMAT);
   const time = dayjs(orderInform?.collection_time_start).format(FULL_TIME);
 
@@ -50,8 +55,23 @@ export const BoardingPassInformBlock: FC = () => {
 
       <Box sx={showTicketContainer}>
         <Typography sx={showTicketTitle}>Boarding pass uploaded</Typography>
-        <Button sx={showTicketBtn} label='show' variant='outlined' />
+        <Button
+          sx={showTicketBtn}
+          label='show'
+          variant='outlined'
+          onClick={toggleIsTicketVisible}
+        />
       </Box>
+      {isTicketVisible && (
+        <TicketModal ticketImageLink={orderInform?.ticket_photo || ''}>
+          <Box
+            component='img'
+            src={BackIcon}
+            alt={t('back')}
+            onClick={toggleIsTicketVisible}
+          />
+        </TicketModal>
+      )}
 
       <Box sx={confirmInformContainer}>
         <Checkbox />
