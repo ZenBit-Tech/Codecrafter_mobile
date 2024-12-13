@@ -2,17 +2,14 @@ import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { maxLetters, minLetters, tBase } from '@/constants/constants';
 import { UseFailedReasonReturn } from '@/interfaces/FailedReason';
 
+interface FailedReasonForm {
+  customReason: string;
+}
+
 const useFailedReason = (): UseFailedReasonReturn => {
-  const tBase = 'failReason';
-  const minLetters = 10;
-  const maxLetters = 5000;
-
-  const reasonNotAvailable = t(`${tBase}.reasons.notAvailable`);
-  const reasonBagsNotReady = t(`${tBase}.reasons.bagsNotReady`);
-  const reasonOther = t(`${tBase}.reasons.other`);
-
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
   const {
@@ -21,7 +18,7 @@ const useFailedReason = (): UseFailedReasonReturn => {
     formState: { errors },
     setValue,
     watch,
-  } = useForm({
+  } = useForm<FailedReasonForm>({
     defaultValues: { customReason: '' },
   });
 
@@ -55,10 +52,6 @@ const useFailedReason = (): UseFailedReasonReturn => {
   };
 
   return {
-    tBase,
-    reasonNotAvailable,
-    reasonBagsNotReady,
-    reasonOther,
     selectedReason,
     customReason,
     register,

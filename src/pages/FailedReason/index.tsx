@@ -15,13 +15,15 @@ import useFailedReason from './useFailedReason';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
+import {
+  reasonBagsNotReady,
+  reasonNotAvailable,
+  reasonOther,
+  tBase,
+} from '@/constants/constants';
 
 const FailureReportPage = (): React.JSX.Element => {
   const {
-    tBase,
-    reasonNotAvailable,
-    reasonBagsNotReady,
-    reasonOther,
     selectedReason,
     register,
     errors,

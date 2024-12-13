@@ -1,12 +1,12 @@
 import { Box, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, Theme } from '@mui/material/styles';
 
 import Button from '@/components/Button';
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';
 import TextInputWithRef from '@/pages/SignIn/components/TextInputRef';
 
-export const Container = styled(Box)(({ theme }) => ({
+export const Container = styled(Box)(({ theme }: { theme: Theme }) => ({
   padding: '16px',
   height: 'calc(100vh - 60px)',
   marginTop: '60px',
@@ -20,7 +20,7 @@ export const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Title = styled(Typography)(({ theme }) => ({
+export const Title = styled(Typography)(({ theme }: { theme: Theme }) => ({
   marginBottom: '16px',
   textAlign: 'center',
   fontSize: FONT.fontSize.mediumLarge,
@@ -34,7 +34,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const Subtitle = styled(Typography)(({ theme }) => ({
+export const Subtitle = styled(Typography)(({ theme }: { theme: Theme }) => ({
   marginBottom: '32px',
   textAlign: 'center',
   color: COLORS.darkGrayPurple,
@@ -47,7 +47,7 @@ export const Subtitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const ButtonContainer = styled(Box)(({ theme }) => ({
+export const ButtonContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '12px',
@@ -61,7 +61,7 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ReasonButton = styled(Button)(({ theme }) => ({
+export const ReasonButton = styled(Button)(({ theme }: { theme: Theme }) => ({
   padding: '14px',
   borderRadius: '8px',
   fontSize: FONT.fontSize.mediumLarge,
@@ -74,23 +74,25 @@ export const ReasonButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const InputField = styled(TextInputWithRef)(({ theme }) => ({
-  height: '131px',
-  '& .MuiInputBase-root': {
-    height: '100%',
-    alignItems: 'flex-start',
-  },
-  [theme.breakpoints.up('sm')]: {
-    marginTop: '8px',
-    height: '150px',
-    width: '100%',
-  },
-  [theme.breakpoints.up('md')]: {
-    marginTop: '16px',
-    height: '180px',
-    width: '100%',
-  },
-}));
+export const InputField = styled(TextInputWithRef)(
+  ({ theme }: { theme: Theme }) => ({
+    height: '131px',
+    '& .MuiInputBase-root': {
+      height: '100%',
+      alignItems: 'flex-start',
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '8px',
+      height: '150px',
+      width: '100%',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginTop: '16px',
+      height: '180px',
+      width: '100%',
+    },
+  })
+);
 
 export const ActionContainer = styled(Box)({
   display: 'flex',

@@ -5,10 +5,6 @@ interface FailedReasonFormValues extends FieldValues {
 }
 
 export interface UseFailedReasonReturn {
-  tBase: string;
-  reasonNotAvailable: string;
-  reasonBagsNotReady: string;
-  reasonOther: string;
   selectedReason: string | null;
   customReason: string;
   register: UseFormReturn<FailedReasonFormValues>['register'];
