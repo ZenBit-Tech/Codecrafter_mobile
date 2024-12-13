@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { Outlet } from 'react-router-dom';
 
 import FooterNavigation from './components/FooterNavigation';

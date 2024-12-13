@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
+
 import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
@@ -6,9 +7,13 @@ import Label from './components/Label';
 import { GlobalStyle, StyledCalendar } from './styles';
 import useCalendar from './useCalendar';
 
-const CustomCalendar: FC = () => {
+interface CalendarProps {
+  currentDate: Date;
+  setCurrentDate: Dispatch<SetStateAction<Date>>;
+}
+
+const CustomCalendar: FC<CalendarProps> = ({ currentDate, setCurrentDate }) => {
   const {
-    currentDate,
     isExpanded,
     prevLabel,
     nextLabel,
@@ -17,7 +22,7 @@ const CustomCalendar: FC = () => {
     handleActiveStartDateChange,
     renderTileContent,
     handleDateChange,
-  } = useCalendar();
+  } = useCalendar({ currentDate, setCurrentDate });
 
   return (
     <StyledCalendar $isExpanded={isExpanded}>

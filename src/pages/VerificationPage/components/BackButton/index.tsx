@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { Box } from '@mui/material';
 import { t } from 'i18next';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import BackIcon from '@/assets/icons/back.svg';

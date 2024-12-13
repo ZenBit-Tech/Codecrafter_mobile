@@ -1,6 +1,7 @@
+import { FC } from 'react';
+
 import { format } from 'date-fns';
 import { t } from 'i18next';
-import { FC } from 'react';
 
 import { StyledImage } from './styles';
 
