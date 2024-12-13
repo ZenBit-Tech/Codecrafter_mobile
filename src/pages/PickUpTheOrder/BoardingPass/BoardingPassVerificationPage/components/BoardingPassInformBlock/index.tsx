@@ -1,4 +1,5 @@
 import { Box, Checkbox, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 import { FC } from 'react';
 
 import {
@@ -13,53 +14,51 @@ import {
   showTicketTitle,
   title,
 } from './styles';
+import { useGetOrder } from './useGetOrder';
 
 import Button from '@/components/Button';
+import { DATE_FORMAT, FULL_TIME } from '@/constants/dateFormats';
 
-interface BoardingPassInformInterface {
-  customerName: string;
-  departureDate: string;
-  departureTime: string;
-  airport: string;
-  flightNumber: string;
-}
+export const BoardingPassInformBlock: FC = () => {
+  const { orderInform } = useGetOrder();
+  const date = dayjs(orderInform?.collection_date).format(DATE_FORMAT);
+  const time = dayjs(orderInform?.collection_time_start).format(FULL_TIME);
 
-export const BoardingPassInformBlock: FC<BoardingPassInformInterface> = ({
-  customerName,
-  departureDate,
-  departureTime,
-  airport,
-  flightNumber,
-}) => (
-  <Box sx={boardingPassVerificationContainer}>
-    <Typography sx={title}>
-      Ask for the customer’s Boarding pass and verify it against the booking
-      information
-    </Typography>
-
-    <Box sx={customerInformationContainer}>
-      <Typography sx={customerPropTitle}>Customer name:</Typography>
-      <Typography sx={customerProp}>{customerName}</Typography>
-
-      <Typography sx={customerPropTitle}>Departure date:</Typography>
-      <Typography sx={customerProp}>Date: {departureDate}</Typography>
-      <Typography sx={customerProp}>Time: {departureTime}</Typography>
-
-      <Typography sx={customerPropTitle}>Flight information:</Typography>
-      <Typography sx={customerProp}>Airport: {airport}</Typography>
-      <Typography sx={customerProp}>Flight: {flightNumber}</Typography>
-    </Box>
-
-    <Box sx={showTicketContainer}>
-      <Typography sx={showTicketTitle}>Boarding pass uploaded</Typography>
-      <Button sx={showTicketBtn} label='show' variant='outlined' />
-    </Box>
-
-    <Box sx={confirmInformContainer}>
-      <Checkbox />
-      <Typography sx={confirmInformTitle}>
-        I confirm that information match
+  return (
+    <Box sx={boardingPassVerificationContainer}>
+      <Typography sx={title}>
+        Ask for the customer’s Boarding pass and verify it against the booking
+        information
       </Typography>
+
+      <Box sx={customerInformationContainer}>
+        <Typography sx={customerPropTitle}>Customer name:</Typography>
+        <Typography sx={customerProp}>{orderInform?.full_name}</Typography>
+
+        <Typography sx={customerPropTitle}>Departure date:</Typography>
+        <Typography sx={customerProp}>Date: {date}</Typography>
+        <Typography sx={customerProp}>Time: {time}</Typography>
+
+        <Typography sx={customerPropTitle}>Flight information:</Typography>
+        <Typography sx={customerProp}>
+          Airport: {orderInform?.airport_name}
+        </Typography>
+        <Typography sx={customerProp}>
+          Flight: {orderInform?.flight_id}
+        </Typography>
+      </Box>
+
+      <Box sx={showTicketContainer}>
+        <Typography sx={showTicketTitle}>Boarding pass uploaded</Typography>
+        <Button sx={showTicketBtn} label='show' variant='outlined' />
+      </Box>
+
+      <Box sx={confirmInformContainer}>
+        <Checkbox />
+        <Typography sx={confirmInformTitle}>
+          I confirm that information match
+        </Typography>
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};

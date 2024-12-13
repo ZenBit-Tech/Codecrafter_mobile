@@ -17,13 +17,7 @@ export const BoardingPassVerificationPage: FC = () => {
         pageName='Boarding pass Verification '
         username={user?.full_name || ''}
       />
-      <BoardingPassInformBlock
-        customerName='John Doe'
-        departureDate='01.02.2022'
-        departureTime='02:00'
-        airport='Dusseldorf'
-        flightNumber='X324dA'
-      />
+      <BoardingPassInformBlock />
       <ActionBtns />
     </>
   );
