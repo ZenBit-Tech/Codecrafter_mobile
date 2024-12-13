@@ -27,3 +27,51 @@ export const customerInformationContainer: SxProps<Theme> = {
   borderRadius: '10px',
   marginBottom: '27px',
 };
+
+export const customerPropTitle: SxProps<Theme> = {
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.medium,
+  fontWeight: FONT.fontWeight.large,
+  marginLeft: '5px',
+};
+
+export const customerProp: SxProps<Theme> = {
+  color: COLORS.schemes.outline,
+  marginLeft: '5px',
+};
+
+export const passportUpploaded: SxProps<Theme> = {
+  width: '82px',
+  height: '30px',
+  display: 'flex',
+  alignItems: 'center',
+  borderRadius: '5px',
+  justifyContent: 'center',
+  marginLeft: '5px',
+  background: COLORS.backgroundGreen,
+  color: COLORS.green,
+};
+
+export const passportUnupploaded: SxProps<Theme> = {
+  width: '122px',
+  height: '30px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '5px',
+  marginLeft: '5px',
+  background: COLORS.status.failed.bg,
+  color: COLORS.status.failed.text,
+};
+
+export const confirmInformContainer: SxProps<Theme> = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '30px',
+};
+
+export const confirmInformTitle: SxProps<Theme> = {
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.medium,
+  color: COLORS.schemes.outline,
+};

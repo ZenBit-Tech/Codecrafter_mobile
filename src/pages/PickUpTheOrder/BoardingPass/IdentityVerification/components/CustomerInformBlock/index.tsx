@@ -2,14 +2,17 @@ import { Box, Checkbox, Typography } from '@mui/material';
 import { FC } from 'react';
 
 import {
+  confirmInformContainer,
+  confirmInformTitle,
   customerInformationContainer,
+  customerProp,
+  customerPropTitle,
   identityVerificationContainer,
+  passportUnupploaded,
+  passportUpploaded,
   title,
 } from './styles';
 import './styles.css';
-
-import { COLORS } from '@/constants/colors';
-import { FONT } from '@/constants/font';
 
 interface CustomerIdInform {
   customerName: string;
@@ -28,63 +31,19 @@ export const CustomerInformBlock: FC<CustomerIdInform> = ({
       </Typography>
 
       <Box sx={customerInformationContainer}>
+        <Typography sx={customerPropTitle}>Customer name:</Typography>
+        <Typography sx={customerProp}>{customerName}</Typography>
+
+        <Typography sx={customerPropTitle}>Passport information:</Typography>
         <Typography
-          sx={{
-            fontFamily: FONT.family,
-            fontSize: FONT.fontSize.medium,
-            fontWeight: FONT.fontWeight.large,
-            marginLeft: '5px',
-          }}
-        >
-          Customer name:
-        </Typography>
-        <Typography sx={{ color: COLORS.schemes.outline, marginLeft: '5px' }}>
-          {customerName}
-        </Typography>
-        <Typography
-          sx={{
-            fontFamily: FONT.family,
-            fontSize: FONT.fontSize.medium,
-            fontWeight: FONT.fontWeight.large,
-            marginLeft: '5px',
-          }}
-        >
-          Passport information:
-        </Typography>
-        <Typography
-          sx={
-            isIdInformUploaded
-              ? {
-                  width: '82px',
-                  height: '30px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginLeft: '5px',
-                  background: COLORS.backgroundGreen,
-                  color: COLORS.green,
-                }
-              : {}
-          }
+          sx={isIdInformUploaded ? passportUpploaded : passportUnupploaded}
         >
           {isIdInformUploaded ? 'Uploaded' : 'Not Upploaded'}
         </Typography>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '30px',
-        }}
-      >
+      <Box sx={confirmInformContainer}>
         <Checkbox />
-        <Typography
-          sx={{
-            fontFamily: FONT.family,
-            fontSize: FONT.fontSize.medium,
-            color: COLORS.schemes.outline,
-          }}
-        >
+        <Typography sx={confirmInformTitle}>
           I confirm that information match
         </Typography>
       </Box>

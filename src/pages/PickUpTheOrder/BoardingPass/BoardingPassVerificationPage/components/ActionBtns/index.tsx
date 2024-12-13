@@ -2,7 +2,7 @@ import { Box } from '@mui/system';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { actionBtnsContainer, backButtonStyles, buttonStyles } from './styles';
+import { actionBtnsContainer, backButtonStyles, goNextBtn } from './styles';
 
 import Button from '@/components/Button';
 
@@ -18,10 +18,7 @@ export const ActionBtns: FC = () => {
         onClick={() => navigate('/app/identity-verification')}
       />
       <Button
-        sx={{
-          ...buttonStyles,
-          padding: '5px 0',
-        }}
+        sx={goNextBtn}
         label='Verify boarding pass'
         variant='colored'
         onClick={() => navigate('/app/identity-verification')}

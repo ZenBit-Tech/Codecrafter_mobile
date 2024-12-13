@@ -21,3 +21,8 @@ export const backButtonStyles: SxProps<Theme> = {
   color: COLORS.schemes.secondary,
   fontFamily: FONT.family,
 };
+
+export const goNextBtn: SxProps<Theme> = {
+  ...buttonStyles,
+  padding: '5px 0',
+};
