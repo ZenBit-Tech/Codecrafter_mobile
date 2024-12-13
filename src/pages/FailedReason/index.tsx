@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { Box } from '@mui/system';
 import { t } from 'i18next';
-import React from 'react';
 
 import {
   ActionContainer,

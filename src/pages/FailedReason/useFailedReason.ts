@@ -1,5 +1,6 @@
-import { t } from 'i18next';
 import { useState } from 'react';
+
+import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 
 import { maxLetters, minLetters, tBase } from '@/constants/constants';
