@@ -6,7 +6,7 @@ import { AuthState } from '@/redux/slices/authSlice';
 const persistConfig: PersistConfig<AuthState> = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'role', 'isAuthenticated'],
+  whitelist: ['token', 'role', 'isAuthenticated', 'user'],
 };
 
 export default persistConfig;

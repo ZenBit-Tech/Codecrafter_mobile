@@ -20,13 +20,31 @@ export const NavbarContainer = styled.nav`
 export const IconsContainer = styled.div`
   box-sizing: border-box
   position: absolute;
-  padding: 2% 14%;
+  padding: 1.5% 18.5%;
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 
+  @media screen and (min-width: 375px) {
+    padding: 1.5% 16%;
+  }
+  @media screen and (min-width: 425px) {
+    padding: 1.5% 14%;
+  }
+    @media screen and (min-width: 600px) {
+    padding: 1.5% 10%;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 1.5% 7.8%;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 2% 5.8%;
+  }
+  @media screen and (min-width: 1100px) {
+    padding: 2% 4.1%;
+  }
 `;
 
 export const BarContainer = styled.div`

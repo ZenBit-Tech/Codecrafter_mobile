@@ -39,10 +39,10 @@ export const verifyCode =
         otp: verificationCode,
       });
 
-      const { token, role } = response.data;
+      const { token, role, user } = response.data;
 
       if (token) {
-        dispatch(setAccessToken({ token, role }));
+        dispatch(setAccessToken({ token, role, user }));
         toast.success(i18n.t('verification.otpSubmitted'));
       } else {
         toast.error(i18n.t('auth.invalidExpiredVerificationCode'));
