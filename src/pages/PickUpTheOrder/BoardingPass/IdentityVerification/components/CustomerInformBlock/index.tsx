@@ -13,16 +13,11 @@ import {
   title,
 } from './styles';
 import './styles.css';
+import { useGetCustomerInform } from './useGetCustomerInform';
 
-interface CustomerIdInform {
-  customerName: string;
-  isIdInformUploaded: boolean;
-}
+export const CustomerInformBlock: FC = () => {
+  const { customer } = useGetCustomerInform();
 
-export const CustomerInformBlock: FC<CustomerIdInform> = ({
-  customerName,
-  isIdInformUploaded,
-}) => {
   return (
     <Box sx={identityVerificationContainer}>
       <Typography sx={title}>
@@ -32,13 +27,17 @@ export const CustomerInformBlock: FC<CustomerIdInform> = ({
 
       <Box sx={customerInformationContainer}>
         <Typography sx={customerPropTitle}>Customer name:</Typography>
-        <Typography sx={customerProp}>{customerName}</Typography>
+        <Typography sx={customerProp}>{customer?.full_name}</Typography>
 
         <Typography sx={customerPropTitle}>Passport information:</Typography>
         <Typography
-          sx={isIdInformUploaded ? passportUpploaded : passportUnupploaded}
+          sx={
+            customer?.is_passport_upploaded
+              ? passportUpploaded
+              : passportUnupploaded
+          }
         >
-          {isIdInformUploaded ? 'Uploaded' : 'Not Upploaded'}
+          {customer?.is_passport_upploaded ? 'Uploaded' : 'Not Upploaded'}
         </Typography>
       </Box>
       <Box sx={confirmInformContainer}>

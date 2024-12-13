@@ -16,7 +16,7 @@ export const IdentityVerification: FC = () => {
         pageName='Identity Verification'
         username={user?.full_name || ''}
       />
-      <CustomerInformBlock customerName='John Doe' isIdInformUploaded />
+      <CustomerInformBlock />
       <ActionBtns />
     </>
   );
