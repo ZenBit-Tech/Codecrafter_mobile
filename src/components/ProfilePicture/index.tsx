@@ -1,5 +1,6 @@
-import { Avatar } from '@mui/material';
 import { FC } from 'react';
+
+import { Avatar } from '@mui/material';
 
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';

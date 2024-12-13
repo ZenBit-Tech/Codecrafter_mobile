@@ -5,3 +5,7 @@ export const getInitials = (name: string): string => {
     .join('')
     .toUpperCase();
 };
+
+export const addPadding = (value: number, zeroesPadding: number): string => {
+  return value.toString().padStart(zeroesPadding, '0');
+};

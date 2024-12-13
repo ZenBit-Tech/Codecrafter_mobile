@@ -121,7 +121,18 @@ const resources = {
       },
       routes: {
         route: 'Route',
+        routes: 'Routes',
+        distance: 'Route Distance',
+        date: 'Route Date',
+        time: 'Route Time',
         start: 'Start the Route',
+        statusText: 'Status',
+        status: {
+          atRisk: 'At Risk',
+          onTime: 'On Time',
+          failed: 'Failed',
+          upcoming: 'Upcoming',
+        },
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',

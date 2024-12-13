@@ -1,5 +1,6 @@
-import { t } from 'i18next';
 import { ReactNode } from 'react';
+
+import { t } from 'i18next';
 
 import { ExampleWrapper } from './styles';
 import useExamplePage from './useExamplePage';

@@ -88,12 +88,12 @@ module.exports = {
         ],
         pathGroups: [
           {
-            pattern: '@nestjs/**',
+            pattern: 'react',
             group: 'external',
             position: 'before',
           },
         ],
-        pathGroupsExcludedImportTypes: ['builtin'],
+        pathGroupsExcludedImportTypes: ['builtin', 'react'],
         'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
