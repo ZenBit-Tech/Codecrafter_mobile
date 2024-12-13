@@ -1,4 +1,4 @@
-export interface Order {
+export interface OrderData {
   orderId: number;
   routeId: number;
   collectionTimeStart: Date;

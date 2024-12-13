@@ -10,15 +10,10 @@ import ProfilePicture from '@/components/ProfilePicture';
 
 interface HeaderProps {
   pageName: string;
-  username: string;
   hasBackIcon?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({
-  pageName,
-  username,
-  hasBackIcon = false,
-}) => {
+const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
   return (
     <HeaderWrapper>
       <BackIconWrapper hasBackIcon={hasBackIcon}>
@@ -27,7 +22,7 @@ const Header: FC<HeaderProps> = ({
       <StyledPageName>
         <Typography variant='subtitle1'>{pageName}</Typography>
       </StyledPageName>
-      <ProfilePicture username={username} />
+      <ProfilePicture />
     </HeaderWrapper>
   );
 };
