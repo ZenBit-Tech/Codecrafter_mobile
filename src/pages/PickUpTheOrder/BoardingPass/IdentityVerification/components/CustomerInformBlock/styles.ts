@@ -40,7 +40,7 @@ export const customerProp: SxProps<Theme> = {
   marginLeft: '5px',
 };
 
-export const passportUpploaded: SxProps<Theme> = {
+export const passportUploaded: SxProps<Theme> = {
   width: '82px',
   height: '30px',
   display: 'flex',
@@ -52,7 +52,7 @@ export const passportUpploaded: SxProps<Theme> = {
   color: COLORS.green,
 };
 
-export const passportUnupploaded: SxProps<Theme> = {
+export const passportNotUploaded: SxProps<Theme> = {
   width: '122px',
   height: '30px',
   display: 'flex',

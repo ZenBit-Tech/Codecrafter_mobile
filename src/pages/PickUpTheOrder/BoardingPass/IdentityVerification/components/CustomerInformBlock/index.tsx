@@ -8,8 +8,8 @@ import {
   customerProp,
   customerPropTitle,
   identityVerificationContainer,
-  passportUnupploaded,
-  passportUpploaded,
+  passportNotUploaded,
+  passportUploaded,
   title,
 } from './styles';
 import './styles.css';
@@ -38,12 +38,12 @@ export const CustomerInformBlock: FC<CustomerInformInterface> = ({
         <Typography sx={customerPropTitle}>Passport information:</Typography>
         <Typography
           sx={
-            customer?.is_passport_upploaded
-              ? passportUpploaded
-              : passportUnupploaded
+            customer?.is_passport_uploaded
+              ? passportUploaded
+              : passportNotUploaded
           }
         >
-          {customer?.is_passport_upploaded ? 'Uploaded' : 'Not Upploaded'}
+          {customer?.is_passport_uploaded ? 'Uploaded' : 'Not Upploaded'}
         </Typography>
       </Box>
       <Box sx={confirmInformContainer}>

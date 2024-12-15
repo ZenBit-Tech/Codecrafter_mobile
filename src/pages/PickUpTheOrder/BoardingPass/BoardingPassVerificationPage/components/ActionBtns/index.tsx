@@ -1,7 +1,6 @@
 import { Box } from '@mui/system';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import {
   actionBtnsContainer,
@@ -13,7 +12,6 @@ import {
 import { useVerifyRequest } from './useVerifyRequest';
 
 import Button from '@/components/Button';
-import { usePassVerificationData } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage/index';
 
 interface ActionBtnsInterface {
   isNextBtnDisabled: boolean;
@@ -21,9 +19,8 @@ interface ActionBtnsInterface {
 
 export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
   const navigate = useNavigate();
-  const { isVerified, isOngoing, isVerifiedSuccessfully, verifyPassDispatch } =
-    usePassVerificationData();
-  const { verifyRequest } = useVerifyRequest();
+  const { verifyRequest, isVerified, isOngoing, isVerifiedSuccessfully } =
+    useVerifyRequest();
 
   return (
     <Box sx={isOngoing ? actionBtnsContainerLoading : actionBtnsContainer}>
@@ -41,32 +38,7 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
               label='Verify boarding pass'
               variant='colored'
               disabled={!isNextBtnDisabled}
-              onClick={async () => {
-                verifyPassDispatch({
-                  type: 'SET_LOADING',
-                  payload: true,
-                });
-                const isVerifiedResponse = await verifyRequest();
-
-                verifyPassDispatch({
-                  type: 'SET_VERIFIED',
-                  payload: true,
-                });
-                verifyPassDispatch({
-                  type: 'SET_ACTIVE',
-                  payload: isVerifiedResponse,
-                });
-                verifyPassDispatch({
-                  type: 'SET_LOADING',
-                  payload: false,
-                });
-
-                if (isVerifiedResponse) {
-                  toast.success('Boarding pass Verified');
-                } else {
-                  toast.error('Boarding pass is NOT Verified');
-                }
-              }}
+              onClick={verifyRequest}
             />
           ) : (
             <Button
