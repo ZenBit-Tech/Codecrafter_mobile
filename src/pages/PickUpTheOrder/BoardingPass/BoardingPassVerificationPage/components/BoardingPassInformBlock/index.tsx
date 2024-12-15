@@ -1,7 +1,7 @@
 import { Box, Checkbox, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { t } from 'i18next';
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 import { TicketModal } from './components/TicketModal';
 import {
@@ -23,7 +23,13 @@ import Button from '@/components/Button';
 import { DATE_FORMAT, FULL_TIME } from '@/constants/dateFormats';
 import { useToggleVisible } from '@/hooks/useToggleVisible';
 
-export const BoardingPassInformBlock: FC = () => {
+interface CustomerInformInterface {
+  handleChoose: Dispatch<SetStateAction<boolean>>;
+}
+
+export const BoardingPassInformBlock: FC<CustomerInformInterface> = ({
+  handleChoose,
+}) => {
   const { orderInform } = useGetOrder();
   const [isTicketVisible, toggleIsTicketVisible] = useToggleVisible();
   const date = dayjs(orderInform?.collection_date).format(DATE_FORMAT);
@@ -74,7 +80,11 @@ export const BoardingPassInformBlock: FC = () => {
       )}
 
       <Box sx={confirmInformContainer}>
-        <Checkbox />
+        <Checkbox
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            handleChoose(event.target.checked);
+          }}
+        />
         <Typography sx={confirmInformTitle}>
           I confirm that information match
         </Typography>

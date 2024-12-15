@@ -2,11 +2,20 @@ import { Box } from '@mui/system';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { actionBtnsContainer, backButtonStyles, goNextBtn } from './styles';
+import {
+  actionBtnsContainer,
+  backButtonStyles,
+  disabledBtn,
+  goNextBtn,
+} from './styles';
 
 import Button from '@/components/Button';
 
-export const ActionBtns: FC = () => {
+interface ActionBtnsInterface {
+  isNextBtnDisabled: boolean;
+}
+
+export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
   const navigate = useNavigate();
 
   return (
@@ -18,9 +27,10 @@ export const ActionBtns: FC = () => {
         onClick={() => navigate('/app/identity-verification')}
       />
       <Button
-        sx={goNextBtn}
+        sx={isNextBtnDisabled ? goNextBtn : disabledBtn}
         label='Verify boarding pass'
         variant='colored'
+        disabled={!isNextBtnDisabled}
         onClick={() => navigate('/app/identity-verification')}
       />
     </Box>

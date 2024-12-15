@@ -26,3 +26,8 @@ export const goNextBtn: SxProps<Theme> = {
   ...buttonStyles,
   padding: '5px 0',
 };
+
+export const disabledBtn: SxProps<Theme> = {
+  backgroundColor: COLORS.schemes.outlineVariant,
+  color: `${COLORS.white} !important`,
+};

@@ -1,5 +1,5 @@
 import { Box, Checkbox, Typography } from '@mui/material';
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 import {
   confirmInformContainer,
@@ -15,7 +15,13 @@ import {
 import './styles.css';
 import { useGetCustomerInform } from './useGetCustomerInform';
 
-export const CustomerInformBlock: FC = () => {
+interface CustomerInformInterface {
+  handleChoose: Dispatch<SetStateAction<boolean>>;
+}
+
+export const CustomerInformBlock: FC<CustomerInformInterface> = ({
+  handleChoose,
+}) => {
   const { customer } = useGetCustomerInform();
 
   return (
@@ -41,7 +47,11 @@ export const CustomerInformBlock: FC = () => {
         </Typography>
       </Box>
       <Box sx={confirmInformContainer}>
-        <Checkbox />
+        <Checkbox
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            handleChoose(event.target.checked);
+          }}
+        />
         <Typography sx={confirmInformTitle}>
           I confirm that information match
         </Typography>
