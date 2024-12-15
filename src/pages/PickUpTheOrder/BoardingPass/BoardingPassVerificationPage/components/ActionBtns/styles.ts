@@ -10,6 +10,13 @@ export const actionBtnsContainer: SxProps<Theme> = {
   margin: '0 auto',
 };
 
+export const actionBtnsContainerLoading: SxProps<Theme> = {
+  maxWidth: '398px',
+  display: 'flex',
+  justifyContent: 'center',
+  margin: '0 auto',
+};
+
 export const buttonStyles: SxProps<Theme> = {
   width: '183px',
   height: '40px',
