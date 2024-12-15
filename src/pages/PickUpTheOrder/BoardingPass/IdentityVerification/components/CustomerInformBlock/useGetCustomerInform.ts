@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -19,7 +20,7 @@ export const useGetCustomerInform = (): UseGetCustomerInformation => {
 
       setCustomer(response.data);
     } catch (error) {
-      toast.error("Can't find information about user");
+      toast.error(t('boardingPass.errors.cantFindUser'));
     }
   };
 

@@ -38,29 +38,40 @@ export const BoardingPassInformBlock: FC<CustomerInformInterface> = ({
   return (
     <Box sx={boardingPassVerificationContainer}>
       <Typography sx={title}>
-        Ask for the customer’s Boarding pass and verify it against the booking
-        information
+        {t('boardingPass.titles.boardingPassPage')}
       </Typography>
 
       <Box sx={customerInformationContainer}>
-        <Typography sx={customerPropTitle}>Customer name:</Typography>
+        <Typography sx={customerPropTitle}>
+          {t('boardingPass.informProps.customerName')}
+        </Typography>
         <Typography sx={customerProp}>{orderInform?.full_name}</Typography>
 
-        <Typography sx={customerPropTitle}>Departure date:</Typography>
-        <Typography sx={customerProp}>Date: {date}</Typography>
-        <Typography sx={customerProp}>Time: {time}</Typography>
-
-        <Typography sx={customerPropTitle}>Flight information:</Typography>
-        <Typography sx={customerProp}>
-          Airport: {orderInform?.airport_name}
+        <Typography sx={customerPropTitle}>
+          {t('boardingPass.informProps.departureDate')}
         </Typography>
         <Typography sx={customerProp}>
-          Flight: {orderInform?.flight_id}
+          {t('boardingPass.informProps.date')} {date}
+        </Typography>
+        <Typography sx={customerProp}>
+          {t('boardingPass.informProps.time')} {time}
+        </Typography>
+
+        <Typography sx={customerPropTitle}>
+          {t('boardingPass.informProps.flightInform')}
+        </Typography>
+        <Typography sx={customerProp}>
+          {t('boardingPass.informProps.airport')} {orderInform?.airport_name}
+        </Typography>
+        <Typography sx={customerProp}>
+          {t('boardingPass.informProps.flight')} {orderInform?.flight_id}
         </Typography>
       </Box>
 
       <Box sx={showTicketContainer}>
-        <Typography sx={showTicketTitle}>Boarding pass uploaded</Typography>
+        <Typography sx={showTicketTitle}>
+          {t('boardingPass.passUploaded')}
+        </Typography>
         <Button
           sx={showTicketBtn}
           label='show'
@@ -86,7 +97,7 @@ export const BoardingPassInformBlock: FC<CustomerInformInterface> = ({
           }}
         />
         <Typography sx={confirmInformTitle}>
-          I confirm that information match
+          {t('boardingPass.confirmation')}
         </Typography>
       </Box>
     </Box>

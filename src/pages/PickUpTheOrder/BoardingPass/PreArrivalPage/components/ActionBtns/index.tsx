@@ -1,4 +1,5 @@
 import { Box } from '@mui/system';
+import { t } from 'i18next';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,10 +12,14 @@ export const ActionBtns: FC = () => {
 
   return (
     <Box sx={actionBtnsContainer}>
-      <Button sx={backButtonStyles} label='Back' variant='outlined' />
+      <Button
+        sx={backButtonStyles}
+        label={t('boardingPass.actionPanel.backBtn')}
+        variant='outlined'
+      />
       <Button
         sx={buttonStyles}
-        label='Transporter Locked'
+        label={t('boardingPass.actionPanel.transporterLocked')}
         variant='colored'
         onClick={() => navigate('/app/identity-verification')}
       />

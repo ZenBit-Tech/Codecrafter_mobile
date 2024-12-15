@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { t } from 'i18next';
 import { toast } from 'react-toastify';
 
 import { usePassVerificationData } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage/index';
@@ -42,9 +43,9 @@ export const useVerifyRequest = (): UseVerifyInterface => {
       });
 
       if (response.data) {
-        toast.success('Boarding pass Verified');
+        toast.success(t('boardingPass.success.passVerified'));
       } else {
-        toast.error('Boarding pass is NOT Verified');
+        toast.error(t('boardingPass.errors.passNotVerified'));
       }
     } catch (error) {
       throw new Error();

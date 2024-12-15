@@ -1,4 +1,5 @@
 import { Box } from '@mui/system';
+import { t } from 'i18next';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,13 +23,13 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
     <Box sx={actionBtnsContainer}>
       <Button
         sx={backButtonStyles}
-        label='Back'
+        label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
         onClick={() => navigate('/app/pre-arrival')}
       />
       <Button
         sx={isNextBtnDisabled ? buttonStyles : disabledBtn}
-        label='Identity Verified'
+        label={t('boardingPass.actionPanel.identityVerified')}
         variant='colored'
         disabled={!isNextBtnDisabled}
         onClick={() => navigate('/app/boarding-pass-verification')}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -32,7 +33,7 @@ export const useGetOrder = (): UseGetOrderHook => {
 
       setOrderInform(response.data);
     } catch (error) {
-      toast.error("Can't find order");
+      toast.error(t('boardingPass.errors.cantFindOrder'));
     }
   };
 

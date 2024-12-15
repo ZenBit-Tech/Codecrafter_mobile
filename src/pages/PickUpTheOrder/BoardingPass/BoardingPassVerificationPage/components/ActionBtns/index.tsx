@@ -1,4 +1,5 @@
 import { Box } from '@mui/system';
+import { t } from 'i18next';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
           {!isVerified ? (
             <Button
               sx={isNextBtnDisabled ? goNextBtn : disabledBtn}
-              label='Verify boarding pass'
+              label={t('boardingPass.actionPanel.verifyBtn')}
               variant='colored'
               disabled={!isNextBtnDisabled}
               onClick={verifyRequest}
@@ -43,7 +44,11 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
           ) : (
             <Button
               sx={isNextBtnDisabled ? goNextBtn : disabledBtn}
-              label={isVerifiedSuccessfully ? 'Next' : 'Send to dispatcher'}
+              label={
+                isVerifiedSuccessfully
+                  ? t('boardingPass.actionPanel.verifiedSuccessfully')
+                  : t('boardingPass.actionPanel.verificationFailed')
+              }
               variant='colored'
               disabled={!isNextBtnDisabled}
               onClick={() => navigate('/app/identity-verification')}
@@ -54,7 +59,7 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
       {isOngoing && (
         <Button
           sx={disabledBtn}
-          label='Verification'
+          label={t('boardingPass.actionPanel.loadingBtn')}
           variant='colored'
           disabled
         />

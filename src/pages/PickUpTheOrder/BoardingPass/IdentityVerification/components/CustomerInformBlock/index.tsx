@@ -1,4 +1,5 @@
 import { Box, Checkbox, Typography } from '@mui/material';
+import { t } from 'i18next';
 import { Dispatch, FC, SetStateAction } from 'react';
 
 import {
@@ -27,15 +28,18 @@ export const CustomerInformBlock: FC<CustomerInformInterface> = ({
   return (
     <Box sx={identityVerificationContainer}>
       <Typography sx={title}>
-        Ask for the customer’s ID card or passport and verify the identity
-        against the booking information
+        {t('boardingPass.titles.identityVerificationPage')}
       </Typography>
 
       <Box sx={customerInformationContainer}>
-        <Typography sx={customerPropTitle}>Customer name:</Typography>
+        <Typography sx={customerPropTitle}>
+          {t('boardingPass.informProps.customerName')}
+        </Typography>
         <Typography sx={customerProp}>{customer?.full_name}</Typography>
 
-        <Typography sx={customerPropTitle}>Passport information:</Typography>
+        <Typography sx={customerPropTitle}>
+          {t('boardingPass.informProps.passportInform')}
+        </Typography>
         <Typography
           sx={
             customer?.is_passport_uploaded
@@ -43,7 +47,9 @@ export const CustomerInformBlock: FC<CustomerInformInterface> = ({
               : passportNotUploaded
           }
         >
-          {customer?.is_passport_uploaded ? 'Uploaded' : 'Not Upploaded'}
+          {customer?.is_passport_uploaded
+            ? t('boardingPass.passportUploaded.uploaded')
+            : t('boardingPass.passportUploaded.notUploaded')}
         </Typography>
       </Box>
       <Box sx={confirmInformContainer}>
@@ -53,7 +59,7 @@ export const CustomerInformBlock: FC<CustomerInformInterface> = ({
           }}
         />
         <Typography sx={confirmInformTitle}>
-          I confirm that information match
+          {t('boardingPass.confirmation')}
         </Typography>
       </Box>
     </Box>
