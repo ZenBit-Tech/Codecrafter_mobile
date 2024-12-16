@@ -5,6 +5,8 @@ export const COLORS = {
   green: 'rgb(40, 199, 111)',
   purple: '#7367F0',
   lightPurple: '#E8DEF829',
+  grayPurple: 'rgba(74, 68, 89, 1)',
+  darkGrayPurple: 'rgba(73, 69, 79, 1)',
   transparentViolet: 'rgba(115, 103, 240, 0.16)',
   text: {
     border: 'rgb(75, 70, 92, 0.2)',

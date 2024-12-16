@@ -1,5 +1,6 @@
-import { LatLngBounds, LatLngTuple } from 'leaflet';
 import { useEffect } from 'react';
+
+import { LatLngBounds, LatLngTuple } from 'leaflet';
 import { useMap } from 'react-leaflet';
 
 import { Address } from '@/types/route';

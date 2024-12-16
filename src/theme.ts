@@ -8,6 +8,8 @@ declare module '@mui/material/Button' {
     colored: true;
     lined: true;
     grey: true;
+    linedGrey: true;
+    outlineVariant: true;
   }
 }
 
@@ -89,6 +91,32 @@ const theme = createTheme({
             border: `1px solid ${styleTheme.palette.primary.main}`,
             '&:hover': {
               backgroundColor: styleTheme.palette.primary.light,
+            },
+          }),
+        },
+        {
+          props: { variant: 'linedGrey' },
+          style: (): Interpolation<{ theme: Theme }> => ({
+            fontWeight: FONT.fontWeight.small,
+            textTransform: 'none',
+            border: `1px solid ${COLORS.grayPurple}`,
+            color: COLORS.darkGrayPurple,
+            '&:hover': {
+              backgroundColor: COLORS.text.extraLight,
+            },
+          }),
+        },
+        {
+          props: { variant: 'outlineVariant', disabled: true },
+          style: (): Interpolation<{ theme: Theme }> => ({
+            fontWeight: FONT.fontWeight.medium,
+            textTransform: 'none',
+            backgroundColor: COLORS.schemes.outlineVariant,
+            color: COLORS.text.white,
+            border: 'none',
+            '&.Mui-disabled': {
+              backgroundColor: COLORS.schemes.outlineVariant,
+              color: COLORS.text.white,
             },
           }),
         },

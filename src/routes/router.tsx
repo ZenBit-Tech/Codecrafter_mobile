@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
 import ExamplePage from '@/pages/ExamplePage';
+import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: 'map', element: <RouteDetails /> },
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       { path: 'routes', element: <RoutesPage /> },
+      { path: 'map/failed', element: <FailedReasonPage /> },
     ],
   },
   { path: '/example', element: <ExamplePage /> },
