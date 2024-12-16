@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import axios from 'axios';
 import { t } from 'i18next';
-import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { useAppSelector } from '@/redux/hooks';

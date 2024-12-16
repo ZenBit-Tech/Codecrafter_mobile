@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import {
   createContext,
   Dispatch,
@@ -7,6 +6,8 @@ import {
   useMemo,
   useState,
 } from 'react';
+
+import { t } from 'i18next';
 
 import { ActionBtns } from './components/ActionBtns';
 import { BoardingPassInformBlock } from './components/BoardingPassInformBlock';

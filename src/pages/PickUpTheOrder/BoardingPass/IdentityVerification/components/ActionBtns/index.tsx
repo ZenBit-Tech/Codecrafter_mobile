@@ -1,6 +1,7 @@
+import { FC } from 'react';
+
 import { Box } from '@mui/system';
 import { t } from 'i18next';
-import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {

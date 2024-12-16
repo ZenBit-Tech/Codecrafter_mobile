@@ -1,7 +1,8 @@
+import { FC } from 'react';
+
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { t } from 'i18next';
-import { FC } from 'react';
 
 import {
   checkListBlockStyles,

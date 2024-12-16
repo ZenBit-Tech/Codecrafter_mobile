@@ -1,7 +1,8 @@
+import { Dispatch, FC, SetStateAction } from 'react';
+
 import { Box, Checkbox, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { t } from 'i18next';
-import { Dispatch, FC, SetStateAction } from 'react';
 
 import { TicketModal } from './components/TicketModal';
 import {

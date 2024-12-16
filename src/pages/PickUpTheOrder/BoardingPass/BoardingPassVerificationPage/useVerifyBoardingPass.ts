@@ -1,5 +1,6 @@
-import { PayloadAction } from '@reduxjs/toolkit';
 import { Dispatch, useMemo, useReducer } from 'react';
+
+import { PayloadAction } from '@reduxjs/toolkit';
 
 interface BoardingPassState {
   isVerified: boolean;

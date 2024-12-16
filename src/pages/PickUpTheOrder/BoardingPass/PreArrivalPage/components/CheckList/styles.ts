@@ -1,5 +1,6 @@
-import { SxProps, Theme } from '@mui/system';
 import { CSSProperties } from 'react';
+
+import { SxProps, Theme } from '@mui/system';
 
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';

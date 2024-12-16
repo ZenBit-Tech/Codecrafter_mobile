@@ -1,6 +1,7 @@
+import { Dispatch, FC, SetStateAction } from 'react';
+
 import { Box, Checkbox, Typography } from '@mui/material';
 import { t } from 'i18next';
-import { Dispatch, FC, SetStateAction } from 'react';
 
 import {
   confirmInformContainer,
