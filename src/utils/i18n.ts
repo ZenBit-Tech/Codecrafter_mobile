@@ -169,6 +169,8 @@ const resources = {
         collectionAddress: 'Collection address:',
         customerName: 'Customer Name:',
         noOrders: 'No orders available for this date',
+        failedLoad: 'Error! Failed to load orders',
+        unknownError: 'An unknown error occurred.',
         arrowIcon: 'Arrow Icon',
         statuses: {
           Completed: 'Completed at',

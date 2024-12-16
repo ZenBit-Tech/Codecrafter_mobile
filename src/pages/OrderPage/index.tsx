@@ -1,38 +1,17 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
 
 import OrderItem from './components/OrderItem';
 import { OrderPageWrapper } from './styles';
+import { useFetchOrders } from './useFetchOrders';
 
 import CustomCalendar from '@/components/CustomCalendar';
 import Header from '@/components/Header';
+import Loader from '@/components/Loader';
 import { Order } from '@/interfaces/Orders';
-
-const orderData = [
-  {
-    orderId: 1,
-    routeId: 125,
-    customerName: 'Semuel Garcia',
-    collectionTime: '8:00 - 10:00',
-    phoneNumber: '+49015730000',
-  },
-  {
-    orderId: 2,
-    routeId: 125,
-    customerName: 'Semuel Garcia',
-    collectionTime: '8:00 - 10:00',
-    phoneNumber: '+49015730000',
-  },
-  {
-    orderId: 3,
-    routeId: 125,
-    customerName: 'Semuel Garcia',
-    collectionTime: '8:00 - 10:00',
-    phoneNumber: '+49015730000',
-  },
-];
+import { useAppSelector } from '@/redux/hooks';
 
 const OrderPage = (): ReactNode => {
   const [currentDate, setCurrentDate] = useState<Date>(() => {
@@ -42,22 +21,32 @@ const OrderPage = (): ReactNode => {
 
     return today;
   });
+  const driverId = useAppSelector((state) => state.auth.user?.id);
+  const orders = useAppSelector((state) => state.orders.orders);
+  const { fetchOrders, isOrderLoading } = useFetchOrders(currentDate, driverId);
+
+  useEffect(() => {
+    fetchOrders().catch((error) => {
+      throw new Error(error);
+    });
+  }, [fetchOrders]);
+
+  if (isOrderLoading) {
+    return <Loader isLoading />;
+  }
 
   return (
     <>
-      <Header
-        pageName={t('navigation.orders')}
-        username={t('profilePicture')}
-      />
+      <Header pageName={t('navigation.orders')} />
       <OrderPageWrapper>
         <CustomCalendar
           currentDate={currentDate}
           setCurrentDate={setCurrentDate}
         />
-        {(!orderData || orderData.length === 0) && (
+        {(!orders || orders.length === 0) && (
           <Typography>{t('orders.noOrders')}</Typography>
         )}
-        {orderData?.map((order: Order) => {
+        {orders?.map((order: Order) => {
           return <OrderItem key={order.orderId} {...order} />;
         })}
       </OrderPageWrapper>

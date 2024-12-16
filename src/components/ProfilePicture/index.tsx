@@ -4,13 +4,11 @@ import { Avatar } from '@mui/material';
 
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';
+import { useAppSelector } from '@/redux/hooks';
 import { getInitials } from '@/utils/stringUtils';
 
-interface ProfilePictureProps {
-  username: string;
-}
-
-const ProfilePicture: FC<ProfilePictureProps> = ({ username }) => {
+const ProfilePicture: FC = () => {
+  const username = useAppSelector((state) => state.auth.user?.full_name);
   const initials = getInitials(username);
 
   return (
