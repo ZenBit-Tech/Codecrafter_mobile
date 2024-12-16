@@ -79,6 +79,35 @@ const theme = createTheme({
               backgroundColor: styleTheme.palette.primary.dark,
               color: COLORS.text.white,
             },
+            '&.Mui-disabled': {
+              color: COLORS.gray,
+            },
+          }),
+        },
+        {
+          props: { variant: 'text' },
+          style: ({ theme: styleTheme }): Interpolation<{ theme: Theme }> => ({
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: styleTheme.palette.primary.dark,
+              color: COLORS.text.white,
+            },
+            '&.Mui-disabled': {
+              color: COLORS.gray,
+            },
+          }),
+        },
+        {
+          props: { variant: 'contained' },
+          style: ({ theme: styleTheme }): Interpolation<{ theme: Theme }> => ({
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: styleTheme.palette.primary.dark,
+              color: COLORS.text.white,
+            },
+            '&.Mui-disabled': {
+              color: COLORS.gray,
+            },
           }),
         },
         {

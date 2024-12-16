@@ -27,6 +27,8 @@ const resources = {
       modal: {
         addCompanyTitle: 'Add company',
         updateCompanyTitle: 'Update company',
+        start: 'Start',
+        cancel: 'Cancel',
       },
       form: {
         organizationName: 'Organization name',
@@ -133,6 +135,8 @@ const resources = {
           failed: 'Failed',
           upcoming: 'Upcoming',
         },
+        startConfirmation: 'Are you sure you want to start the route now?',
+        collectionDate: 'Collection date',
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',

@@ -36,7 +36,7 @@ const AddressList: React.FC<AddressListProps> = ({
             className='status-icon'
             sx={statusIconStyles}
           >
-            <StatusIcon status={item.status.trim()} />
+            <StatusIcon status={item.status} />
           </Box>
           <Box sx={addressDetailsStyles}>
             <Typography variant='body1' component='p'>

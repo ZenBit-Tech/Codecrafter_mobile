@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Box } from '@mui/material';
 import { t } from 'i18next';
@@ -10,6 +10,7 @@ import AddressList from './components/AddressList';
 import AddressPlaceholder from './components/AddressPlaceholder';
 import FitBounds from './components/FitBounds';
 import RoutingControl from './components/RoutingControl';
+import StartTheRouteModal from './components/StartTheRouteModal';
 import { useFetchRoute } from './hooks/useFetchRoute';
 import { useProcessAddresses } from './hooks/useProcessAddresses';
 import {
@@ -23,15 +24,23 @@ import Button from '@/components/Button';
 import Header from '@/components/Header';
 import Loader from '@/components/Loader';
 import { useAppSelector } from '@/redux/hooks';
-import { RouteInform } from '@/types/route';
+import { Address, RouteInform } from '@/types/route';
 
 const RouteDetails: React.FC = () => {
+  const [open, setOpen] = useState(false);
   const user = useAppSelector((state) => state.auth.user);
   const route = useAppSelector((state) => state.route.route);
 
+  const handleOpen = (): void => {
+    setOpen(true);
+  };
+  const handleClose = (): void => {
+    setOpen(false);
+  };
+
   const { fetchRoute, isRouteLoading } = useFetchRoute(user?.id);
 
-  const { processAddresses, addresses, isAddressesLoading } =
+  const { processAddresses, addresses, isAddressesLoading, driverAddresses } =
     useProcessAddresses(route as RouteInform);
 
   const memoizedAddresses = useMemo(() => addresses, [addresses]);
@@ -70,7 +79,9 @@ const RouteDetails: React.FC = () => {
               attribution={`&copy; <a href="${import.meta.env.VITE_OPEN_STREET_API}/copyright">OpenStreetMap</a> contributors`}
             />
             <FitBounds addresses={memoizedAddresses} />
-            <RoutingControl addresses={memoizedAddresses} />
+            <RoutingControl
+              addresses={[driverAddresses as Address, ...memoizedAddresses]}
+            />
           </MapContainer>
         </Box>
         <AddressList addresses={memoizedAddresses} />
@@ -79,7 +90,9 @@ const RouteDetails: React.FC = () => {
           variant='colored'
           color='primary'
           sx={buttonStyles}
+          onClick={handleOpen}
         />
+        <StartTheRouteModal open={open} handleClose={handleClose} />
         <Box sx={spacerStyles} />
         <ToastContainer />
       </Box>
