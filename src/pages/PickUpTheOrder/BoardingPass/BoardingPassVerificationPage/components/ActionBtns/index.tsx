@@ -29,7 +29,7 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
         <>
           <Button
             sx={backButtonStyles}
-            label='Back'
+            label={t('boardingPass.actionPanel.backBtn')}
             variant='outlined'
             onClick={() => navigate('/app/identity-verification')}
           />

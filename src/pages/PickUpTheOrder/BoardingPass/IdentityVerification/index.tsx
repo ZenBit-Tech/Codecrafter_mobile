@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { t } from 'i18next';
 
 import { ActionBtns } from './components/ActionBtns';
 import { CustomerInformBlock } from './components/CustomerInformBlock';
@@ -14,7 +15,7 @@ export const IdentityVerification: FC = () => {
     <>
       <Header
         hasBackIcon
-        pageName='Identity Verification'
+        pageName={t('boardingPass.titles.identityVerification')}
         username={user?.full_name || ''}
       />
       <CustomerInformBlock handleChoose={setIsDisabled} />

@@ -59,6 +59,7 @@ const resources = {
             'Ask for the customer’s Boarding pass and verify it against the booking information',
           identityVerificationPage:
             'Ask for the customer’s ID card or passport and verify the identity against the booking information',
+          identityVerification: 'Identity Verification',
         },
         informProps: {
           flightInform: 'Flight information: ',
