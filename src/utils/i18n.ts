@@ -38,6 +38,65 @@ const resources = {
           invalidData: 'Invalid data. Please check the fields.',
         },
       },
+      checklist: {
+        title: 'Ensure you have the required equipment:',
+        items: {
+          trolley: 'Trolley',
+          smartphone: 'Smartphone',
+          scale: 'Scale for weighing baggage',
+          baggageCovers: 'Baggage covers',
+          smartLock: 'Smartporters‘ Smart lock',
+          cleanVest: 'Clean Vest with logos',
+          idBadge: 'ID badge',
+          prohibitedItemsList: 'Printed list of prohibited items with pictures',
+        },
+        warning:
+          'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
+      },
+      boardingPass: {
+        titles: {
+          boardingPassPage:
+            'Ask for the customer’s Boarding pass and verify it against the booking information',
+          identityVerificationPage:
+            'Ask for the customer’s ID card or passport and verify the identity against the booking information',
+          identityVerification: 'Identity Verification',
+          preArrivalTitle:
+            'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
+        },
+        informProps: {
+          flightInform: 'Flight information: ',
+          departureDate: 'Departure date: ',
+          customerName: 'Customer name: ',
+          date: 'Date: ',
+          time: 'Time: ',
+          airport: 'Airport: ',
+          flight: 'Flight: ',
+          passportInform: 'Passport information: ',
+        },
+        passportUploaded: {
+          uploaded: 'Uploaded',
+          notUploaded: 'Not Uploaded',
+        },
+        confirmation: 'I confirm that information match',
+        passUploaded: 'Boarding pass uploaded',
+        actionPanel: {
+          backBtn: 'Back',
+          verifiedSuccessfully: 'Next',
+          verificationFailed: 'Send to dispatcher',
+          verifyBtn: 'Verify boarding pass',
+          loadingBtn: 'Verification',
+          identityVerified: 'Identity Verified',
+          transporterLocked: 'Transporter Locked',
+        },
+        errors: {
+          cantFindOrder: "Can't find order",
+          passNotVerified: 'Boarding pass is NOT Verified',
+          cantFindUser: "Can't find information about user",
+        },
+        success: {
+          passVerified: 'Boarding pass Verified',
+        },
+      },
       company: {
         successMessage: 'Company created successfully',
         updateSuccessMessage: 'Company updated successfully',
@@ -204,6 +263,26 @@ const resources = {
         deleted_successfully: 'Admin deleted successfully',
         delete_failed: 'Failed to delete admin',
         unexpected_error: 'An unexpected error occurred',
+      },
+      failReason: {
+        pageTitle: 'Failed',
+        reportTitle: 'Report the reason of failure',
+        reportSubtitle:
+          'Provide the reason for the failed delivery to ensure appropriate actions are taken',
+        reasons: {
+          notAvailable: "Customer isn't available at home",
+          bagsNotReady: "The bags aren't ready for pickup",
+          other: 'Other reason',
+          explain: 'Explain your reason',
+          required: 'This field is required.',
+          minLength:
+            'The reason must be at least {{minLetters}} characters long.',
+          maxLength: 'The reason must not exceed {{maxLetters}} characters.',
+        },
+        actions: {
+          cancel: 'Cancel',
+          send: 'Send to dispatcher',
+        },
       },
     },
   },

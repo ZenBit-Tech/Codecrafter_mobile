@@ -12,6 +12,7 @@ import theme from './theme';
 
 import { persistor, store } from '@/redux/store.ts';
 import i18n from '@/utils/i18n.ts';
+import '@/constants/styles.css';
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>

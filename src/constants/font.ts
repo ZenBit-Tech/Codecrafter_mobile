@@ -3,6 +3,7 @@ export const FONT = {
   fontSize: {
     small: 14,
     medium: 16,
+    mediumPlus: 20,
     large: 24,
     extraLarge: 32,
   },
