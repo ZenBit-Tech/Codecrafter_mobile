@@ -38,10 +38,7 @@ export const CheckList: FC = () => {
         </ol>
       </Box>
       <Typography sx={warningParagraph}>
-        {t(
-          'checklist.warning',
-          'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.'
-        )}
+        {t('checklist.warning', 'boardingPass.titles.preArrivalTitle')}
       </Typography>
     </Box>
   );

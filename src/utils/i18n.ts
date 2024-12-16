@@ -60,6 +60,8 @@ const resources = {
           identityVerificationPage:
             'Ask for the customer’s ID card or passport and verify the identity against the booking information',
           identityVerification: 'Identity Verification',
+          preArrivalTitle:
+            'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
         },
         informProps: {
           flightInform: 'Flight information: ',
