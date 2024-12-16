@@ -23,17 +23,20 @@ export const useProcessAddresses = (
   const processAddresses = useCallback(async () => {
     if (!route) return;
 
+    const driverLocation = 'New York';
+
     setIsAddressesLoading(true);
     try {
-      const driverLocationData = await geocodeAddress('New York');
+      const driverLocationData = await geocodeAddress(driverLocation);
 
-      if (!driverLocationData) throw new Error('Driver location not found');
+      if (!driverLocationData)
+        throw new Error(t('routes.driver.locationError'));
 
       const driverAddress: Address = {
         id: 0,
         lat: driverLocationData.lat,
         lng: driverLocationData.lng,
-        address: 'New York',
+        address: driverLocation,
         time: '',
         status: OrderStatuses.COMPLETED,
       };

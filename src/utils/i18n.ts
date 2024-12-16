@@ -129,6 +129,9 @@ const resources = {
         time: 'Route Time',
         start: 'Start the Route',
         statusText: 'Status',
+        driver: {
+          locationError: 'Driver location not found',
+        },
         status: {
           atRisk: 'At Risk',
           onTime: 'On Time',
