@@ -1,10 +1,18 @@
 import { useState } from 'react';
 
+import axios from 'axios';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 
-import { maxLetters, minLetters, tBase } from '@/constants/constants';
+import { createNotification } from '@/api/notificationActions';
+import {
+  maxLetters,
+  minLetters,
+  NOTIFICATION_TYPE,
+  tBase,
+} from '@/constants/constants';
 import { UseFailedReasonReturn } from '@/interfaces/FailedReason';
+import { useAppSelector } from '@/redux/hooks';
 
 interface FailedReasonForm {
   customReason: string;
@@ -12,13 +20,14 @@ interface FailedReasonForm {
 
 const useFailedReason = (): UseFailedReasonReturn => {
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
+  const user = useAppSelector((state) => state.auth.user);
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
     setValue,
     watch,
+    handleSubmit,
   } = useForm<FailedReasonForm>({
     defaultValues: { customReason: '' },
   });
@@ -52,11 +61,34 @@ const useFailedReason = (): UseFailedReasonReturn => {
     },
   };
 
+  const onSubmit = async (): Promise<void> => {
+    try {
+      const message =
+        selectedReason === 'reasonOther' && customReason
+          ? customReason
+          : selectedReason || '';
+
+      const payload = {
+        type: NOTIFICATION_TYPE,
+        link_text: t('notifications.linkText'),
+        link_href: `/app/map/${user?.id}`,
+        message: t(message),
+        userId: user?.id,
+      };
+
+      await createNotification(payload)();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.message);
+      }
+    }
+  };
+
   return {
     selectedReason,
     customReason,
     register,
-    handleSubmit,
+    handleSubmit: handleSubmit(onSubmit),
     errors,
     isSendDisabled,
     handleReasonClick,

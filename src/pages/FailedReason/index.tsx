@@ -32,6 +32,7 @@ const FailureReportPage = (): React.JSX.Element => {
     handleReasonClick,
     handleCancel,
     validationRules,
+    handleSubmit,
   } = useFailedReason();
 
   return (
@@ -90,7 +91,7 @@ const FailureReportPage = (): React.JSX.Element => {
             label={t(`${tBase}.actions.send`)}
             variant={isSendDisabled ? 'outlineVariant' : 'colored'}
             disabled={isSendDisabled}
-            type='submit'
+            onClick={handleSubmit}
             fullWidth
           />
         </ActionContainer>
