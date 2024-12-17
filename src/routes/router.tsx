@@ -4,6 +4,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
+import BaggageCoveringPage from '@/pages/BaggageCover';
+import BaggageLockingPage from '@/pages/BaggageLock';
+import BaggageRecordingPage from '@/pages/BaggageRecord';
 import ExamplePage from '@/pages/ExamplePage';
 import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
@@ -51,6 +54,9 @@ const router = createBrowserRouter([
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       { path: 'routes', element: <RoutesPage /> },
       { path: 'map/failed', element: <FailedReasonPage /> },
+      { path: 'map/recording', element: <BaggageRecordingPage /> },
+      { path: 'map/covering', element: <BaggageCoveringPage /> },
+      { path: 'map/locking', element: <BaggageLockingPage /> },
       {
         path: 'orders',
         element: <OrderPage />,
