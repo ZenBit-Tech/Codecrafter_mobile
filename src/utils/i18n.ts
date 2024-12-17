@@ -27,6 +27,8 @@ const resources = {
       modal: {
         addCompanyTitle: 'Add company',
         updateCompanyTitle: 'Update company',
+        start: 'Start',
+        cancel: 'Cancel',
       },
       form: {
         organizationName: 'Organization name',
@@ -188,12 +190,17 @@ const resources = {
         time: 'Route Time',
         start: 'Start the Route',
         statusText: 'Status',
+        driver: {
+          locationError: 'Driver location not found',
+        },
         status: {
           atRisk: 'At Risk',
           onTime: 'On Time',
           failed: 'Failed',
           upcoming: 'Upcoming',
         },
+        startConfirmation: 'Are you sure you want to start the route now?',
+        collectionDate: 'Collection date',
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',

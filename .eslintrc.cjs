@@ -129,9 +129,21 @@ module.exports = {
       },
     },
     {
-      files: ["src/constants/**/*.{js,ts,tsx}"],
+      files: ['src/constants/**/*.{js,ts,tsx}'],
       rules: {
-        "@typescript-eslint/naming-convention": "off",
+        '@typescript-eslint/naming-convention': [
+          'error',
+          {
+            selector: 'variable',
+            format: ['UPPER_CASE', 'camelCase', 'PascalCase'],
+            types: ['boolean', 'string', 'number'],
+            modifiers: ['const'],
+          },
+          {
+            selector: 'enumMember',
+            format: ['UPPER_CASE', 'PascalCase'],
+          },
+        ],
       },
     },
   ],
