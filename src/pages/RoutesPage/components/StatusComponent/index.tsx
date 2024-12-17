@@ -6,10 +6,10 @@ import { t } from 'i18next';
 import { StatusItemWrapper } from './styles';
 import { assignColor, assignRouteStatus } from './useStatus';
 
-import { StatusEnum } from '@/constants/status';
+import { RouteStatuses } from '@/constants/status';
 
 interface StatusItemProps {
-  status: StatusEnum;
+  status: RouteStatuses;
 }
 
 const StatusComponent: FC<StatusItemProps> = ({ status }) => {
