@@ -284,6 +284,33 @@ const resources = {
           send: 'Send to dispatcher',
         },
       },
+      baggage: {
+        record: {
+          header: 'Baggage recording',
+          title: 'Take photos of baggage for record-keeping',
+          photo: 'Take the photo',
+          back: 'Back',
+          record: 'Baggage recorded',
+        },
+        cover: {
+          header: 'Baggage covering',
+          attention: 'Important',
+          description:
+            'Cover the baggage with Smartporters protective cover in the presence of the customer',
+          back: 'Back',
+          cover: 'Baggage covered',
+        },
+        lock: {
+          header: 'Locking the baggage',
+          attention: 'Important',
+          firstRule:
+            'Lock the Smartporter’s protective cover using the Smart lock',
+          secondRule:
+            'Scan the Smart Lock to generate the secure code to customer and authorized airport personnel',
+          back: 'Back',
+          lock: 'Scan the lock',
+        },
+      },
     },
   },
 };
