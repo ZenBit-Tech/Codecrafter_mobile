@@ -179,7 +179,7 @@ const resources = {
           Upcoming: 'Coming in',
           Failed: 'Failed at',
           'At Risk': 'At risk time',
-          'Not Arrived': 'Not arrived',
+          'Not arrived': 'Not arrived',
         },
       },
       routes: {

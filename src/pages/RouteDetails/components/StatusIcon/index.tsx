@@ -33,7 +33,7 @@ const StatusIcon: React.FC<{ status: string }> = ({
       <AiOutlineWarning color={COLORS.status.icons.atRisk} size={iconSize} />
     ),
 
-    'Not Arrived': (
+    'Not arrived': (
       <AiOutlineCloseCircle
         color={COLORS.status.icons.notArrived}
         size={iconSize}
