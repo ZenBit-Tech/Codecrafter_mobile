@@ -5,6 +5,7 @@ import { t } from 'i18next';
 import { toast } from 'react-toastify';
 
 import { geocodeAddress } from '@/api/routeActions';
+import { driverLocation } from '@/constants/constants';
 import { OrderStatuses } from '@/constants/status';
 import { Address, RouteInform } from '@/types/route';
 
@@ -22,8 +23,6 @@ export const useProcessAddresses = (
 
   const processAddresses = useCallback(async () => {
     if (!route) return;
-
-    const driverLocation = 'New York';
 
     setIsAddressesLoading(true);
     try {

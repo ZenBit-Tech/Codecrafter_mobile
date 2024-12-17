@@ -27,15 +27,12 @@ import { useAppSelector } from '@/redux/hooks';
 import { Address, RouteInform } from '@/types/route';
 
 const RouteDetails: React.FC = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const user = useAppSelector((state) => state.auth.user);
   const route = useAppSelector((state) => state.route.route);
 
-  const handleOpen = (): void => {
-    setOpen(true);
-  };
-  const handleClose = (): void => {
-    setOpen(false);
+  const handleModal = (): void => {
+    setOpen((prev) => !prev);
   };
 
   const { fetchRoute, isRouteLoading } = useFetchRoute(user?.id);
@@ -90,9 +87,9 @@ const RouteDetails: React.FC = () => {
           variant='colored'
           color='primary'
           sx={buttonStyles}
-          onClick={handleOpen}
+          onClick={handleModal}
         />
-        <StartTheRouteModal open={open} handleClose={handleClose} />
+        <StartTheRouteModal open={open} handleClose={handleModal} />
         <Box sx={spacerStyles} />
         <ToastContainer />
       </Box>
