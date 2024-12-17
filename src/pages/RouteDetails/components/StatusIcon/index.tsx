@@ -46,6 +46,10 @@ const StatusIcon: React.FC<{ status: string }> = ({
         size={iconSize}
       />
     ),
+
+    Info: (
+      <AiOutlineInfoCircle color={COLORS.status.icons.atRisk} size={iconSize} />
+    ),
   };
 
   return iconMap[status] || null;
