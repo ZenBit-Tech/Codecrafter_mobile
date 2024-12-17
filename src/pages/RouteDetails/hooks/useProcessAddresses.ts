@@ -19,7 +19,7 @@ export const useProcessAddresses = (
 } => {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [driverAddresses, setDriverAddresses] = useState<Address>();
-  const [isAddressesLoading, setIsAddressesLoading] = useState(false);
+  const [isAddressesLoading, setIsAddressesLoading] = useState<boolean>(false);
 
   const processAddresses = useCallback(async () => {
     if (!route) return;
