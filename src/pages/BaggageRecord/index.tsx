@@ -1,5 +1,6 @@
 import { List } from '@mui/material';
 import { t } from 'i18next';
+import { IoCloseOutline } from 'react-icons/io5';
 
 import {
   ButtonGroup,
@@ -14,9 +15,9 @@ import {
 import useBaggageRecord from './useBaggageRecord';
 
 import cameraIcon from '@/assets/icons/camera.svg';
-import cancelIcon from '@/assets/icons/cancel.svg';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
+import { COLORS } from '@/constants/colors';
 
 interface PhotoItem {
   id: number;
@@ -28,6 +29,8 @@ const photoList: PhotoItem[] = [
   { id: 1, src: cameraIcon, description: t('Baggage photo 1') },
   { id: 2, src: cameraIcon, description: t('Baggage photo 2') },
 ];
+
+const iconSize = 24;
 
 const BaggageRecordingPage = (): JSX.Element => {
   const { handleNextPage, handleBack } = useBaggageRecord();
@@ -51,7 +54,7 @@ const BaggageRecordingPage = (): JSX.Element => {
               <ImageDescription variant='body1'>
                 {photo.description}
               </ImageDescription>
-              <IconImage src={cancelIcon} alt={t('Cancel')} />
+              <IoCloseOutline color={COLORS.text.onSurface} size={iconSize} />
             </ImageListItem>
           ))}
         </List>
