@@ -1,7 +1,8 @@
 export interface Order {
   orderId: number;
   routeId: number;
+  collectionTimeStart: Date;
+  collectionTimeEnd: Date;
   customerName: string;
-  collectionTime: string;
-  phoneNumber: string;
+  customerPhone: string;
 }

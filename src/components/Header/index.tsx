@@ -7,27 +7,28 @@ import { BackIconWrapper, HeaderWrapper, StyledPageName } from './styles';
 
 import BackIcon from '@/assets/icons/back.svg';
 import ProfilePicture from '@/components/ProfilePicture';
+import { FONT } from '@/constants/font';
 
 interface HeaderProps {
   pageName: string;
-  username: string;
   hasBackIcon?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({
-  pageName,
-  username,
-  hasBackIcon = false,
-}) => {
+const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
   return (
     <HeaderWrapper>
       <BackIconWrapper hasBackIcon={hasBackIcon}>
         <img src={BackIcon} alt={t('back')} />
       </BackIconWrapper>
       <StyledPageName>
-        <Typography variant='subtitle1'>{pageName}</Typography>
+        <Typography
+          sx={{ fontSize: FONT.fontSize.mediumPlus }}
+          variant='subtitle1'
+        >
+          {pageName}
+        </Typography>
       </StyledPageName>
-      <ProfilePicture username={username} />
+      <ProfilePicture />
     </HeaderWrapper>
   );
 };

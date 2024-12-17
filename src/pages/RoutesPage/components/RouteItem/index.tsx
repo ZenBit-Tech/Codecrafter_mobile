@@ -59,9 +59,9 @@ const RouteItem: FC<RouteItemProps> = ({
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.time')}:</Typography>
           <StyledTypography>
-            {addPadding(routeTime.arrivalDate.getHours(), timePadding)}:
+            {routeTime.arrivalDate.getHours()}:
             {addPadding(routeTime.arrivalDate.getMinutes(), timePadding)} -
-            {addPadding(routeTime.submissionDate.getHours(), timePadding)}:
+            {routeTime.submissionDate.getHours()}:
             {addPadding(routeTime.submissionDate.getMinutes(), timePadding)}
           </StyledTypography>
         </StyledRouteInfoItem>

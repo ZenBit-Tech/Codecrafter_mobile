@@ -27,6 +27,8 @@ const resources = {
       modal: {
         addCompanyTitle: 'Add company',
         updateCompanyTitle: 'Update company',
+        start: 'Start',
+        cancel: 'Cancel',
       },
       form: {
         organizationName: 'Organization name',
@@ -36,6 +38,65 @@ const resources = {
           emailRequired: "Email can't be empty",
           invalidEmail: 'String should be email',
           invalidData: 'Invalid data. Please check the fields.',
+        },
+      },
+      checklist: {
+        title: 'Ensure you have the required equipment:',
+        items: {
+          trolley: 'Trolley',
+          smartphone: 'Smartphone',
+          scale: 'Scale for weighing baggage',
+          baggageCovers: 'Baggage covers',
+          smartLock: 'Smartporters‘ Smart lock',
+          cleanVest: 'Clean Vest with logos',
+          idBadge: 'ID badge',
+          prohibitedItemsList: 'Printed list of prohibited items with pictures',
+        },
+        warning:
+          'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
+      },
+      boardingPass: {
+        titles: {
+          boardingPassPage:
+            'Ask for the customer’s Boarding pass and verify it against the booking information',
+          identityVerificationPage:
+            'Ask for the customer’s ID card or passport and verify the identity against the booking information',
+          identityVerification: 'Identity Verification',
+          preArrivalTitle:
+            'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
+        },
+        informProps: {
+          flightInform: 'Flight information: ',
+          departureDate: 'Departure date: ',
+          customerName: 'Customer name: ',
+          date: 'Date: ',
+          time: 'Time: ',
+          airport: 'Airport: ',
+          flight: 'Flight: ',
+          passportInform: 'Passport information: ',
+        },
+        passportUploaded: {
+          uploaded: 'Uploaded',
+          notUploaded: 'Not Uploaded',
+        },
+        confirmation: 'I confirm that information match',
+        passUploaded: 'Boarding pass uploaded',
+        actionPanel: {
+          backBtn: 'Back',
+          verifiedSuccessfully: 'Next',
+          verificationFailed: 'Send to dispatcher',
+          verifyBtn: 'Verify boarding pass',
+          loadingBtn: 'Verification',
+          identityVerified: 'Identity Verified',
+          transporterLocked: 'Transporter Locked',
+        },
+        errors: {
+          cantFindOrder: "Can't find order",
+          passNotVerified: 'Boarding pass is NOT Verified',
+          cantFindUser: "Can't find information about user",
+        },
+        success: {
+          passVerified: 'Boarding pass Verified',
         },
       },
       company: {
@@ -110,6 +171,8 @@ const resources = {
         collectionAddress: 'Collection address:',
         customerName: 'Customer Name:',
         noOrders: 'No orders available for this date',
+        failedLoad: 'Error! Failed to load orders',
+        unknownError: 'An unknown error occurred.',
         arrowIcon: 'Arrow Icon',
         statuses: {
           Completed: 'Completed at',
@@ -127,12 +190,17 @@ const resources = {
         time: 'Route Time',
         start: 'Start the Route',
         statusText: 'Status',
+        driver: {
+          locationError: 'Driver location not found',
+        },
         status: {
           atRisk: 'At Risk',
           onTime: 'On Time',
           failed: 'Failed',
           upcoming: 'Upcoming',
         },
+        startConfirmation: 'Are you sure you want to start the route now?',
+        collectionDate: 'Collection date',
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
