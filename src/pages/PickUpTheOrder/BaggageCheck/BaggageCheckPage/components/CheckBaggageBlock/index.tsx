@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import {
   bagDetails,
@@ -17,13 +18,19 @@ import {
 import { InputField } from '@/pages/FailedReason/styles';
 
 export const CheckBaggageBlock: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Box sx={checkBaggageBlock}>
       <Box sx={calculatorBlock}>
-        <Typography sx={bagTitle}>Medium bag 1</Typography>
-        <Typography sx={bagDetails}>Max 70 x 50 x 30 cm</Typography>
+        <Typography sx={bagTitle}>{t('checkBaggageBlock.bagTitle')}</Typography>
+        <Typography sx={bagDetails}>
+          {t('checkBaggageBlock.bagDetails')}
+        </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography sx={weightLabel}>Weight</Typography>
+          <Typography sx={weightLabel}>
+            {t('checkBaggageBlock.weightLabel')}
+          </Typography>
           <InputField
             sx={inputField}
             label=''
@@ -33,15 +40,17 @@ export const CheckBaggageBlock: FC = () => {
         </Box>
       </Box>
       <Box sx={importantBlock}>
-        <Typography sx={importantTitle}>Important ❗</Typography>
-        <Typography sx={importantText}>
-          Count the number of baggage items and weigh them.
+        <Typography sx={importantTitle}>
+          {t('checkBaggageBlock.importantTitle')}
         </Typography>
         <Typography sx={importantText}>
-          - If the number and weight match the booking details, confirm it.
+          {t('checkBaggageBlock.importantText1')}
         </Typography>
         <Typography sx={importantText}>
-          - If discrepancies exist, inform the customer to adjust the weight.
+          {t('checkBaggageBlock.importantText2')}
+        </Typography>
+        <Typography sx={importantText}>
+          {t('checkBaggageBlock.importantText3')}
         </Typography>
       </Box>
     </Box>
