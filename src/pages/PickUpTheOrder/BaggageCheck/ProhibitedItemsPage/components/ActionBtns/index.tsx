@@ -20,9 +20,9 @@ export const ActionBtns: FC = () => {
       />
       <Button
         sx={buttonStyles}
-        label={t('Confirm')}
+        label={t('Customer informed')}
         variant='colored'
-        onClick={() => navigate('/app/prohibited-items')}
+        onClick={() => navigate('/app/identity-verification')}
       />
     </Box>
   );
