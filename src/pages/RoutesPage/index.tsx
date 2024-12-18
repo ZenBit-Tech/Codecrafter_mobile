@@ -63,7 +63,7 @@ const RoutesPage: FC = () => {
 
   return (
     <div>
-      <Header pageName={t('routes.routes')} username={t('profilePicture')} />
+      <Header pageName={t('routes.routes')} />
       <OrdersContainer>
         <CustomCalendar
           currentDate={currentDate}

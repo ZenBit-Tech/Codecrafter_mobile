@@ -14,7 +14,6 @@ import { BoardingPassInformBlock } from './components/BoardingPassInformBlock';
 import { useVerifyBoardingPass } from './useVerifyBoardingPass';
 
 import Header from '@/components/Header';
-import { useAppSelector } from '@/redux/hooks';
 
 interface BoardingPassVerificationContextInterface {
   isVerified: boolean;
@@ -40,7 +39,6 @@ export const usePassVerificationData =
 
 export const BoardingPassVerificationPage: FC = () => {
   const [disabled, setIsDisabled] = useState<boolean>(false);
-  const { user } = useAppSelector((store) => store.auth);
   const { verifyPassStore, verifyPassDispatch } = useVerifyBoardingPass();
 
   const memoizedValue = useMemo(
@@ -51,11 +49,7 @@ export const BoardingPassVerificationPage: FC = () => {
   return (
     <BoardingPassVerificationContext.Provider value={memoizedValue}>
       {' '}
-      <Header
-        hasBackIcon
-        pageName='Boarding pass Verification '
-        username={user?.full_name || ''}
-      />
+      <Header hasBackIcon pageName='Boarding pass Verification ' />
       <BoardingPassInformBlock handleChoose={setIsDisabled} />
       <ActionBtns isNextBtnDisabled={disabled} />
     </BoardingPassVerificationContext.Provider>
