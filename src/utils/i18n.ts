@@ -205,6 +205,7 @@ const resources = {
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
         errorAddressesPlaceholder: 'No addresses found',
+        noRoutesFound: 'No available routes for this date',
         statuses: {
           onTime: 'On time',
           upcoming: 'Coming in',

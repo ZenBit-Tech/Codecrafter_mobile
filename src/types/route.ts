@@ -30,3 +30,11 @@ export interface RouteInform {
     status: OrderStatuses;
   }[];
 }
+
+export interface Route {
+  route_id: number;
+  route_submission_date: Date;
+  route_arrival_date: Date;
+  route_distance: number;
+  route_status: RouteStatuses;
+}
