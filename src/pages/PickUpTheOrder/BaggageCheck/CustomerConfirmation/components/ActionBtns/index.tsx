@@ -17,12 +17,13 @@ export const ActionBtns: FC = () => {
         sx={backButtonStyles}
         label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
+        onClick={() => navigate('/app/prohibited-items')}
       />
       <Button
         sx={buttonStyles}
-        label={t('Customer informed')}
+        label={t('Confirm')}
         variant='colored'
-        onClick={() => navigate('/app/customer-confirmation')}
+        onClick={() => navigate('/app/identity-verification')}
       />
     </Box>
   );

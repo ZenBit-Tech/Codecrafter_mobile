@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import SignatureCanvas from 'react-signature-canvas';
 
-import prohibitedItems from '@/assets/icons/prohibiten-items.svg';
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';
 
-export const ItemsBlock: FC = () => {
+export const CustomerConfirmationBlock: FC = () => {
   return (
     <Box sx={{ marginTop: '87px' }}>
       <Box
@@ -41,11 +41,26 @@ export const ItemsBlock: FC = () => {
           Count the number of baggage items and weigh them.
         </Typography>
       </Box>
-      <img
-        style={{ marginBottom: '20px' }}
-        src={prohibitedItems}
-        alt='prohibitedItems'
-      />
+      <Box
+        sx={{
+          border: `1px solid ${COLORS.schemes.outlineVariant}`,
+          width: '93vw',
+          height: '300px',
+          overflow: 'hidden',
+          margin: '0 auto',
+          borderRadius: '5px',
+          marginBottom: '15px',
+        }}
+      >
+        <SignatureCanvas
+          penColor='green'
+          canvasProps={{
+            width: 500,
+            height: 300,
+            className: 'sigCanvas',
+          }}
+        />
+      </Box>
     </Box>
   );
 };
