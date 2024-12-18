@@ -10,11 +10,6 @@ export const containerStyles: SxProps<Theme> = {
   overflow: 'auto',
 };
 
-export const mapContainerStyles: SxProps<Theme> = {
-  flex: 1,
-  marginBottom: 2,
-};
-
 export const buttonStyles: SxProps<Theme> = {
   alignSelf: 'center',
   width: '100%',

@@ -36,11 +36,7 @@ const FailureReportPage = (): React.JSX.Element => {
 
   return (
     <>
-      <Header
-        pageName={t(`${tBase}.pageTitle`)}
-        username={t('profilePicture')}
-        hasBackIcon
-      />
+      <Header pageName={t(`${tBase}.pageTitle`)} hasBackIcon />
       <Container>
         <Title variant='h6'>{t(`${tBase}.reportTitle`)}</Title>
         <Subtitle variant='body1'>{t(`${tBase}.reportSubtitle`)}</Subtitle>
