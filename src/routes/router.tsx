@@ -9,6 +9,7 @@ import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
+import { BaggageCheckPage } from '@/pages/PickUpTheOrder/BaggageCheck/BaggageCheckPage';
 import { BoardingPassVerificationPage } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage';
 import { IdentityVerification } from '@/pages/PickUpTheOrder/BoardingPass/IdentityVerification';
 import { PreArrivalPage } from '@/pages/PickUpTheOrder/BoardingPass/PreArrivalPage';
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: 'boarding-pass-verification',
         element: <BoardingPassVerificationPage />,
+      },
+      {
+        path: 'baggage-verification',
+        element: <BaggageCheckPage />,
       },
     ],
   },
