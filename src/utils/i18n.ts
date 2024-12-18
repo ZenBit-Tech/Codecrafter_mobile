@@ -189,6 +189,7 @@ const resources = {
         date: 'Route Date',
         time: 'Route Time',
         start: 'Start the Route',
+        navigate: 'Navigate',
         statusText: 'Status',
         driver: {
           locationError: 'Driver location not found',
@@ -204,8 +205,10 @@ const resources = {
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
+        errorUpdateStatusRoute: 'An error occurred while starting the route.',
         errorAddressesPlaceholder: 'No addresses found',
         noRoutesFound: 'No available routes for this date',
+        routeNotFound: 'Route not found.',
         statuses: {
           onTime: 'On time',
           upcoming: 'Coming in',

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 import { geocodeAddress } from '@/api/routeActions';
 import { driverLocation } from '@/constants/constants';
+import { FULL_TIME } from '@/constants/dateFormats';
 import { OrderStatuses } from '@/constants/status';
 import { Address, RouteInform } from '@/types/route';
 
@@ -48,8 +49,8 @@ export const useProcessAddresses = (
 
           const formattedTime = `${format(
             new Date(order.collection_time_start),
-            'HH:mm'
-          )} - ${format(new Date(order.collection_time_end), 'HH:mm')}`;
+            FULL_TIME
+          )} - ${format(new Date(order.collection_time_end), FULL_TIME)}`;
 
           return {
             id: order.id,
