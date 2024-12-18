@@ -17,6 +17,7 @@ export const ActionBtns: FC = () => {
         sx={backButtonStyles}
         label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
+        onClick={() => navigate('/app/baggage-verification')}
       />
       <Button
         sx={buttonStyles}

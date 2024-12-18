@@ -22,7 +22,7 @@ export const ActionBtns: FC = () => {
         sx={buttonStyles}
         label={t('Confirm')}
         variant='colored'
-        onClick={() => navigate('/app/customer-confirmation')}
+        onClick={() => navigate('/app/prohibited-items')}
       />
     </Box>
   );
