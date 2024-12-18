@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Box, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import SignatureCanvas from 'react-signature-canvas';
 
 import { COLORS } from '@/constants/colors';
@@ -41,6 +41,17 @@ export const CustomerConfirmationBlock: FC = () => {
           Count the number of baggage items and weigh them.
         </Typography>
       </Box>
+      <TextField
+        sx={{
+          display: 'block',
+          width: '93vw',
+          margin: '0 auto 15px',
+          '.css-1d6mh07-MuiInputBase-root-MuiOutlinedInput-root': {
+            width: '93vw',
+          },
+        }}
+        label='Full Name'
+      />
       <Box
         sx={{
           border: `1px solid ${COLORS.schemes.outlineVariant}`,
