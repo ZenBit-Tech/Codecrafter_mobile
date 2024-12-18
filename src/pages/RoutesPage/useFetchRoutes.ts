@@ -1,8 +1,5 @@
 import { useCallback, useState } from 'react';
 
-import { t } from 'i18next';
-import { toast } from 'react-toastify';
-
 import { getDriverDateRoutes } from '@/api/routeActions';
 import { useAppDispatch } from '@/redux/hooks';
 
@@ -24,9 +21,8 @@ export const useFetchRoutes = (
     setIsRouteLoading(true);
     try {
       await getDriverDateRoutes(userName, date)(dispatch);
+      setIsRouteLoading(false);
     } catch (error) {
-      toast.error(t('orders.faliedLoad'));
-    } finally {
       setIsRouteLoading(false);
     }
   }, [dispatch, userName, date]);

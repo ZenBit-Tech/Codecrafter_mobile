@@ -42,17 +42,10 @@ export const getDriverDateRoutes =
       if (routes) {
         dispatch(setRoutes(routes));
       } else {
-        toast.error(i18n.t('routes.unknownError'));
         dispatch(setRoutes(null));
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        toast.error(i18n.t('routes.noRoutesFound'));
-        dispatch(setRoutes(null));
-      } else {
-        toast.error(i18n.t('routes.unknownError'));
-        dispatch(setRoutes(null));
-      }
+      dispatch(setRoutes(null));
     }
   };
 

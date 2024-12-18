@@ -1,23 +1,28 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { COLORS } from '@/constants/colors';
 
 export const OrderItemWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   border: 1px solid ${COLORS.schemes.outlineVariant};
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 14px;
-  justify-content: space-between;
-  align-items: flex-start;
   position: relative;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export const OrderDetails = styled.div`
   display: flex;
   gap: 3px;
   flex-flow: row wrap;
-  width: 283px;
+  max-width: 283px;
+  box-sizing: border-box;
 `;
 
 export const IconWrapper = styled.div`
@@ -28,7 +33,9 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: auto;
+  margin-top: 5px;
+  align-self: flex-end;
+  margin-left: auto;
   cursor: pointer;
   & a {
     height: 30px;
