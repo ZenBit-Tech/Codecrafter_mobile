@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import {
   importantBox,
@@ -14,8 +14,6 @@ import {
 import prohibitedItems from '@/assets/icons/prohibiten-items.svg';
 
 export const ItemsBlock: FC = () => {
-  const { t } = useTranslation();
-
   return (
     <Box sx={itemsBlock}>
       <Box sx={importantBox}>

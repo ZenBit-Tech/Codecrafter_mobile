@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import {
   bagDetails,
@@ -18,8 +18,6 @@ import {
 import { InputField } from '@/pages/FailedReason/styles';
 
 export const CheckBaggageBlock: FC = () => {
-  const { t } = useTranslation();
-
   return (
     <Box sx={checkBaggageBlock}>
       <Box sx={calculatorBlock}>

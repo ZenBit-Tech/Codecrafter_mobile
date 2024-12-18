@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Box, TextField, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 import SignatureCanvas from 'react-signature-canvas';
 
 import {
@@ -14,8 +14,6 @@ import {
 } from './styles';
 
 export const CustomerConfirmationBlock: FC = () => {
-  const { t } = useTranslation();
-
   return (
     <Box sx={customerConfirmationBlock}>
       <Box sx={importantBox}>
