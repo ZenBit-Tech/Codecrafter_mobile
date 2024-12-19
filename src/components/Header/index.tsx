@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { BackIconWrapper, HeaderWrapper, StyledPageName } from './styles';
 
@@ -13,11 +14,16 @@ interface HeaderProps {
   pageName: string;
   hasBackIcon?: boolean;
 }
-
+const previousPage = -1;
 const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
+  const navigate = useNavigate();
+
   return (
     <HeaderWrapper>
-      <BackIconWrapper hasBackIcon={hasBackIcon}>
+      <BackIconWrapper
+        onClick={() => navigate(previousPage)}
+        hasBackIcon={hasBackIcon}
+      >
         <img src={BackIcon} alt={t('back')} />
       </BackIconWrapper>
       <StyledPageName>
