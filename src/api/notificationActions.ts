@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { t } from 'i18next';
 import { toast } from 'react-toastify';
 
 import { NOTIFICATION_SUCCESS_STATUS, tBase } from '@/constants/constants';
 import axiosInstance from '@/utils/axiosInstance';
-import i18n from '@/utils/i18n';
 
 interface NotificationPayload {
   type: string;
@@ -19,15 +19,15 @@ export const createNotification =
       const response = await axiosInstance.post('/notifications', payload);
 
       if (response.status === NOTIFICATION_SUCCESS_STATUS) {
-        toast.success(i18n.t(`${tBase}.notifications.success`));
+        toast.success(t(`${tBase}.notifications.success`));
       } else {
-        toast.error(i18n.t(`${tBase}.notifications.error`));
+        toast.error(t(`${tBase}.notifications.error`));
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error(i18n.t(`${tBase}.notifications.error`));
+        toast.error(t(`${tBase}.notifications.error`));
       } else {
-        toast.error(i18n.t(`${tBase}.notifications.unknownError`));
+        toast.error(t(`${tBase}.notifications.unknownError`));
       }
     }
   };
