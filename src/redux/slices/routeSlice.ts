@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { RouteInform } from '@/types/route';
+import { Route, RouteInform } from '@/types/route';
 
 export interface RouteState {
   route: RouteInform | null;
+  routes: Route[] | null;
 }
 
 const initialState: RouteState = {
   route: null,
+  routes: null,
 };
 
 const routeSlice = createSlice({
@@ -17,9 +19,12 @@ const routeSlice = createSlice({
     setRoute: (state, action: PayloadAction<RouteInform>) => {
       state.route = action.payload;
     },
+    setRoutes: (state, action: PayloadAction<Route[] | null>) => {
+      state.routes = action.payload;
+    },
   },
 });
 
-export const { setRoute } = routeSlice.actions;
+export const { setRoute, setRoutes } = routeSlice.actions;
 
 export default routeSlice.reducer;

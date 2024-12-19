@@ -52,7 +52,7 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
               }
               variant='colored'
               disabled={!isNextBtnDisabled}
-              onClick={() => navigate('/app/identity-verification')}
+              onClick={() => navigate('/app/baggage-verification')}
             />
           )}
         </>

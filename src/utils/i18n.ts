@@ -55,6 +55,27 @@ const resources = {
         warning:
           'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
       },
+      itemsBlock: {
+        importantTitle: 'Important ❗',
+        importantText: 'Count the number of baggage items and weigh them.',
+        prohibitedItemsAlt: 'Prohibited items icon',
+      },
+      customerConfirmationBlock: {
+        importantTitle: 'Important ❗',
+        importantText: 'Count the number of baggage items and weigh them.',
+        fullNameLabel: 'Full Name',
+      },
+      checkBaggageBlock: {
+        bagTitle: 'Medium bag 1',
+        bagDetails: 'Max 70 x 50 x 30 cm',
+        weightLabel: 'Weight',
+        importantTitle: 'Important ❗',
+        importantText1: 'Count the number of baggage items and weigh them.',
+        importantText2:
+          '- If the number and weight match the booking details, confirm it.',
+        importantText3:
+          '- If discrepancies exist, inform the customer to adjust the weight.',
+      },
       boardingPass: {
         titles: {
           boardingPassPage:
@@ -179,7 +200,7 @@ const resources = {
           Upcoming: 'Coming in',
           Failed: 'Failed at',
           'At Risk': 'At risk time',
-          'Not Arrived': 'Not arrived',
+          'Not arrived': 'Not arrived',
         },
       },
       routes: {
@@ -205,6 +226,7 @@ const resources = {
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
         errorAddressesPlaceholder: 'No addresses found',
+        noRoutesFound: 'No available routes for this date',
         statuses: {
           onTime: 'On time',
           upcoming: 'Coming in',
