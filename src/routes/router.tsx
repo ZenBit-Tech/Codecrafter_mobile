@@ -9,6 +9,9 @@ import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderPage from '@/pages/OrderPage';
+import { BaggageCheckPage } from '@/pages/PickUpTheOrder/BaggageCheck/BaggageCheckPage';
+import { CustomerConfirmationPage } from '@/pages/PickUpTheOrder/BaggageCheck/CustomerConfirmation';
+import { ProhibitedItemsPage } from '@/pages/PickUpTheOrder/BaggageCheck/ProhibitedItemsPage';
 import { BoardingPassVerificationPage } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage';
 import { IdentityVerification } from '@/pages/PickUpTheOrder/BoardingPass/IdentityVerification';
 import { PreArrivalPage } from '@/pages/PickUpTheOrder/BoardingPass/PreArrivalPage';
@@ -66,6 +69,18 @@ const router = createBrowserRouter([
       {
         path: 'boarding-pass-verification',
         element: <BoardingPassVerificationPage />,
+      },
+      {
+        path: 'baggage-verification',
+        element: <BaggageCheckPage />,
+      },
+      {
+        path: 'prohibited-items',
+        element: <ProhibitedItemsPage />,
+      },
+      {
+        path: 'customer-confirmation',
+        element: <CustomerConfirmationPage />,
       },
     ],
   },
