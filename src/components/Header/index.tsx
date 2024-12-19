@@ -14,9 +14,8 @@ interface HeaderProps {
   pageName: string;
   hasBackIcon?: boolean;
 }
-
+const previousPage = -1;
 const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
-  const previousPage = -1;
   const navigate = useNavigate();
 
   return (

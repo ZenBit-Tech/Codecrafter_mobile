@@ -23,7 +23,6 @@ const CollectioInformation: FC<CollectioInformationProps> = ({
   return (
     <div>
       <StyledHeading variant='subtitle1'>
-        {' '}
         {t('orderDetails.collectionInformation')}
       </StyledHeading>
       <CollectionWrapper>
