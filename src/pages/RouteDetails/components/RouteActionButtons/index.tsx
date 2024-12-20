@@ -22,12 +22,6 @@ const RouteActionButtons: React.FC = () => {
   return (
     <Box>
       {isRouteOnTime ? (
-        // <Button
-        //   label={t('routes.navigate')}
-        //   variant='lined'
-        //   color='primary'
-        //   sx={buttonStyles}
-        // />
         <NavigateButton />
       ) : (
         <>
