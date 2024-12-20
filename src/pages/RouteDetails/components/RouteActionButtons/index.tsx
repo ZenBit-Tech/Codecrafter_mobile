@@ -6,6 +6,7 @@ import { t } from 'i18next';
 import { buttonStyles } from './styles';
 
 import Button from '@/components/Button';
+import NavigateButton from '@/components/NavigateButton';
 import { RouteStatuses } from '@/constants/status';
 import StartTheRouteModal from '@/pages/RouteDetails/components/StartTheRouteModal';
 import { useAppSelector } from '@/redux/hooks';
@@ -21,12 +22,13 @@ const RouteActionButtons: React.FC = () => {
   return (
     <Box>
       {isRouteOnTime ? (
-        <Button
-          label={t('routes.navigate')}
-          variant='lined'
-          color='primary'
-          sx={buttonStyles}
-        />
+        // <Button
+        //   label={t('routes.navigate')}
+        //   variant='lined'
+        //   color='primary'
+        //   sx={buttonStyles}
+        // />
+        <NavigateButton />
       ) : (
         <>
           <Button

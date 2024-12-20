@@ -25,6 +25,11 @@ const resources = {
         close: 'Close',
       },
       modal: {
+        modalTitle: 'Navigation',
+        modalConfirmation:
+          'You will be redirected to Google Maps for navigation.',
+        modalAttention: 'Are you sure?',
+        modalGoogleMaps: 'Open Google Maps',
         addCompanyTitle: 'Add company',
         updateCompanyTitle: 'Update company',
         start: 'Start',
