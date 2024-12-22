@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import BottomNavigationBar from './components/BottomNavigationBar';
 import CollectioInformation from './components/CollectionInformation';
 import CustomerInformation from './components/CustomerInformation';
 import DepartureInformation from './components/DepartureInformation';
@@ -12,23 +13,21 @@ import DispatcherNote from './components/DispatcherNote';
 import InformCustomer from './components/InformCustomer';
 import InformModal from './components/InformModal';
 import {
-  BottomNavigation,
   ButtonsWrapper,
   customerInformedStyles,
   failedButtonStyles,
-  IconWrapper,
-  navigateStyles,
   OrderDetailsWrapper,
-  RightArrow,
 } from './styles';
 
-import ArrowLeft from '@/assets/icons/arrow-left.svg';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
+import NavigateButtonModal from '@/components/NavigateButtonModal';
 
 const OrderDetails: FC = () => {
   const [isCustomerInformed, setIsCustomerInformed] = useState<boolean>(false);
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
+  const [isNavigateModalOpened, setIsNavigateModalOpened] =
+    useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const testData = {
@@ -51,11 +50,7 @@ const OrderDetails: FC = () => {
   const handleInformCustomer = (): void => {
     setIsModalOpened(false);
     setIsCustomerInformed(true);
-    toast.success('Customer Informed!');
-  };
-
-  const handleCloseModal = (): void => {
-    setIsModalOpened(false);
+    toast.success(t('orderDetails.informed'));
   };
 
   return (
@@ -63,7 +58,11 @@ const OrderDetails: FC = () => {
       <InformModal
         open={isModalOpened}
         handleInformCustomer={handleInformCustomer}
-        handleCloseModal={handleCloseModal}
+        handleCloseModal={() => setIsModalOpened(false)}
+      />
+      <NavigateButtonModal
+        open={isNavigateModalOpened}
+        handleClose={() => setIsNavigateModalOpened(false)}
       />
       <Header hasBackIcon pageName={`${t('orders.orderNo')} ${id}`} />
       <ButtonsWrapper>
@@ -112,15 +111,9 @@ const OrderDetails: FC = () => {
         dispatcherPhone={testData.dispatcherPhone}
       />
       {testData.note && <DispatcherNote note={testData.note} />}
-      <BottomNavigation>
-        <IconWrapper>
-          <img src={ArrowLeft} alt={t('orderDetails.prev')} />
-        </IconWrapper>
-        <Button label='Navigate' variant='outlined' sx={navigateStyles} />
-        <IconWrapper>
-          <RightArrow src={ArrowLeft} alt='orderDetails.next' />
-        </IconWrapper>
-      </BottomNavigation>
+      <BottomNavigationBar
+        openNavigateModal={() => setIsNavigateModalOpened(true)}
+      />
     </OrderDetailsWrapper>
   );
 };

@@ -238,6 +238,8 @@ const resources = {
         prev: 'Select previous order',
         next: 'Select next order',
         inform: 'You must inform the customer 2 hours before pick up the order',
+        navigate: 'Navigate',
+        informed: 'Customer Informed!',
       },
 
       routes: {
