@@ -2,7 +2,6 @@ import { Box, ListItem, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Theme } from '@mui/system';
 
-import Button from '@/components/Button';
 import { COLORS } from '@/constants/colors';
 import { FONT } from '@/constants/font';
 
@@ -20,19 +19,12 @@ export const Container = styled(Box)(({ theme }: { theme: Theme }) => ({
   },
 }));
 
-export const CenteredButton = styled(Button)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  margin: '24px auto',
-  padding: '8px 16px',
-});
-
 export const TitleInfo = styled(Typography)(({ theme }: { theme: Theme }) => ({
   textAlign: 'start',
   fontWeight: FONT.fontWeight.small,
   fontSize: FONT.fontSize.mediumPlus,
   color: COLORS.schemes.secondary,
+  marginBottom: '32px',
   [theme.breakpoints.up('sm')]: {
     fontSize: FONT.fontSize.extraLarge,
     marginBottom: '20px',
@@ -53,16 +45,23 @@ export const ImageListItem = styled(ListItem)({
 });
 
 export const Image = styled('img')({
-  width: '50px',
-  height: '50px',
+  width: '60px',
+  height: '60px',
   objectFit: 'cover',
-  backgroundColor: COLORS.purple,
-  borderRadius: '4px',
+  backgroundColor: COLORS.schemes.outlineVariant,
+  borderRadius: '8px',
+});
+
+export const EmptyIcon = styled('img')({
+  padding: '15px',
+  objectFit: 'cover',
+  backgroundColor: COLORS.schemes.outlineVariant,
+  borderRadius: '8px',
 });
 
 export const ImageDescription = styled(Typography)({
   flex: 1,
-  marginLeft: '16px',
+  marginLeft: '10px',
   color: COLORS.schemes.secondary,
 });
 
@@ -73,10 +72,7 @@ export const ButtonGroup = styled(Box)({
 });
 
 export const IconImage = styled('img')({
-  width: '1.375rem',
-  height: '1.375rem',
-  '@media (max-width:600px)': {
-    width: '1.125rem',
-    height: '1.125rem',
-  },
+  width: '1.5rem',
+  height: '1.5rem',
+  marginRight: '4px',
 });
