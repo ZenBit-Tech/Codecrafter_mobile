@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { t } from 'i18next';
 
 import { DescriptionContainer, Title, TitleRow } from './styles';
@@ -9,7 +11,7 @@ import { ButtonGroup, Container } from '@/pages/BaggageRecord/styles';
 import useBaggageRecord from '@/pages/BaggageRecord/useBaggageRecord';
 import StatusIcon from '@/pages/RouteDetails/components/StatusIcon';
 
-const BaggageCoveringPage = (): JSX.Element => {
+const BaggageCoveringPage: FC = () => {
   const { handleBack } = useBaggageRecord();
 
   return (
