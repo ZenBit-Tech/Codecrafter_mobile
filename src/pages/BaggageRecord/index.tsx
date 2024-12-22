@@ -21,6 +21,7 @@ import uploadIcon from '@/assets/icons/upload.svg';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import Loader from '@/components/Loader';
+import Modal from '@/components/Modal';
 import { COLORS } from '@/constants/colors';
 
 const iconSize = 28;
@@ -34,7 +35,11 @@ const BaggageRecordingPage: FC = () => {
     handleImageDelete,
     handleNextPage,
     handleBack,
+    openDeleteModal,
+    handleCloseDeleteModal,
+    confirmDelete,
     truncateString,
+    isReadyForNextPage,
   } = useBaggageRecord();
 
   if (loading) {
@@ -87,12 +92,34 @@ const BaggageRecordingPage: FC = () => {
           />
           <Button
             label={t('baggage.record.record')}
-            variant='colored'
+            variant={isReadyForNextPage ? 'colored' : 'grey'}
             fullWidth
             onClick={handleNextPage}
+            disabled={!isReadyForNextPage}
           />
         </ButtonGroup>
       </Container>
+
+      <Modal
+        open={openDeleteModal}
+        title={t('baggage.record.deleteConfirmationTitle')}
+        description={t('baggage.record.deleteConfirmationDescription')}
+        onClose={handleCloseDeleteModal}
+        actions={
+          <>
+            <Button
+              variant='linedGrey'
+              onClick={handleCloseDeleteModal}
+              label={t('baggage.record.cancel')}
+            />
+            <Button
+              variant='colored'
+              onClick={confirmDelete}
+              label={t('baggage.record.confirm')}
+            />
+          </>
+        }
+      />
     </>
   );
 };

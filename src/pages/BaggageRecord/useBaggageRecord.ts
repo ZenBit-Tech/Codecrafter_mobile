@@ -21,10 +21,15 @@ interface UseBaggageRecordReturn {
   photoList: PhotoItem[];
   loading: boolean;
   handleImageUpload: (luggageId: number) => Promise<void>;
-  handleImageDelete: (luggageId: number) => Promise<void>;
+  handleImageDelete: (luggageId: number) => void;
   handleNextPage: () => void;
   handleBack: () => void;
   truncateString: (str: string, maxLength: number) => string;
+  openDeleteModal: boolean;
+  handleOpenDeleteModal: (photo: PhotoItem) => void;
+  handleCloseDeleteModal: () => void;
+  confirmDelete: () => void;
+  isReadyForNextPage: boolean;
 }
 
 const backNumber = -1;
@@ -32,6 +37,9 @@ const backNumber = -1;
 const useBaggageRecord = (): UseBaggageRecordReturn => {
   const [photoList, setPhotoList] = useState<PhotoItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
+  const [isReadyForNextPage, setIsReadyForNextPage] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const fetchLuggageData = async (): Promise<void> => {
@@ -88,18 +96,38 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
     input.click();
   };
 
-  const handleImageDelete = async (luggageId: number): Promise<void> => {
+  const handleOpenDeleteModal = (photo: PhotoItem): void => {
+    setSelectedPhoto(photo);
+    setOpenDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = (): void => {
+    setOpenDeleteModal(false);
+    setSelectedPhoto(null);
+  };
+
+  const handleImageDelete = (luggageId: number): void => {
     const photo = photoList.find((item) => item.id === luggageId);
 
     if (!photo?.src) {
       return;
     }
-    try {
-      await deleteLuggageImage(luggageId);
-      await fetchLuggageData();
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        throw new Error(error.message);
+
+    if (photo) {
+      handleOpenDeleteModal(photo);
+    }
+  };
+
+  const confirmDelete = async (): Promise<void> => {
+    if (selectedPhoto) {
+      try {
+        await deleteLuggageImage(selectedPhoto.id);
+        await fetchLuggageData();
+        handleCloseDeleteModal();
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          throw new Error(error.message);
+        }
       }
     }
   };
@@ -118,6 +146,12 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
     });
   }, []);
 
+  useEffect(() => {
+    const allPhotosUploaded = photoList.every((photo) => photo.src !== '');
+
+    setIsReadyForNextPage(allPhotosUploaded);
+  }, [photoList]);
+
   return {
     photoList,
     loading,
@@ -126,6 +160,11 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
     handleNextPage,
     handleBack,
     truncateString,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    confirmDelete,
+    isReadyForNextPage,
   };
 };
 
