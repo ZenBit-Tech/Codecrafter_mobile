@@ -1,7 +1,6 @@
 import { t } from 'i18next';
 
 import { DescriptionContainer, Title, TitleRow } from './styles';
-import useBaggageCover from './useBaggageCover';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -11,7 +10,6 @@ import useBaggageRecord from '@/pages/BaggageRecord/useBaggageRecord';
 import StatusIcon from '@/pages/RouteDetails/components/StatusIcon';
 
 const BaggageCoveringPage = (): JSX.Element => {
-  const { handleNextPage } = useBaggageCover();
   const { handleBack } = useBaggageRecord();
 
   return (
@@ -38,7 +36,6 @@ const BaggageCoveringPage = (): JSX.Element => {
             label={t('baggage.cover.cover')}
             variant='colored'
             fullWidth
-            onClick={handleNextPage}
           />
         </ButtonGroup>
       </Container>
