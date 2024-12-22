@@ -4,6 +4,8 @@ import { addDays, format } from 'date-fns';
 import { toast } from 'react-toastify';
 
 import { QUERY_DATE_FORMAT } from '@/constants/dateFormats';
+import { RouteStatuses } from '@/constants/status';
+import { NOT_FOUND } from '@/constants/statusCode';
 import { setRoute, setRoutes } from '@/redux/slices/routeSlice';
 import { Route } from '@/types/route';
 import axiosInstance from '@/utils/axiosInstance';
@@ -23,7 +25,35 @@ export const getDriverRoute =
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error(i18n.t('routes.errorFetchingRoute'));
+        if (error.response?.status === NOT_FOUND) {
+          toast.error(i18n.t('routes.routeNotFound'));
+        } else {
+          toast.error(i18n.t('routes.errorFetchingRoute'));
+        }
+      } else {
+        toast.error(i18n.t('routes.unknownError'));
+      }
+    }
+  };
+
+export const updateRouteStatus =
+  (routeId: number, driverId: number, status: RouteStatuses) =>
+  async (dispatch: Dispatch): Promise<void> => {
+    try {
+      const response = await axiosInstance.patch(`route/driver/${routeId}`, {
+        driverId,
+        status,
+      });
+      const route = response.data;
+
+      if (route) {
+        dispatch(setRoute(route));
+      } else {
+        toast.error(i18n.t('routes.unknownError'));
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(i18n.t('routes.errorUpdateStatusRoute'));
       } else {
         toast.error(i18n.t('routes.unknownError'));
       }
@@ -42,17 +72,10 @@ export const getDriverDateRoutes =
       if (routes) {
         dispatch(setRoutes(routes));
       } else {
-        toast.error(i18n.t('routes.unknownError'));
         dispatch(setRoutes(null));
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        toast.error(i18n.t('routes.noRoutesFound'));
-        dispatch(setRoutes(null));
-      } else {
-        toast.error(i18n.t('routes.unknownError'));
-        dispatch(setRoutes(null));
-      }
+      dispatch(setRoutes(null));
     }
   };
 

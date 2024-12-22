@@ -3,7 +3,12 @@ import { FC } from 'react';
 import { format } from 'date-fns';
 import { t } from 'i18next';
 
-import { IconWrapper, OrderDetails, OrderItemWrapper } from './styles';
+import {
+  IconWrapper,
+  OrderDetails,
+  OrderItemWrapper,
+  StyledLink,
+} from './styles';
 
 import Call from '@/assets/icons/call.svg';
 import { HOURS_MINUTES_RANGE } from '@/constants/dateFormats';
@@ -23,24 +28,26 @@ const OrderItem: FC<Order> = ({
 
   return (
     <OrderItemWrapper>
-      <OrderDetails>
-        <OrderInfo
-          itemTitle={`${t('orders.orderNo')} ${orderId}`}
-          itemContent={`${t('orders.route')} #${addPadding(routeId, routePadding)}`}
-        />
-        <OrderInfo
-          itemTitle={t('orders.customerName')}
-          itemContent={customerName}
-        />
-        <OrderInfo
-          itemTitle={t('orders.collectionTime')}
-          itemContent={`${format(new Date(collectionTimeStart), HOURS_MINUTES_RANGE)} - ${format(new Date(collectionTimeEnd), HOURS_MINUTES_RANGE)}`}
-        />
-        <OrderInfo
-          itemTitle={t('orders.phoneNumber')}
-          itemContent={customerPhone}
-        />
-      </OrderDetails>
+      <StyledLink to={String(orderId)}>
+        <OrderDetails>
+          <OrderInfo
+            itemTitle={`${t('orders.orderNo')} ${orderId}`}
+            itemContent={`${t('orders.route')} #${addPadding(routeId, routePadding)}`}
+          />
+          <OrderInfo
+            itemTitle={t('orders.customerName')}
+            itemContent={customerName}
+          />
+          <OrderInfo
+            itemTitle={t('orders.collectionTime')}
+            itemContent={`${format(new Date(collectionTimeStart), HOURS_MINUTES_RANGE)} - ${format(new Date(collectionTimeEnd), HOURS_MINUTES_RANGE)}`}
+          />
+          <OrderInfo
+            itemTitle={t('orders.phoneNumber')}
+            itemContent={customerPhone}
+          />
+        </OrderDetails>
+      </StyledLink>
       <IconWrapper>
         <a href={`tel:${customerPhone}`}>
           <img src={Call} alt={t('orders.call')} />
