@@ -5,18 +5,14 @@ import { t } from 'i18next';
 import Modal from '@/components/Modal';
 import { DAY_MONTH_YEAR, FULL_TIME } from '@/constants/dateFormats';
 import { RouteStatuses } from '@/constants/status';
+import { IModalProps } from '@/interfaces/Modal';
 import { useUpdateRouteStatus } from '@/pages/RouteDetails/hooks/useUpdateRouteStatus';
 import { useAppSelector } from '@/redux/hooks';
 
-interface StartTheRouteModalProps {
-  open: boolean;
-  handleClose: () => void;
-}
-
-const StartTheRouteModal: React.FC<StartTheRouteModalProps> = ({
+const StartTheRouteModal: React.FC<IModalProps> = ({
   open,
   handleClose,
-}: StartTheRouteModalProps) => {
+}: IModalProps) => {
   const route = useAppSelector((state) => state.route.route);
 
   const { fetchUpdatedRoute } = useUpdateRouteStatus(
