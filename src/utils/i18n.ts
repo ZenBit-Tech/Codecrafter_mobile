@@ -347,6 +347,11 @@ const resources = {
           back: 'Back',
           record: 'Baggage recorded',
           noUploaded: 'Upload photo from your gallery',
+          deleteConfirmationTitle: 'Delete the photo',
+          deleteConfirmationDescription:
+            'Are you sure want to proceed? Changes cannot be reverted.',
+          cancel: 'Cancel',
+          confirm: 'Confirm',
         },
         cover: {
           header: 'Baggage covering',
