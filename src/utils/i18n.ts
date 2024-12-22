@@ -213,6 +213,7 @@ const resources = {
         collectionDate: 'Collection date',
         collectionAddress: 'Collection address',
         customerInformation: 'Customer Information',
+        customerInformed: 'Customer Informed',
         customerName: 'Customer name',
         note: 'Note from dispatcher',
         date: 'Date',
@@ -221,11 +222,24 @@ const resources = {
         departureInfo: 'Departure information',
         dispatcherInfo: 'Dispatcher Information',
         dispatcherName: 'Dispatcher Name',
+        failed: 'Failed',
         luggageSize: 'Luggage Size',
         timeSlot: 'Time slot',
         phone: 'Phone',
+        pickup: 'Pick up the Order',
         weight: 'Weight',
+        modal: {
+          title: 'Important',
+          description:
+            'You must inform the customer 2 hours before pick up the order',
+          cancel: 'Cancel',
+          okay: 'Okay',
+        },
+        prev: 'Select previous order',
+        next: 'Select next order',
+        inform: 'You must inform the customer 2 hours before pick up the order',
       },
+
       routes: {
         route: 'Route',
         routes: 'Routes',
