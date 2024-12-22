@@ -9,3 +9,5 @@ export const maxLetters = 5000;
 
 export const iconLabel = 'Info';
 export const iconSize = 20;
+
+export const driverLocation = 'New York';

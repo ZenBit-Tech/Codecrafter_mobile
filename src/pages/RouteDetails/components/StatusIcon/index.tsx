@@ -6,6 +6,7 @@ import {
 } from 'react-icons/ai';
 
 import { COLORS } from '@/constants/colors';
+import { OrderStatuses } from '@/constants/status';
 
 interface StatusIconProps {
   status: string;
@@ -17,30 +18,30 @@ const StatusIcon: React.FC<{ status: string }> = ({
   const iconSize = 20;
 
   const iconMap: Record<string, JSX.Element> = {
-    Failed: (
+    [OrderStatuses.FAILED]: (
       <AiOutlineCloseCircle
         color={COLORS.status.icons.failed}
         size={iconSize}
       />
     ),
-    Completed: (
+    [OrderStatuses.COMPLETED]: (
       <AiOutlineCheckCircle
         color={COLORS.status.icons.completed}
         size={iconSize}
       />
     ),
-    'At Risk': (
+    [OrderStatuses.AT_RISK]: (
       <AiOutlineWarning color={COLORS.status.icons.atRisk} size={iconSize} />
     ),
 
-    'Not Arrived': (
+    [OrderStatuses.NOT_ARRIVED]: (
       <AiOutlineCloseCircle
         color={COLORS.status.icons.notArrived}
         size={iconSize}
       />
     ),
 
-    Upcoming: (
+    [OrderStatuses.UPCOMING]: (
       <AiOutlineInfoCircle
         color={COLORS.status.icons.upcoming}
         size={iconSize}

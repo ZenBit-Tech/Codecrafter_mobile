@@ -5,7 +5,9 @@ import { t } from 'i18next';
 import { toast } from 'react-toastify';
 
 import { geocodeAddress } from '@/api/routeActions';
-import { calculateDistance } from '@/pages/RouteDetails/utils/calculateDistance';
+import { driverLocation } from '@/constants/constants';
+import { FULL_TIME } from '@/constants/dateFormats';
+import { OrderStatuses } from '@/constants/status';
 import { Address, RouteInform } from '@/types/route';
 
 export const useProcessAddresses = (
@@ -14,16 +16,30 @@ export const useProcessAddresses = (
   processAddresses: () => Promise<void>;
   addresses: Address[];
   isAddressesLoading: boolean;
+  driverAddresses: Address | undefined;
 } => {
   const [addresses, setAddresses] = useState<Address[]>([]);
-  const [isAddressesLoading, setIsAddressesLoading] = useState(false);
+  const [driverAddresses, setDriverAddresses] = useState<Address>();
+  const [isAddressesLoading, setIsAddressesLoading] = useState<boolean>(false);
 
   const processAddresses = useCallback(async () => {
     if (!route) return;
 
     setIsAddressesLoading(true);
     try {
-      const driverLocation = await geocodeAddress('New York');
+      const driverLocationData = await geocodeAddress(driverLocation);
+
+      if (!driverLocationData)
+        throw new Error(t('routes.driver.locationError'));
+
+      const driverAddress: Address = {
+        id: 0,
+        lat: driverLocationData.lat,
+        lng: driverLocationData.lng,
+        address: driverLocation,
+        time: '',
+        status: OrderStatuses.COMPLETED,
+      };
 
       const geocodedAddresses = await Promise.all(
         route.orders.map(async (order) => {
@@ -33,8 +49,8 @@ export const useProcessAddresses = (
 
           const formattedTime = `${format(
             new Date(order.collection_time_start),
-            'HH:mm'
-          )} - ${format(new Date(order.collection_time_end), 'HH:mm')}`;
+            FULL_TIME
+          )} - ${format(new Date(order.collection_time_end), FULL_TIME)}`;
 
           return {
             id: order.id,
@@ -43,23 +59,26 @@ export const useProcessAddresses = (
             address: order.collection_address,
             time: formattedTime,
             status: order.status,
-            distance: calculateDistance(
-              driverLocation?.lat || 0,
-              driverLocation?.lng || 0,
-              coordinates.lat || 0,
-              coordinates.lng || 0
-            ),
+            collectionTimeStart: new Date(order.collection_time_start),
           };
         })
       );
 
       const validAddresses = geocodedAddresses
         .filter(
-          (address): address is Address & { distance: number } => !!address
+          (
+            address
+          ): address is Address & {
+            collectionTimeStart: Date;
+          } => !!address
         )
-        .sort((a, b) => a.distance - b.distance);
+        .sort(
+          (a, b) =>
+            a.collectionTimeStart.getHours() - b.collectionTimeStart.getHours()
+        );
 
       setAddresses(validAddresses);
+      setDriverAddresses(driverAddress);
     } catch (error) {
       toast.error(t('routes.errorFetchingAddresses'));
     } finally {
@@ -67,5 +86,5 @@ export const useProcessAddresses = (
     }
   }, [route]);
 
-  return { processAddresses, addresses, isAddressesLoading };
+  return { processAddresses, addresses, isAddressesLoading, driverAddresses };
 };

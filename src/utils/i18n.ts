@@ -25,8 +25,15 @@ const resources = {
         close: 'Close',
       },
       modal: {
+        modalTitle: 'Navigation',
+        modalConfirmation:
+          'You will be redirected to Google Maps for navigation.',
+        modalAttention: 'Are you sure?',
+        modalGoogleMaps: 'Open Google Maps',
         addCompanyTitle: 'Add company',
         updateCompanyTitle: 'Update company',
+        start: 'Start',
+        cancel: 'Cancel',
       },
       form: {
         organizationName: 'Organization name',
@@ -52,6 +59,27 @@ const resources = {
         },
         warning:
           'Confirm you lock the transport vehicle securely, ensuring safety as required by the LBA.',
+      },
+      itemsBlock: {
+        importantTitle: 'Important ❗',
+        importantText: 'Count the number of baggage items and weigh them.',
+        prohibitedItemsAlt: 'Prohibited items icon',
+      },
+      customerConfirmationBlock: {
+        importantTitle: 'Important ❗',
+        importantText: 'Count the number of baggage items and weigh them.',
+        fullNameLabel: 'Full Name',
+      },
+      checkBaggageBlock: {
+        bagTitle: 'Medium bag 1',
+        bagDetails: 'Max 70 x 50 x 30 cm',
+        weightLabel: 'Weight',
+        importantTitle: 'Important ❗',
+        importantText1: 'Count the number of baggage items and weigh them.',
+        importantText2:
+          '- If the number and weight match the booking details, confirm it.',
+        importantText3:
+          '- If discrepancies exist, inform the customer to adjust the weight.',
       },
       boardingPass: {
         titles: {
@@ -177,8 +205,26 @@ const resources = {
           Upcoming: 'Coming in',
           Failed: 'Failed at',
           'At Risk': 'At risk time',
-          'Not Arrived': 'Not arrived',
+          'Not arrived': 'Not arrived',
         },
+      },
+      orderDetails: {
+        collectionInformation: 'Collection Information',
+        collectionDate: 'Collection date',
+        collectionAddress: 'Collection address',
+        customerInformation: 'Customer Information',
+        customerName: 'Customer name',
+        note: 'Note from dispatcher',
+        date: 'Date',
+        departureAirport: 'Departure Airport',
+        departureDate: 'Departure date',
+        departureInfo: 'Departure information',
+        dispatcherInfo: 'Dispatcher Information',
+        dispatcherName: 'Dispatcher Name',
+        luggageSize: 'Luggage Size',
+        timeSlot: 'Time slot',
+        phone: 'Phone',
+        weight: 'Weight',
       },
       routes: {
         route: 'Route',
@@ -187,17 +233,26 @@ const resources = {
         date: 'Route Date',
         time: 'Route Time',
         start: 'Start the Route',
+        navigate: 'Navigate',
         statusText: 'Status',
+        driver: {
+          locationError: 'Driver location not found',
+        },
         status: {
           atRisk: 'At Risk',
           onTime: 'On Time',
           failed: 'Failed',
           upcoming: 'Upcoming',
         },
+        startConfirmation: 'Are you sure you want to start the route now?',
+        collectionDate: 'Collection date',
         unknownError: 'An unknown error occurred.',
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
+        errorUpdateStatusRoute: 'An error occurred while starting the route.',
         errorAddressesPlaceholder: 'No addresses found',
+        noRoutesFound: 'No available routes for this date',
+        routeNotFound: 'Route not found.',
         statuses: {
           onTime: 'On time',
           upcoming: 'Coming in',

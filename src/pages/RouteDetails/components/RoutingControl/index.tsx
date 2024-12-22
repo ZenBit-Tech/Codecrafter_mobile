@@ -29,7 +29,9 @@ const RoutingControl: React.FC<RouteControlProps> = ({
       routeWhileDragging: true,
       show: false,
       createMarker: (i, waypoint) =>
-        L.marker(waypoint.latLng).bindPopup(addresses[i].address),
+        L.marker(waypoint.latLng).bindPopup(
+          i === 0 ? 'Driver Location' : addresses[i].address
+        ),
     } as ExtendedRoutingControlOptions).addTo(map);
 
     return (): void => {

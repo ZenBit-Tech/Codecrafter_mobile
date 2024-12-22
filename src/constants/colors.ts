@@ -2,6 +2,7 @@ export const COLORS = {
   white: '#FFF',
   gray: '#F6F6F6',
   darkGrey: '#ddd',
+  black: '#000',
   green: 'rgb(40, 199, 111)',
   purple: '#7367F0',
   lightPurple: '#E8DEF829',
@@ -22,6 +23,7 @@ export const COLORS = {
     dark: 'rgb(115, 103, 240)',
     light: 'rgba(115, 103, 240, 0.16)',
     shadowBox: '0px 2px 4px 0px rgba(165, 163, 174, 0.3)',
+    darkShadowBox: 'rgba(0, 0, 0, 0.4)',
   },
   status: {
     icons: {

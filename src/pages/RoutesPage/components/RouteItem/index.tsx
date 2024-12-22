@@ -11,31 +11,27 @@ import {
   StyledTypography,
 } from './styles';
 
-import { SHORT_MONTH } from '@/constants/dateFormats';
-import { StatusEnum } from '@/constants/status';
+import { FULL_TIME, ROUTES_DATE_FORMAT } from '@/constants/dateFormats';
+import { RouteStatuses } from '@/constants/status';
 import StatusComponent from '@/pages/RoutesPage/components/StatusComponent';
 import { addPadding } from '@/utils/stringUtils';
 
 interface RouteItemProps {
-  routeId: number;
-  routeDate: Date;
-  distance: number;
-  routeTime: {
-    submissionDate: Date;
-    arrivalDate: Date;
-  };
-  status: StatusEnum;
+  route_id: number;
+  route_submission_date: Date;
+  route_arrival_date: Date;
+  route_distance: number;
+  route_status: RouteStatuses;
 }
 
 const RouteItem: FC<RouteItemProps> = ({
-  routeId,
-  routeDate,
-  distance,
-  routeTime,
-  status,
+  route_id: routeId,
+  route_submission_date: routeSubmission,
+  route_arrival_date: routeArrival,
+  route_distance: distance,
+  route_status: status,
 }) => {
   const idPadding = 6;
-  const timePadding = 2;
 
   return (
     <StyledRouteItem>
@@ -51,18 +47,15 @@ const RouteItem: FC<RouteItemProps> = ({
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.date')}:</Typography>
           <StyledTypography>
-            {routeDate.getDay()} {format(routeDate, SHORT_MONTH)}{' '}
-            {routeDate.getFullYear()}
+            {format(new Date(routeSubmission), ROUTES_DATE_FORMAT)}
           </StyledTypography>
         </StyledRouteInfoItem>
 
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.time')}:</Typography>
           <StyledTypography>
-            {routeTime.arrivalDate.getHours()}:
-            {addPadding(routeTime.arrivalDate.getMinutes(), timePadding)} -
-            {routeTime.submissionDate.getHours()}:
-            {addPadding(routeTime.submissionDate.getMinutes(), timePadding)}
+            {format(new Date(routeSubmission), FULL_TIME)} -{' '}
+            {format(new Date(routeArrival), FULL_TIME)}
           </StyledTypography>
         </StyledRouteInfoItem>
       </StyledRouteInfo>

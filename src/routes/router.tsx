@@ -10,7 +10,11 @@ import ExamplePage from '@/pages/ExamplePage';
 import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
+import OrderDetails from '@/pages/OrderDetails';
 import OrderPage from '@/pages/OrderPage';
+import { BaggageCheckPage } from '@/pages/PickUpTheOrder/BaggageCheck/BaggageCheckPage';
+import { CustomerConfirmationPage } from '@/pages/PickUpTheOrder/BaggageCheck/CustomerConfirmation';
+import { ProhibitedItemsPage } from '@/pages/PickUpTheOrder/BaggageCheck/ProhibitedItemsPage';
 import { BoardingPassVerificationPage } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage';
 import { IdentityVerification } from '@/pages/PickUpTheOrder/BoardingPass/IdentityVerification';
 import { PreArrivalPage } from '@/pages/PickUpTheOrder/BoardingPass/PreArrivalPage';
@@ -49,17 +53,13 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: 'orders', element: <OrderPage /> },
+      { path: 'orders/:id', element: <OrderDetails /> },
       { path: 'map', element: <RouteDetails /> },
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       { path: 'routes', element: <RoutesPage /> },
       { path: 'map/failed', element: <FailedReasonPage /> },
       { path: 'map/recording', element: <BaggageRecordingPage /> },
       { path: 'map/covering', element: <BaggageCoveringPage /> },
-      {
-        path: 'orders',
-        element: <OrderPage />,
-      },
-      { path: 'map', element: <h1>{t('greeting')}</h1> },
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       {
         path: 'route',
@@ -70,6 +70,18 @@ const router = createBrowserRouter([
       {
         path: 'boarding-pass-verification',
         element: <BoardingPassVerificationPage />,
+      },
+      {
+        path: 'baggage-verification',
+        element: <BaggageCheckPage />,
+      },
+      {
+        path: 'prohibited-items',
+        element: <ProhibitedItemsPage />,
+      },
+      {
+        path: 'customer-confirmation',
+        element: <CustomerConfirmationPage />,
       },
     ],
   },
