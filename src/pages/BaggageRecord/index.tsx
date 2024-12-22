@@ -1,11 +1,13 @@
-import { List } from '@mui/material';
+import { FC } from 'react';
+
+import { Box, List } from '@mui/material';
 import { t } from 'i18next';
 import { IoCloseOutline } from 'react-icons/io5';
 
 import {
   ButtonGroup,
-  CenteredButton,
   Container,
+  EmptyIcon,
   IconImage,
   Image,
   ImageDescription,
@@ -14,26 +16,30 @@ import {
 } from './styles';
 import useBaggageRecord from './useBaggageRecord';
 
-import cameraIcon from '@/assets/icons/camera.svg';
+import imageIcon from '@/assets/icons/image.svg';
+import uploadIcon from '@/assets/icons/upload.svg';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
+import Loader from '@/components/Loader';
 import { COLORS } from '@/constants/colors';
 
-interface PhotoItem {
-  id: number;
-  src: string;
-  description: string;
-}
-// Replace with real BE data
-const photoList: PhotoItem[] = [
-  { id: 1, src: cameraIcon, description: t('Baggage photo 1') },
-  { id: 2, src: cameraIcon, description: t('Baggage photo 2') },
-];
+const iconSize = 28;
+const stringLength = 20;
 
-const iconSize = 24;
+const BaggageRecordingPage: FC = () => {
+  const {
+    photoList,
+    loading,
+    handleImageUpload,
+    handleImageDelete,
+    handleNextPage,
+    handleBack,
+    truncateString,
+  } = useBaggageRecord();
 
-const BaggageRecordingPage = (): JSX.Element => {
-  const { handleNextPage, handleBack } = useBaggageRecord();
+  if (loading) {
+    return <Loader isLoading />;
+  }
 
   return (
     <>
@@ -41,20 +47,33 @@ const BaggageRecordingPage = (): JSX.Element => {
       <Container>
         <TitleInfo variant='h2'>{t('baggage.record.title')}</TitleInfo>
 
-        <CenteredButton
-          label={t('baggage.record.photo')}
-          variant='colored'
-          startIcon={<IconImage src={cameraIcon} alt={t('Camera')} />}
-        />
-
         <List>
-          {photoList.map((photo: PhotoItem) => (
+          {photoList.map((photo) => (
             <ImageListItem key={photo.id}>
-              <Image src={photo.src} alt={photo.description} />
-              <ImageDescription variant='body1'>
-                {photo.description}
-              </ImageDescription>
-              <IoCloseOutline color={COLORS.text.onSurface} size={iconSize} />
+              {photo.src ? (
+                <Image src={photo.src} alt={photo.description} />
+              ) : (
+                <EmptyIcon src={imageIcon} alt={t('Image')} />
+              )}
+              <Box flex={1}>
+                <ImageDescription variant='body1'>
+                  {truncateString(photo.name, stringLength) ||
+                    t('baggage.record.noUploaded')}
+                </ImageDescription>
+                <ImageDescription variant='body1'>
+                  {photo.description}
+                </ImageDescription>
+              </Box>
+              <IconImage
+                src={uploadIcon}
+                alt={t('Upload')}
+                onClick={() => handleImageUpload(photo.id)}
+              />
+              <IoCloseOutline
+                color={COLORS.text.onSurface}
+                size={iconSize}
+                onClick={() => handleImageDelete(photo.id)}
+              />
             </ImageListItem>
           ))}
         </List>
