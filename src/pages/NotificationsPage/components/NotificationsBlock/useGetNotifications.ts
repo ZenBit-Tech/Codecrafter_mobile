@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ export const useGetNotifications = (): UseGetNotificationsHook => {
     useState<null | GetNotificationsResponse>(null);
   const { token: accessToken, user } = useAppSelector((store) => store.auth);
 
-  const getNotifications = async (): Promise<void> => {
+  const getNotifications = useCallback(async (): Promise<void> => {
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/notifications/${user?.id}`,
@@ -53,11 +53,11 @@ export const useGetNotifications = (): UseGetNotificationsHook => {
     } catch (error) {
       throw new Error('');
     }
-  };
+  }, [accessToken, user?.id]);
 
   useEffect(() => {
     getNotifications().catch();
-  }, []);
+  }, [getNotifications]);
 
   return {
     notifications,
