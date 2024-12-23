@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { t } from 'i18next';
+
 import NotificationsBlock from './components/NotificationsBlock';
 
 import Header from '@/components/Header';
@@ -7,7 +9,7 @@ import Header from '@/components/Header';
 const NotificationsPage: FC = () => {
   return (
     <>
-      <Header pageName='Notifications' />
+      <Header pageName={t('Notifications')} />
       <NotificationsBlock />
     </>
   );

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import { t } from 'i18next';
 
 import {
   notificationContainer,
@@ -21,7 +22,7 @@ const BellNotification: FC<BellNotificationProps> = ({ timeDifference }) => {
       <img src={bellNotification} alt='notificationIcon' />
       <Box sx={textContainer}>
         <Typography sx={notificationTitle}>
-          You have received a note to the order
+          {t('You have received a note to the order')}
         </Typography>
         <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>
       </Box>

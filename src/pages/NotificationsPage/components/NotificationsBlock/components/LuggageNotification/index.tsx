@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
 import {
@@ -28,11 +29,11 @@ const LuggageNotification: FC<LuggageNotificationProps> = ({
       <img src={luggageNotification} alt='notificationIcon' />
       <Box sx={textContainer}>
         <Typography sx={notificationTitle}>
-          The route{' '}
+          {t('The route ')}
           <Link className='blackLink' to={`/routes/${routeId}`}>
             #{routeId}
           </Link>{' '}
-          should be started at {shouldBeStarted}
+          {t('should be started at ')} {shouldBeStarted}
         </Typography>
         <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>
       </Box>

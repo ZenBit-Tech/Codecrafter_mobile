@@ -1,28 +1,23 @@
 import { FC } from 'react';
 
 import { Box } from '@mui/material';
+import { t } from 'i18next';
 
 import ListOfNotes from './components/ListOfNotes';
 import NotificationsGroup from './components/NotificationsGroup';
+import { notificationBlock } from './styles';
 import { useGetNotifications } from './useGetNotifications';
 
 const NotificationsBlock: FC = () => {
   const { notifications } = useGetNotifications();
 
   return (
-    <Box
-      sx={{
-        marginTop: '87px',
-        height: '90vh',
-        overflow: 'scroll',
-        paddingBottom: '150px',
-      }}
-    >
+    <Box sx={notificationBlock}>
       {notifications !== null && (
         <>
           {notifications.today.length > 0 && (
             <NotificationsGroup
-              title='Today'
+              title={t('Today')}
               notifications={
                 <ListOfNotes notifications={notifications.today} />
               }
@@ -30,7 +25,7 @@ const NotificationsBlock: FC = () => {
           )}
           {notifications.yesterday.length > 0 && (
             <NotificationsGroup
-              title='Yesterday'
+              title={t('Yesterday')}
               notifications={
                 <ListOfNotes notifications={notifications.yesterday} />
               }
@@ -38,7 +33,7 @@ const NotificationsBlock: FC = () => {
           )}
           {notifications.thisMonth.length > 0 && (
             <NotificationsGroup
-              title='This Moth'
+              title={t('This Moth')}
               notifications={
                 <ListOfNotes notifications={notifications.thisMonth} />
               }
@@ -46,7 +41,7 @@ const NotificationsBlock: FC = () => {
           )}
           {notifications.thisYear.length > 0 && (
             <NotificationsGroup
-              title='This Year'
+              title={t('This Year')}
               notifications={
                 <ListOfNotes notifications={notifications.thisYear} />
               }

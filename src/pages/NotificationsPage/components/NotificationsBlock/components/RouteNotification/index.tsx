@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
 import {
@@ -26,7 +27,7 @@ const RouteNotification: FC<RouteNotificationProps> = ({
       <img src={notificationIcon} alt='notificationIcon' />
       <Box sx={textContainer}>
         <Typography sx={notificationTitle}>
-          You have received new route{' '}
+          {t('You have received new route ')}
           <Link className='blackLink' to={`/routes/${routeId}`}>
             #{routeId}
           </Link>

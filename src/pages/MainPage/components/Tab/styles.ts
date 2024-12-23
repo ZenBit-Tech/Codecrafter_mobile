@@ -34,9 +34,6 @@ export const TabIcon = styled.div`
   }
 `;
 
-// export const TabIcon = styled.div`
-// `;
-
 export const Badge = styled.span`
   position: absolute;
   top: 0;
