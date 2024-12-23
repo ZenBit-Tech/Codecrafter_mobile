@@ -10,26 +10,29 @@ import {
   timeDifferenceTextStyles,
 } from './styles';
 
-import notificationIcon from '@/assets/icons/map-pin.svg';
+import luggageNotification from '@/assets/icons/luggage-notification.svg';
 
-interface MapPinNotificationProps {
+interface LuggageNotificationProps {
   routeId: string;
+  shouldBeStarted: string;
   timeDifference: string;
 }
 
-const MapPinNotification: FC<MapPinNotificationProps> = ({
+const LuggageNotification: FC<LuggageNotificationProps> = ({
   routeId,
+  shouldBeStarted,
   timeDifference,
 }) => {
   return (
     <Box sx={notificationContainer}>
-      <img src={notificationIcon} alt='notificationIcon' />
+      <img src={luggageNotification} alt='notificationIcon' />
       <Box sx={textContainer}>
         <Typography sx={notificationTitle}>
-          You have received new route{' '}
+          The route{' '}
           <Link className='blackLink' to={`/routes/${routeId}`}>
             #{routeId}
-          </Link>
+          </Link>{' '}
+          should be started at {shouldBeStarted}
         </Typography>
         <Typography sx={timeDifferenceTextStyles}>
           {timeDifference} ago
@@ -39,4 +42,4 @@ const MapPinNotification: FC<MapPinNotificationProps> = ({
   );
 };
 
-export default MapPinNotification;
+export default LuggageNotification;
