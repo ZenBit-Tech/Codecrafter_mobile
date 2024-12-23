@@ -24,24 +24,43 @@ export const NavbarContainer = styled.nav`
 export const IconsContainer = styled.div`
   box-sizing: border-box
   position: absolute;
-  padding: 1.5% 18.5%;
+  padding: 1.5% calc(81px - 6.5vw);
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 
+  @media screen and (min-width: 350px) {
+    padding: 1.5% calc(79px - 5.3vw);
+  }
+
   @media screen and (min-width: 375px) {
-    padding: 1.5% 16%;
+    padding: 1.5% calc(80px - 4.9vw);
   }
   @media screen and (min-width: 425px) {
-    padding: 1.5% 14%;
+    padding: 1.5% calc(72px - 3vw);
   }
-    @media screen and (min-width: 600px) {
-    padding: 1.5% 10%;
+  @media screen and (min-width: 475px) {
+    padding: 1.5% calc(70px - 2.2vw);
+  }
+  @media screen and (min-width: 525px) {
+    padding: 1.5% calc(75px - 2.8vw);
+  
+  @media screen and (min-width: 600px) {
+    padding: 1.5% calc(78px - 2.8vw);
+  }
+  @media screen and (min-width: 700px) {
+    padding: 1.5% calc(80px - 2.8vw);
   }
   @media screen and (min-width: 768px) {
-    padding: 1.5% 7.8%;
+    padding: 1.5% calc(82px - 2.8vw);
+  }
+  @media screen and (min-width: 850px) {
+    padding: 1.5% calc(82px - 2.5vw);
+  }
+  @media screen and (min-width: 950px) {
+    padding: 1.5% calc(84px - 2.5vw);
   }
   @media screen and (min-width: 1024px) {
     padding: 2% 5.8%;
