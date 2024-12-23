@@ -338,13 +338,11 @@ const resources = {
           cancel: 'Cancel',
           send: 'Send to dispatcher',
         },
-        notifications: {
-          success:
-            'Order failure description successfully sent. The reason will be reviewed.',
-          error:
-            'There was an error sending the message, please try again later.',
-          unknownError: 'An unknown error occurred.',
-          linkText: 'Order Fail Details',
+        responses: {
+          success: 'Failure reason submitted successfully.',
+          error: 'Failed to submit the failure reason.',
+          unknownError:
+            'An error occurred while submitting the failure reason.',
         },
       },
     },
