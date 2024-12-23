@@ -250,6 +250,7 @@ const resources = {
         errorFetchingRoute: 'An error occurred while fetching the route.',
         errorFetchingAddresses: 'An error occurred while fetching addresses.',
         errorUpdateStatusRoute: 'An error occurred while starting the route.',
+        errorNotSelectedRoute: 'The route is not selected',
         errorAddressesPlaceholder: 'No addresses found',
         noRoutesFound: 'No available routes for this date',
         routeNotFound: 'Route not found.',

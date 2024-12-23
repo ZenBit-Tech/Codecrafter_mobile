@@ -15,9 +15,12 @@ interface UseFetchAndProcessRouteResult {
 
 export const useFetchAndProcessRoute = (): UseFetchAndProcessRouteResult => {
   const user = useAppSelector((state) => state.auth.user);
-  const route = useAppSelector((state) => state.route.route);
+  const { route, currentRouteId } = useAppSelector((state) => state.route);
 
-  const { fetchRoute, isRouteLoading } = useFetchRoute(user?.id);
+  const { fetchRoute, isRouteLoading } = useFetchRoute(
+    user?.id,
+    Number(currentRouteId)
+  );
   const { processAddresses, addresses, isAddressesLoading, driverAddresses } =
     useProcessAddresses(route as RouteInform);
 

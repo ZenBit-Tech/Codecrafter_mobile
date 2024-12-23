@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 
-import persistConfig from '@/redux/persistConfig';
+import { persistAuthConfig } from '@/redux/persistConfig';
 
 export interface AuthState {
   token: string | null;
@@ -52,4 +52,4 @@ const authSlice = createSlice({
 });
 
 export const { setAccessToken, logout } = authSlice.actions;
-export default persistReducer(persistConfig, authSlice.reducer);
+export default persistReducer(persistAuthConfig, authSlice.reducer);
