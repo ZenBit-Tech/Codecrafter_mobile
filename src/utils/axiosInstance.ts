@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import { logout } from '@/redux/slices/authSlice';
+import { setCurrentRouteId } from '@/redux/slices/routeSlice';
 import { store } from '@/redux/store';
 import { history } from '@/utils/history';
-import { setCurrentRouteId } from '@/redux/slices/routeSlice';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL || 'http://localhost:4000',

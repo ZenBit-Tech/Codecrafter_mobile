@@ -15,9 +15,9 @@ export const getDriverRoute =
   (driverId: number, routeId: number) =>
   async (dispatch: Dispatch): Promise<void> => {
     try {
-      const response = await axiosInstance.get(
-        `route/driver/${driverId}/${routeId}`
-      );
+      const response = await axiosInstance.get(`route/driver/${routeId}`, {
+        params: { driverId },
+      });
       const route = response.data;
 
       if (route) {
