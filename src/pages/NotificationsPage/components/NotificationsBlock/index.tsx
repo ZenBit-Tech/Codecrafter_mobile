@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import BellNotification from './components/BellNotification';
 import LuggageNotification from './components/LuggageNotification';
 import MapPinNotification from './components/MapPinNotification';
+import NotificationsGroup from './components/NotificationsGroup';
 import RouteNotification from './components/RouteNotification';
 
 const NotificationsBlock: FC = () => {
@@ -18,6 +19,19 @@ const NotificationsBlock: FC = () => {
       />
       <BellNotification timeDifference='1h' />
       <RouteNotification routeId='9' timeDifference='1h' />
+      <NotificationsGroup
+        title='Today'
+        notifications={[
+          <MapPinNotification routeId='9' timeDifference='1h' />,
+          <LuggageNotification
+            routeId='9'
+            shouldBeStarted='10:00'
+            timeDifference='1h'
+          />,
+          <BellNotification timeDifference='1h' />,
+          <RouteNotification routeId='9' timeDifference='1h' />,
+        ]}
+      />
     </Box>
   );
 };

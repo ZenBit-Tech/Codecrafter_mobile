@@ -4,9 +4,9 @@ import { COLORS } from '@/constants/colors';
 
 export const notificationContainer: SxProps<Theme> = {
   display: 'flex',
-  alignItems: 'center',
-  width: '93vw',
-  margin: '0 auto',
+  alignItems: 'flex-start',
+  width: '76vw',
+  margin: '0 auto 10px',
 };
 
 export const textContainer: SxProps<Theme> = {
