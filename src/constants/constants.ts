@@ -9,5 +9,4 @@ export const maxLetters = 5000;
 
 export const driverLocation = 'New York';
 
-export const NOTIFICATION_TYPE = 'ORDER_FAILURE_REASON';
-export const NOTIFICATION_SUCCESS_STATUS = 201;
+export const SUCCESS_STATUS = 201;

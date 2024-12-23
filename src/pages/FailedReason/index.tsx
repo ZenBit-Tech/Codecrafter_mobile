@@ -23,6 +23,8 @@ import {
   tBase,
 } from '@/constants/constants';
 
+const orderId = 4;
+
 const FailureReportPage = (): React.JSX.Element => {
   const {
     selectedReason,
@@ -33,7 +35,7 @@ const FailureReportPage = (): React.JSX.Element => {
     handleCancel,
     validationRules,
     handleSubmit,
-  } = useFailedReason();
+  } = useFailedReason(orderId);
 
   return (
     <>
@@ -43,25 +45,25 @@ const FailureReportPage = (): React.JSX.Element => {
         <Subtitle variant='body1'>{t(`${tBase}.reportSubtitle`)}</Subtitle>
         <ButtonContainer>
           <ReasonButton
-            label={reasonNotAvailable}
+            label={t(reasonNotAvailable)}
             variant={
-              selectedReason === reasonNotAvailable ? 'lined' : 'linedGrey'
+              selectedReason === t(reasonNotAvailable) ? 'lined' : 'linedGrey'
             }
-            onClick={() => handleReasonClick(reasonNotAvailable)}
+            onClick={() => handleReasonClick(t(reasonNotAvailable))}
           />
           <ReasonButton
-            label={reasonBagsNotReady}
+            label={t(reasonBagsNotReady)}
             variant={
-              selectedReason === reasonBagsNotReady ? 'lined' : 'linedGrey'
+              selectedReason === t(reasonBagsNotReady) ? 'lined' : 'linedGrey'
             }
-            onClick={() => handleReasonClick(reasonBagsNotReady)}
+            onClick={() => handleReasonClick(t(reasonBagsNotReady))}
           />
           <ReasonButton
-            label={reasonOther}
-            variant={selectedReason === reasonOther ? 'lined' : 'linedGrey'}
-            onClick={() => handleReasonClick(reasonOther)}
+            label={t(reasonOther)}
+            variant={selectedReason === t(reasonOther) ? 'lined' : 'linedGrey'}
+            onClick={() => handleReasonClick(t(reasonOther))}
           />
-          {selectedReason === reasonOther && (
+          {selectedReason === t(reasonOther) && (
             <Box component='form' sx={{ marginTop: 2 }}>
               <InputField
                 {...register('customReason', validationRules)}

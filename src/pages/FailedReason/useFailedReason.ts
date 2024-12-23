@@ -4,23 +4,21 @@ import axios from 'axios';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 
-import { createNotification } from '@/api/notificationActions';
+import { sendFailedReasonMessage } from '@/api/orderActions';
 import {
   maxLetters,
   minLetters,
-  NOTIFICATION_TYPE,
+  reasonOther,
   tBase,
 } from '@/constants/constants';
 import { UseFailedReasonReturn } from '@/interfaces/FailedReason';
-import { useAppSelector } from '@/redux/hooks';
 
 interface FailedReasonForm {
   customReason: string;
 }
 
-const useFailedReason = (): UseFailedReasonReturn => {
+const useFailedReason = (orderId: number): UseFailedReasonReturn => {
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
-  const user = useAppSelector((state) => state.auth.user);
 
   const {
     register,
@@ -36,7 +34,9 @@ const useFailedReason = (): UseFailedReasonReturn => {
 
   const handleReasonClick = (reason: string): void => {
     setSelectedReason(reason);
-    setValue('customReason', '');
+    if (reason !== t(reasonOther)) {
+      setValue('customReason', '');
+    }
   };
 
   const handleCancel = (): void => {
@@ -45,8 +45,9 @@ const useFailedReason = (): UseFailedReasonReturn => {
   };
 
   const isSendDisabled = !(
-    selectedReason ||
-    (customReason && customReason.length >= minLetters)
+    selectedReason &&
+    (selectedReason !== t(reasonOther) ||
+      (customReason && customReason.length >= minLetters))
   );
 
   const validationRules = {
@@ -63,20 +64,17 @@ const useFailedReason = (): UseFailedReasonReturn => {
 
   const onSubmit = async (): Promise<void> => {
     try {
-      const message =
-        selectedReason === 'reasonOther' && customReason
+      const reason =
+        selectedReason === t(reasonOther) && customReason
           ? customReason
           : selectedReason || '';
 
       const payload = {
-        type: NOTIFICATION_TYPE,
-        link_text: t('notifications.linkText'),
-        link_href: `/app/map/${user?.id}`,
-        message: t(message),
-        userId: user?.id,
+        orderId,
+        reason,
       };
 
-      await createNotification(payload)();
+      await sendFailedReasonMessage(payload)();
     } catch (error) {
       if (axios.isAxiosError(error)) {
         throw new Error(error.message);
