@@ -1,7 +1,8 @@
 :root {
     --white: #fff;
     --gray: #575757b0;
-    --purple: #7367F0
+    --purple: #7367F0;
+    --black: #000;
 }
   
 
@@ -13,6 +14,9 @@
     color: var(--purple);
 }
 
+.blackLink {
+ color: var(--black)
+}
 a {
   text-decoration: none;
 }
