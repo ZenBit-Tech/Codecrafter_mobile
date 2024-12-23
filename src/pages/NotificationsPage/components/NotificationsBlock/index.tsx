@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Box } from '@mui/material';
 
+import BellNotification from './components/BellNotification';
 import LuggageNotification from './components/LuggageNotification';
 import MapPinNotification from './components/MapPinNotification';
 
@@ -14,6 +15,7 @@ const NotificationsBlock: FC = () => {
         shouldBeStarted='10:00'
         timeDifference='1h'
       />
+      <BellNotification timeDifference='1h' />
     </Box>
   );
 };
