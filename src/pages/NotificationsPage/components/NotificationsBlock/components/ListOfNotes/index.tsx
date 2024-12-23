@@ -5,6 +5,7 @@ import LuggageNotification from '@/pages/NotificationsPage/components/Notificati
 import MapPinNotification from '@/pages/NotificationsPage/components/NotificationsBlock/components/MapPinNotification/index';
 import RouteNotification from '@/pages/NotificationsPage/components/NotificationsBlock/components/RouteNotification/index';
 import { TransformedNotification } from '@/pages/NotificationsPage/components/NotificationsBlock/useGetNotifications';
+import { createIdString } from '@/utils/createIdString';
 
 interface ListOfNotesProps {
   notifications: TransformedNotification[];
@@ -19,7 +20,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
             return (
               <MapPinNotification
                 key={notification.id}
-                routeId={`${notification.id}`}
+                routeId={`${createIdString(`${notification.id}`)}`}
                 timeDifference={notification.timeDifference}
               />
             );
@@ -28,9 +29,9 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
             return (
               <LuggageNotification
                 key={notification.id}
-                routeId={`${notification.id}`}
+                routeId={`${createIdString(`${notification.id}`)}`}
                 timeDifference={notification.timeDifference}
-                shouldBeStarted='10:00'
+                shouldBeStarted={notification.linkText}
               />
             );
 
@@ -46,7 +47,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
             return (
               <RouteNotification
                 key={notification.id}
-                routeId={`${notification.id}`}
+                routeId={`${createIdString(`${notification.id}`)}`}
                 timeDifference={notification.timeDifference}
               />
             );
