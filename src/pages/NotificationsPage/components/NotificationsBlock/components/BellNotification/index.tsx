@@ -23,9 +23,7 @@ const BellNotification: FC<BellNotificationProps> = ({ timeDifference }) => {
         <Typography sx={notificationTitle}>
           You have received a note to the order
         </Typography>
-        <Typography sx={timeDifferenceTextStyles}>
-          {timeDifference} ago
-        </Typography>
+        <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>
       </Box>
     </Box>
   );

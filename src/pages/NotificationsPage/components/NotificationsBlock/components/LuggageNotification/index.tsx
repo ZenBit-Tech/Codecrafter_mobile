@@ -34,9 +34,7 @@ const LuggageNotification: FC<LuggageNotificationProps> = ({
           </Link>{' '}
           should be started at {shouldBeStarted}
         </Typography>
-        <Typography sx={timeDifferenceTextStyles}>
-          {timeDifference} ago
-        </Typography>
+        <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>
       </Box>
     </Box>
   );

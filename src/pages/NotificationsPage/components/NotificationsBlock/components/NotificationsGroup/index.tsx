@@ -6,7 +6,7 @@ import { notificationBlockStyles, titleStyles } from './styles';
 
 interface NotificationsGroupProps {
   title: string;
-  notifications: React.ReactNode[];
+  notifications: React.ReactNode;
 }
 
 const NotificationsGroup: FC<NotificationsGroupProps> = ({
@@ -16,7 +16,7 @@ const NotificationsGroup: FC<NotificationsGroupProps> = ({
   return (
     <Box sx={notificationBlockStyles}>
       <Typography sx={titleStyles}>{title}</Typography>
-      {notifications.map((element) => element)}
+      {notifications}
     </Box>
   );
 };
