@@ -4,7 +4,10 @@ import BellNotification from '@/pages/NotificationsPage/components/Notifications
 import LuggageNotification from '@/pages/NotificationsPage/components/NotificationsBlock/components/LuggageNotification/index';
 import MapPinNotification from '@/pages/NotificationsPage/components/NotificationsBlock/components/MapPinNotification/index';
 import RouteNotification from '@/pages/NotificationsPage/components/NotificationsBlock/components/RouteNotification/index';
-import { TransformedNotification } from '@/pages/NotificationsPage/components/NotificationsBlock/useGetNotifications';
+import {
+  NotificationTypes,
+  TransformedNotification,
+} from '@/pages/NotificationsPage/components/NotificationsBlock/useGetNotifications';
 import { createIdString } from '@/utils/createIdString';
 
 interface ListOfNotesProps {
@@ -16,7 +19,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
     <>
       {notifications.map((notification) => {
         switch (notification.type) {
-          case 'map-pin':
+          case NotificationTypes.MAP_PIN:
             return (
               <MapPinNotification
                 key={notification.id}
@@ -25,7 +28,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               />
             );
 
-          case 'luggage':
+          case NotificationTypes.LUGGAGE:
             return (
               <LuggageNotification
                 key={notification.id}
@@ -35,7 +38,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               />
             );
 
-          case 'bell':
+          case NotificationTypes.BELL:
             return (
               <BellNotification
                 key={notification.id}
@@ -43,7 +46,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               />
             );
 
-          case 'route':
+          case NotificationTypes.ROUTE:
             return (
               <RouteNotification
                 key={notification.id}
