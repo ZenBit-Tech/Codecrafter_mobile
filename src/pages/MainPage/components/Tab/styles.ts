@@ -8,7 +8,7 @@ const transitionDuration = '0.5s';
 export const TabIcon = styled.div`
   text-align: center;
   cursor: pointer;
-  color: black;
+  color: ${COLORS.black};
   transition: all ${transitionDuration};
   &.active {
     transform: translateY(-39px);
@@ -41,7 +41,7 @@ export const Badge = styled.span`
   top: 0;
   right: 0;
   background-color: ${COLORS.purple};
-  color: white;
+  color: ${COLORS.white};
   border-radius: 50%;
   font-size: 10px;
   width: 16px;
