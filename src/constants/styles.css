@@ -12,3 +12,7 @@
 .css-17pz1kh-MuiButtonBase-root-MuiCheckbox-root {
     color: var(--purple);
 }
+
+a {
+  text-decoration: none;
+}

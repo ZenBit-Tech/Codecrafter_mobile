@@ -10,6 +10,7 @@ import MainPage from '@/pages/MainPage';
 import NotFoundPage from '@/pages/NotFound';
 import OrderDetails from '@/pages/OrderDetails';
 import OrderPage from '@/pages/OrderPage';
+import PersonalProfile from '@/pages/PersonalProfile';
 import { BaggageCheckPage } from '@/pages/PickUpTheOrder/BaggageCheck/BaggageCheckPage';
 import { CustomerConfirmationPage } from '@/pages/PickUpTheOrder/BaggageCheck/CustomerConfirmation';
 import { ProhibitedItemsPage } from '@/pages/PickUpTheOrder/BaggageCheck/ProhibitedItemsPage';
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
     children: [
       { path: 'orders', element: <OrderPage /> },
       { path: 'orders/:id', element: <OrderDetails /> },
+      { path: 'personal-profile', element: <PersonalProfile /> },
       { path: 'map', element: <RouteDetails /> },
       { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       { path: 'routes', element: <RoutesPage /> },
