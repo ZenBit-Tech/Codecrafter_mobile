@@ -32,7 +32,7 @@ const LuggageNotification: FC<LuggageNotificationProps> = ({
           {t('The route ')}
           <Link className='blackLink' to={`/routes/${routeId}`}>
             #{routeId}
-          </Link>{' '}
+          </Link>
           {t('should be started at ')} {shouldBeStarted}
         </Typography>
         <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>

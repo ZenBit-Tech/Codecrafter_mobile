@@ -48,7 +48,6 @@ export const BoardingPassVerificationPage: FC = () => {
 
   return (
     <BoardingPassVerificationContext.Provider value={memoizedValue}>
-      {' '}
       <Header hasBackIcon pageName='Boarding pass Verification ' />
       <BoardingPassInformBlock handleChoose={setIsDisabled} />
       <ActionBtns isNextBtnDisabled={disabled} />

@@ -61,7 +61,6 @@ export const useGetNotifications = (): UseGetNotificationsHook => {
 
   const getNotifications = useCallback(async (): Promise<void> => {
     try {
-      // await readAllNotifications();
       const { data } = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/notifications/${user?.id}`,
         {
@@ -80,7 +79,6 @@ export const useGetNotifications = (): UseGetNotificationsHook => {
   useEffect(() => {
     getNotifications().catch();
     readAllNotifications().catch();
-    // dispatch(setUnreadMessages(null));
   }, [getNotifications, readAllNotifications]);
 
   return {

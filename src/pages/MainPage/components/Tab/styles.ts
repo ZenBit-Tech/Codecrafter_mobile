@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { COLORS } from '@/constants/colors';
+
 const IconScale = 1.3;
 const transitionDuration = '0.5s';
 
@@ -38,7 +40,7 @@ export const Badge = styled.span`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgb(115, 103, 240);
+  background-color: ${COLORS.purple};
   color: white;
   border-radius: 50%;
   font-size: 10px;
