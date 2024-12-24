@@ -12,23 +12,24 @@ interface UseFetchRouteReturnType {
 }
 
 export const useFetchRoute = (
-  userId: number | undefined
+  userId: number | undefined,
+  routeId: number
 ): UseFetchRouteReturnType => {
   const [isRouteLoading, setIsRouteLoading] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const fetchRoute = useCallback(async () => {
-    if (!userId) return;
+    if (!userId || !routeId) return;
 
     setIsRouteLoading(true);
     try {
-      await getDriverRoute(userId)(dispatch);
+      await getDriverRoute(userId, routeId)(dispatch);
     } catch (error) {
       toast.error(t('routes.errorFetchingRoute'));
     } finally {
       setIsRouteLoading(false);
     }
-  }, [dispatch, userId]);
+  }, [dispatch, userId, routeId]);
 
   return { fetchRoute, isRouteLoading };
 };
