@@ -13,13 +13,23 @@ import {
   importantTitle,
   inputField,
   maxWeightTitle,
+  totalWeightCount,
+  totalWeightTitle,
   weightLabel,
 } from './styles';
 import { useGetCountOfLuggages } from './useGetCountOfLuggages';
 
 import { InputField } from '@/pages/FailedReason/styles';
 
-export const CheckBaggageBlock: FC = () => {
+interface CheckBaggageProps {
+  weight: number;
+  calculateWeight: () => void;
+}
+
+export const CheckBaggageBlock: FC<CheckBaggageProps> = ({
+  weight,
+  calculateWeight,
+}) => {
   const { luggages } = useGetCountOfLuggages();
 
   return (
@@ -43,6 +53,8 @@ export const CheckBaggageBlock: FC = () => {
                 </Typography>
                 <InputField
                   sx={inputField}
+                  className='weight-field'
+                  onChange={calculateWeight}
                   label=''
                   type='number'
                   variant='outlined'
@@ -50,6 +62,18 @@ export const CheckBaggageBlock: FC = () => {
               </Box>
             </Box>
           ))}
+        <Box
+          sx={{
+            width: '378px',
+            marginLeft: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Typography sx={totalWeightTitle}>Total</Typography>
+          <Box sx={totalWeightCount}>{weight} KG</Box>
+        </Box>
       </Box>
       <Box sx={importantBlock}>
         <Typography sx={importantTitle}>
