@@ -8,7 +8,7 @@ export interface UseFailedReasonReturn {
   selectedReason: string | null;
   customReason: string;
   register: UseFormReturn<FailedReasonFormValues>['register'];
-  handleSubmit: UseFormReturn<FailedReasonFormValues>['handleSubmit'];
+  handleSubmit: () => Promise<void>;
   errors: UseFormReturn<FailedReasonFormValues>['formState']['errors'];
   isSendDisabled: boolean;
   handleReasonClick: (reason: string) => void;

@@ -70,7 +70,7 @@ const OrderDetails: FC = () => {
           variant='outlined'
           label='orderDetails.failed'
           sx={failedButtonStyles}
-          onClick={() => navigate('/app/map/failed')}
+          onClick={() => navigate(`/app/map/failed/${id}`)}
         />
         {!isCustomerInformed ? (
           <Button

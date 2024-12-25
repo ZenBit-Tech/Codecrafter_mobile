@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { createBrowserRouter } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
@@ -60,15 +59,13 @@ const router = createBrowserRouter([
       { path: 'personal-profile', element: <PersonalProfile /> },
       { path: 'map', element: <RouteDetails /> },
       { path: 'routes', element: <RoutesPage /> },
-      { path: 'map/failed', element: <FailedReasonPage /> },
+      { path: 'map/failed/:id', element: <FailedReasonPage /> },
       { path: 'map/recording', element: <BaggageRecordingPage /> },
       { path: 'map/covering', element: <BaggageCoveringPage /> },
-      { path: 'notifications', element: <h1>{t('pageTitle')}</h1> },
       {
         path: 'orders',
         element: <OrderPage />,
       },
-      { path: 'map', element: <h1>{t('greeting')}</h1> },
       {
         path: 'route',
         element: <RouteDetails />,
