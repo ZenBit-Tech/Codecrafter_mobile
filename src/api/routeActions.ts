@@ -12,10 +12,12 @@ import axiosInstance from '@/utils/axiosInstance';
 import i18n from '@/utils/i18n';
 
 export const getDriverRoute =
-  (driverId: number) =>
+  (driverId: number, routeId: number) =>
   async (dispatch: Dispatch): Promise<void> => {
     try {
-      const response = await axiosInstance.get(`route/driver/${driverId}`);
+      const response = await axiosInstance.get(`route/driver/${routeId}`, {
+        params: { driverId },
+      });
       const route = response.data;
 
       if (route) {

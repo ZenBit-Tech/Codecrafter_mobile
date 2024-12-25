@@ -1,14 +1,22 @@
 :root {
-    --white: #fff;
-    --gray: #575757b0;
-    --purple: #7367F0
+  --white: #fff;
+  --gray: #575757b0;
+  --purple: #7367f0;
+  --black: #000;
 }
-  
 
 .css-17pz1kh-MuiButtonBase-root-MuiCheckbox-root.Mui-checked {
-    color: var(--purple);
+  color: var(--purple);
 }
 
 .css-17pz1kh-MuiButtonBase-root-MuiCheckbox-root {
-    color: var(--purple);
+  color: var(--purple);
+}
+
+.blackLink {
+ color: var(--black)
+}
+
+a {
+  text-decoration: none;
 }

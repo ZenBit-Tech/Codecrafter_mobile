@@ -21,7 +21,7 @@ export const CustomerWrapper = styled.div`
   border: 1px solid ${COLORS.schemes.outlineVariant};
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   justify-content: space-between;
   position: relative;
 `;
@@ -29,6 +29,7 @@ export const CustomerWrapper = styled.div`
 export const StyledHeading = styled(Typography)`
   font-size: ${FONT.fontSize.mediumPlus}px !important;
   color: ${COLORS.schemes.secondary}!important;
+  margin-bottom: 12px !important;
 `;
 
 export const CollectionHeading = styled(Typography)`
