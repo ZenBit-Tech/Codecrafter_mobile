@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box } from '@mui/system';
 import { t } from 'i18next';
+import { useParams } from 'react-router-dom';
 
 import {
   ActionContainer,
@@ -23,9 +24,10 @@ import {
   tBase,
 } from '@/constants/constants';
 
-const orderId = 4;
-
 const FailureReportPage = (): React.JSX.Element => {
+  const { id } = useParams();
+  const orderId = Number(id);
+
   const {
     selectedReason,
     register,
