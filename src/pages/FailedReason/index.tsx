@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box } from '@mui/system';
 import { t } from 'i18next';
+import { useParams } from 'react-router-dom';
 
 import {
   ActionContainer,
@@ -24,6 +25,9 @@ import {
 } from '@/constants/constants';
 
 const FailureReportPage = (): React.JSX.Element => {
+  const { id } = useParams();
+  const orderId = Number(id);
+
   const {
     selectedReason,
     register,
@@ -32,7 +36,8 @@ const FailureReportPage = (): React.JSX.Element => {
     handleReasonClick,
     handleCancel,
     validationRules,
-  } = useFailedReason();
+    handleSubmit,
+  } = useFailedReason(orderId);
 
   return (
     <>
@@ -42,25 +47,25 @@ const FailureReportPage = (): React.JSX.Element => {
         <Subtitle variant='body1'>{t(`${tBase}.reportSubtitle`)}</Subtitle>
         <ButtonContainer>
           <ReasonButton
-            label={reasonNotAvailable}
+            label={t(reasonNotAvailable)}
             variant={
-              selectedReason === reasonNotAvailable ? 'lined' : 'linedGrey'
+              selectedReason === t(reasonNotAvailable) ? 'lined' : 'linedGrey'
             }
-            onClick={() => handleReasonClick(reasonNotAvailable)}
+            onClick={() => handleReasonClick(t(reasonNotAvailable))}
           />
           <ReasonButton
-            label={reasonBagsNotReady}
+            label={t(reasonBagsNotReady)}
             variant={
-              selectedReason === reasonBagsNotReady ? 'lined' : 'linedGrey'
+              selectedReason === t(reasonBagsNotReady) ? 'lined' : 'linedGrey'
             }
-            onClick={() => handleReasonClick(reasonBagsNotReady)}
+            onClick={() => handleReasonClick(t(reasonBagsNotReady))}
           />
           <ReasonButton
-            label={reasonOther}
-            variant={selectedReason === reasonOther ? 'lined' : 'linedGrey'}
-            onClick={() => handleReasonClick(reasonOther)}
+            label={t(reasonOther)}
+            variant={selectedReason === t(reasonOther) ? 'lined' : 'linedGrey'}
+            onClick={() => handleReasonClick(t(reasonOther))}
           />
-          {selectedReason === reasonOther && (
+          {selectedReason === t(reasonOther) && (
             <Box component='form' sx={{ marginTop: 2 }}>
               <InputField
                 {...register('customReason', validationRules)}
@@ -86,7 +91,7 @@ const FailureReportPage = (): React.JSX.Element => {
             label={t(`${tBase}.actions.send`)}
             variant={isSendDisabled ? 'outlineVariant' : 'colored'}
             disabled={isSendDisabled}
-            type='submit'
+            onClick={handleSubmit}
             fullWidth
           />
         </ActionContainer>

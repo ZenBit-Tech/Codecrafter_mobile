@@ -10,3 +10,5 @@ export const maxLetters = 5000;
 export const iconLabel = 'Info';
 
 export const driverLocation = 'New York';
+
+export const SUCCESS_STATUS = 201;

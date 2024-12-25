@@ -355,6 +355,12 @@ const resources = {
           cancel: 'Cancel',
           send: 'Send to dispatcher',
         },
+        responses: {
+          success: 'Failure reason submitted successfully.',
+          error: 'Failed to submit the failure reason.',
+          unknownError:
+            'An error occurred while submitting the failure reason.',
+        },
       },
       baggage: {
         loading: {
