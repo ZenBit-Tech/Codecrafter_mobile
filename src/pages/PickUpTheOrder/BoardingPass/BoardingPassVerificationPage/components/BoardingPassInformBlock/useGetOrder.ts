@@ -24,11 +24,12 @@ interface UseGetOrderHook {
 export const useGetOrder = (): UseGetOrderHook => {
   const [orderInform, setOrderInform] = useState<TransformedOrder | null>(null);
   const { token: accessToken } = useAppSelector((store) => store.auth);
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
 
   const getOrderInform = async (): Promise<void> => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/orders/boarding-pass/1`,
+        `${import.meta.env.VITE_BASE_URL}/orders/boarding-pass/${orderId}`,
         { headers: { authorization: accessToken } }
       );
 

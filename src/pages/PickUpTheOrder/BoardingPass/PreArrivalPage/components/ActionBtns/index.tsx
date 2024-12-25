@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { actionBtnsContainer, backButtonStyles, buttonStyles } from './styles';
 
 import Button from '@/components/Button';
+import { useAppSelector } from '@/redux/hooks';
 
 export const ActionBtns: FC = () => {
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
   const navigate = useNavigate();
 
   return (
@@ -17,6 +19,7 @@ export const ActionBtns: FC = () => {
         sx={backButtonStyles}
         label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
+        onClick={() => navigate(`/app/orders/${orderId}`)}
       />
       <Button
         sx={buttonStyles}

@@ -26,6 +26,7 @@ export const ActionBtns: FC<ActionBtnsProps> = ({ isDisabled }) => {
         sx={backButtonStyles}
         label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
+        onClick={() => navigate('/app/boarding-pass-verification')}
       />
       <Button
         sx={isDisabled ? disabledBtn : buttonStyles}
