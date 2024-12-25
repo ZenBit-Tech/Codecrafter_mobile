@@ -9,19 +9,19 @@ import { BackIconWrapper, HeaderWrapper, StyledPageName } from './styles';
 import BackIcon from '@/assets/icons/back.svg';
 import ProfilePicture from '@/components/ProfilePicture';
 import { FONT } from '@/constants/font';
+import { PREVIOUS_PAGE } from '@/constants/numbers';
 
 interface HeaderProps {
   pageName: string;
   hasBackIcon?: boolean;
 }
-const previousPage = -1;
 const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
   const navigate = useNavigate();
 
   return (
     <HeaderWrapper>
       <BackIconWrapper
-        onClick={() => navigate(previousPage)}
+        onClick={() => navigate(PREVIOUS_PAGE)}
         hasBackIcon={hasBackIcon}
       >
         <img src={BackIcon} alt={t('back')} />

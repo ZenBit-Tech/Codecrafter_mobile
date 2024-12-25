@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { sendFailedReasonMessage } from '@/api/orderActions';
 import {
@@ -11,6 +12,7 @@ import {
   reasonOther,
   tBase,
 } from '@/constants/constants';
+import { PREVIOUS_PAGE } from '@/constants/numbers';
 import { UseFailedReasonReturn } from '@/interfaces/FailedReason';
 
 interface FailedReasonForm {
@@ -19,7 +21,7 @@ interface FailedReasonForm {
 
 const useFailedReason = (orderId: number): UseFailedReasonReturn => {
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -42,6 +44,7 @@ const useFailedReason = (orderId: number): UseFailedReasonReturn => {
   const handleCancel = (): void => {
     setSelectedReason(null);
     setValue('customReason', '');
+    navigate(PREVIOUS_PAGE);
   };
 
   const isSendDisabled = !(
