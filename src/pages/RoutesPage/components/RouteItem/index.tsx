@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { Typography } from '@mui/material';
 import { format } from 'date-fns';
 import { t } from 'i18next';
+import { useNavigate } from 'react-router-dom';
 
 import {
   StyledRouteInfo,
@@ -14,6 +15,9 @@ import {
 import { FULL_TIME, ROUTES_DATE_FORMAT } from '@/constants/dateFormats';
 import { RouteStatuses } from '@/constants/status';
 import StatusComponent from '@/pages/RoutesPage/components/StatusComponent';
+import { useAppDispatch } from '@/redux/hooks';
+import { changePage } from '@/redux/slices/pagesSlice';
+import { setCurrentRouteId } from '@/redux/slices/routeSlice';
 import { addPadding } from '@/utils/stringUtils';
 
 interface RouteItemProps {
@@ -31,10 +35,19 @@ const RouteItem: FC<RouteItemProps> = ({
   route_distance: distance,
   route_status: status,
 }) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const idPadding = 6;
+  const mapPageNumber = 3;
+
+  const handleRouteClick = (): void => {
+    dispatch(setCurrentRouteId(routeId));
+    dispatch(changePage(mapPageNumber));
+    navigate(`/app/map`);
+  };
 
   return (
-    <StyledRouteItem>
+    <StyledRouteItem onClick={handleRouteClick}>
       <StyledRouteInfo>
         <StyledRouteInfoItem>
           <Typography variant='body2'>{t('routes.route')}</Typography>

@@ -7,15 +7,15 @@ import { FONT } from '@/constants/font';
 import { useAppSelector } from '@/redux/hooks';
 import { getInitials } from '@/utils/stringUtils';
 
-const ProfilePicture: FC = () => {
+const ProfilePicture: FC<{ isLarge?: boolean }> = ({ isLarge }) => {
   const username = useAppSelector((state) => state.auth.user?.full_name);
   const initials = getInitials(username);
 
   return (
     <Avatar
       sx={{
-        width: '38px',
-        height: '38px',
+        width: isLarge ? '90px' : '38px',
+        height: isLarge ? '90px' : '38px',
         bgcolor: COLORS.transparentViolet,
         color: COLORS.purple,
         fontSize: FONT.fontSize.medium,
