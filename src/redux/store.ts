@@ -6,6 +6,7 @@ import exampleReducer from '@/redux/slices/exampleSlice';
 import ordersReducer from '@/redux/slices/orderSlice';
 import pagesReducer from '@/redux/slices/pagesSlice';
 import routeReducer from '@/redux/slices/routeSlice';
+import unreadNotificationsSlice from '@/redux/slices/unreadNotificationsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     route: routeReducer,
     auth: authReducer,
     orders: ordersReducer,
+    unreadNotifications: unreadNotificationsSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

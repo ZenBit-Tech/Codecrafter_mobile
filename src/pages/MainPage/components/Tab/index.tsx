@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { TabIcon } from './styles';
+import { Badge, TabIcon } from './styles';
 
 import { useAppDispatch } from '@/redux/hooks';
 import { changePage } from '@/redux/slices/pagesSlice';
@@ -10,19 +10,31 @@ interface TabProps {
   index: number;
   iconSrc: string;
   active: boolean;
+  badgeContent?: number | null;
 }
 
-const Tab = ({ title, index, iconSrc, active }: TabProps): JSX.Element => {
+const Tab = ({
+  title,
+  index,
+  iconSrc,
+  active,
+  badgeContent,
+}: TabProps): JSX.Element => {
   const dispatch = useAppDispatch();
+
+  const handleClick = (): void => {
+    dispatch(changePage(index));
+  };
 
   return (
     <TabIcon
       data-index={index}
       className={`icon ${active ? 'active' : ''}`}
-      onClick={() => dispatch(changePage(index))}
+      onClick={handleClick}
     >
       <Link to={title}>
         <img src={iconSrc} alt={title} />
+        {badgeContent && badgeContent > 0 && <Badge>{badgeContent}</Badge>}
       </Link>
     </TabIcon>
   );
