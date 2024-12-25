@@ -20,9 +20,7 @@ import { useGetCountOfLuggages } from './useGetCountOfLuggages';
 import { InputField } from '@/pages/FailedReason/styles';
 
 export const CheckBaggageBlock: FC = () => {
-  const { countOfLuggages } = useGetCountOfLuggages();
-
-  console.log(countOfLuggages);
+  const { luggages } = useGetCountOfLuggages();
 
   return (
     <Box sx={checkBaggageBlock}>
@@ -30,21 +28,28 @@ export const CheckBaggageBlock: FC = () => {
         {t('checkBaggageBlock.maxWeightTitle')}
       </Typography>
       <Box sx={calculatorBlock}>
-        <Typography sx={bagTitle}>{t('checkBaggageBlock.bagTitle')}</Typography>
-        <Typography sx={bagDetails}>
-          {t('checkBaggageBlock.bagDetails')}
-        </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography sx={weightLabel}>
-            {t('checkBaggageBlock.weightLabel')}
-          </Typography>
-          <InputField
-            sx={inputField}
-            label=''
-            type='number'
-            variant='outlined'
-          />
-        </Box>
+        {luggages.length > 0 &&
+          luggages.map((luggage, index) => (
+            <Box key={luggage.id}>
+              <Typography sx={bagTitle}>
+                {`${luggage.luggage_type} bag ${index + 1}`}
+              </Typography>
+              <Typography sx={bagDetails}>
+                {t('checkBaggageBlock.bagDetails')}
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography sx={weightLabel}>
+                  {t('checkBaggageBlock.weightLabel')}
+                </Typography>
+                <InputField
+                  sx={inputField}
+                  label=''
+                  type='number'
+                  variant='outlined'
+                />
+              </Box>
+            </Box>
+          ))}
       </Box>
       <Box sx={importantBlock}>
         <Typography sx={importantTitle}>

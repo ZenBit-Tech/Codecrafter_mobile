@@ -39,7 +39,6 @@ const OrderDetails: FC = () => {
     orderDate: '07.08.2022',
     orderTimeSlot: '8:00 - 10:00',
     orderDepartureAirport: 'Düsseldorf Airport',
-    bagTitle: 'Medium bag 1',
     bagSize: 'Max 70 x 50 x 30 cm',
     bagWeight: '15 kg',
     customerName: 'Semuel Garcia',

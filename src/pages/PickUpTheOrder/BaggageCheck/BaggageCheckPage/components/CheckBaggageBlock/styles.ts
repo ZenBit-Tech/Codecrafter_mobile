@@ -30,6 +30,7 @@ export const bagTitle: SxProps<Theme> = {
   fontWeight: FONT.fontWeight.large,
   color: COLORS.schemes.secondary,
   marginLeft: '10px',
+  textTransform: 'capitalize',
 };
 
 export const bagDetails: SxProps<Theme> = {
