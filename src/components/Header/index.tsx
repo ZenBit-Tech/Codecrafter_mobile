@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Typography } from '@mui/material';
 import { t } from 'i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { BackIconWrapper, HeaderWrapper, StyledPageName } from './styles';
 
@@ -34,7 +34,9 @@ const Header: FC<HeaderProps> = ({ pageName, hasBackIcon = false }) => {
           {pageName}
         </Typography>
       </StyledPageName>
-      <ProfilePicture />
+      <Link to='../personal-profile'>
+        <ProfilePicture />
+      </Link>
     </HeaderWrapper>
   );
 };

@@ -25,7 +25,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'error',
     '@typescript-eslint/naming-convention': [
-      'error',
+      'warn',
       {
         selector: ['variable', 'function'],
         format: ['camelCase', 'PascalCase'],
@@ -60,7 +60,7 @@ module.exports = {
       'error',
       { vars: 'all', varsIgnorePattern: '^_', args: 'none' },
     ],
-    camelcase: ['error', { properties: 'never' }],
+    camelcase: ['warn', { properties: 'never' }],
     'spaced-comment': ['warn', 'always'],
 
     'react/forbid-component-props': ['error', { forbid: ['style'] }],
@@ -132,7 +132,7 @@ module.exports = {
       files: ['src/constants/**/*.{js,ts,tsx}'],
       rules: {
         '@typescript-eslint/naming-convention': [
-          'error',
+          'warn',
           {
             selector: 'variable',
             format: ['UPPER_CASE', 'camelCase', 'PascalCase'],

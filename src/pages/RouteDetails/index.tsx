@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Box } from '@mui/material';
 import { t } from 'i18next';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 import AddressList from './components/AddressList';
 import AddressPlaceholder from './components/AddressPlaceholder';
@@ -18,12 +18,18 @@ import { Address } from '@/types/route';
 
 const RouteDetails: React.FC = () => {
   const [isMapExpanded, setIsMapExpanded] = useState<boolean>(false);
-  const { isRouteLoading } = useAppSelector((state) => state.route);
+  const { isRouteLoading, currentRouteId } = useAppSelector(
+    (state) => state.route
+  );
 
   const { memoizedAddresses, driverAddresses, isLoading, route } =
     useFetchAndProcessRoute();
 
   const toggleMapExpand = (): void => setIsMapExpanded((prev) => !prev);
+
+  if (!currentRouteId) {
+    toast.error(t('routes.errorNotSelectedRoute'));
+  }
 
   if (isLoading || isRouteLoading) {
     return <Loader isLoading />;

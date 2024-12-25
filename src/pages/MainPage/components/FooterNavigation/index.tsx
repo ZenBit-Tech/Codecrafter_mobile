@@ -10,6 +10,7 @@ import {
   SecondBarSide,
   ThirdBarSide,
 } from './styles';
+import { useGetUnreadNotifications } from './useGetUnreadNotifications';
 
 import luggageIcon from '@/assets/icons/luggage.svg';
 import map from '@/assets/icons/map.svg';
@@ -26,6 +27,7 @@ import { useAppSelector } from '@/redux/hooks';
 
 const BottomNavbar = (): JSX.Element => {
   const selected = useAppSelector((state) => state.pages.pageSelected);
+  const { unreadNotifications } = useGetUnreadNotifications();
 
   return (
     <NavbarContainer data-selected={selected}>
@@ -53,6 +55,7 @@ const BottomNavbar = (): JSX.Element => {
           index={NOTIFICATION_PAGE_NUMBER}
           iconSrc={notification}
           active={selected === NOTIFICATION_PAGE_NUMBER}
+          badgeContent={unreadNotifications}
         />
       </IconsContainer>
       <BarContainer>

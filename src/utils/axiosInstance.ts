@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { setCurrentRouteId } from '@/redux/slices/routeSlice';
 import { openModal } from '@/redux/slices/tokenModalSlice';
 import { store } from '@/redux/store';
 
@@ -26,6 +27,7 @@ axiosInstance.interceptors.response.use(
     const unauthorizedStatus = 401;
 
     if (error.response && error.response.status === unauthorizedStatus) {
+      store.dispatch(setCurrentRouteId(null));
       store.dispatch(openModal());
     }
 
