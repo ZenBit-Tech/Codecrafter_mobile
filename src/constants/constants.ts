@@ -8,3 +8,5 @@ export const minLetters = 10;
 export const maxLetters = 5000;
 
 export const driverLocation = 'New York';
+
+export const SUCCESS_STATUS = 201;
