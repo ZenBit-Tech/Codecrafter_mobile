@@ -15,10 +15,15 @@ import {
   maxWeightTitle,
   weightLabel,
 } from './styles';
+import { useGetCountOfLuggages } from './useGetCountOfLuggages';
 
 import { InputField } from '@/pages/FailedReason/styles';
 
 export const CheckBaggageBlock: FC = () => {
+  const { countOfLuggages } = useGetCountOfLuggages();
+
+  console.log(countOfLuggages);
+
   return (
     <Box sx={checkBaggageBlock}>
       <Typography sx={maxWeightTitle}>
