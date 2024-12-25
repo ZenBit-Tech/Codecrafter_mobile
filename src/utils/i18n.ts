@@ -71,6 +71,7 @@ const resources = {
         fullNameLabel: 'Full Name',
       },
       checkBaggageBlock: {
+        maxWeightTitle: 'Baggage allowance: 40 KG',
         bagTitle: 'Medium bag 1',
         bagDetails: 'Max 70 x 50 x 30 cm',
         weightLabel: 'Weight',

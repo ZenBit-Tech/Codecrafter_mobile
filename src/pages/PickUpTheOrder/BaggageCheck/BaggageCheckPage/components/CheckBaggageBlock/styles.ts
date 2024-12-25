@@ -15,6 +15,15 @@ export const calculatorBlock: SxProps<Theme> = {
   marginBottom: '27px',
 };
 
+export const maxWeightTitle: SxProps<Theme> = {
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.mediumPlus,
+  fontWeight: FONT.fontWeight.large,
+  color: COLORS.schemes.secondary,
+  textAlign: 'center',
+  marginBottom: '10px',
+};
+
 export const bagTitle: SxProps<Theme> = {
   fontFamily: FONT.family,
   fontSize: FONT.fontSize.mediumPlus,

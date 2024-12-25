@@ -12,6 +12,7 @@ import {
   importantText,
   importantTitle,
   inputField,
+  maxWeightTitle,
   weightLabel,
 } from './styles';
 
@@ -20,6 +21,9 @@ import { InputField } from '@/pages/FailedReason/styles';
 export const CheckBaggageBlock: FC = () => {
   return (
     <Box sx={checkBaggageBlock}>
+      <Typography sx={maxWeightTitle}>
+        {t('checkBaggageBlock.maxWeightTitle')}
+      </Typography>
       <Box sx={calculatorBlock}>
         <Typography sx={bagTitle}>{t('checkBaggageBlock.bagTitle')}</Typography>
         <Typography sx={bagDetails}>
