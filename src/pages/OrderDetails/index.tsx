@@ -18,6 +18,7 @@ import {
   failedButtonStyles,
   OrderDetailsWrapper,
 } from './styles';
+import { useGetOrderDetails } from './useGetOrderDetails';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -53,6 +54,10 @@ const OrderDetails: FC = () => {
     setIsCustomerInformed(true);
     toast.success(t('orderDetails.informed'));
   };
+
+  const { orderDetails } = useGetOrderDetails();
+
+  console.log(orderDetails);
 
   return (
     <OrderDetailsWrapper>
