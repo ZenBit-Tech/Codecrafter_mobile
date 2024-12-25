@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { ToastContainer } from 'react-toastify';
 
 import Button from '@/components/Button';
 import BackButton from '@/pages/VerificationPage/components/BackButton';
@@ -53,7 +52,6 @@ const VerificationPage: React.FC = () => {
         onClick={handleSubmit}
         disabled={isLocked}
       />
-      <ToastContainer />
     </Box>
   );
 };
