@@ -22,6 +22,8 @@ import {
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import NavigateButtonModal from '@/components/NavigateButtonModal';
+import { setChoseOrder } from '@/redux/slices/choseOrderSlice';
+import { store } from '@/redux/store';
 
 const OrderDetails: FC = () => {
   const [isCustomerInformed, setIsCustomerInformed] = useState<boolean>(false);
@@ -84,7 +86,10 @@ const OrderDetails: FC = () => {
             variant='contained'
             label='orderDetails.pickup'
             sx={customerInformedStyles}
-            onClick={() => navigate('/app/pre-arrival')}
+            onClick={() => {
+              store.dispatch(setChoseOrder(id ? +id : null));
+              navigate('/app/pre-arrival');
+            }}
           />
         )}
       </ButtonsWrapper>
