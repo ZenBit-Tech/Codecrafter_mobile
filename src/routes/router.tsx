@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
+import BaggageLockingPage from '@/pages/BaggageLoad';
 import ExamplePage from '@/pages/ExamplePage';
 import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
       { path: 'map', element: <RouteDetails /> },
       { path: 'routes', element: <RoutesPage /> },
       { path: 'map/failed', element: <FailedReasonPage /> },
+      { path: 'map/loading', element: <BaggageLockingPage /> },
       {
         path: 'orders',
         element: <OrderPage />,
