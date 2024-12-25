@@ -19,7 +19,7 @@ export const getOrdersLuggages = async (
 ): Promise<LuggageItem[]> => {
   try {
     const response = await axiosInstance.get(
-      `/luggage-images/luggage/${orderId}`
+      `/luggage-images/luggage/get-by-order/${orderId}`
     );
 
     return response.data;
@@ -56,9 +56,7 @@ export const uploadLuggageImage = async (
 
 export const deleteLuggageImage = async (luggageId: number): Promise<void> => {
   try {
-    const response = await axiosInstance.delete(
-      `/luggage-images/luggage/${luggageId}/images`
-    );
+    const response = await axiosInstance.delete(`/luggage-images/${luggageId}`);
 
     toast.success(t('Image successfully deleted'));
 
