@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { t } from 'i18next';
+
 import './Person.css';
 import asd from '@/assets/icons/call.svg';
 
@@ -11,8 +13,8 @@ const Person: FC<Props> = ({ firstName, lastName }) => {
   return (
     <p className='Person'>
       {' '}
-      <img src={asd} alt='asd' /> <br /> First Name : {firstName} , Last Name :{' '}
-      {lastName}
+      <img src={asd} alt='asd' /> <br /> {t('First Name :')} {firstName}{' '}
+      {t(', Last Name :')} {lastName}
     </p>
   );
 };
