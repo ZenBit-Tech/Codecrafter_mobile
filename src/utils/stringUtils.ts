@@ -15,5 +15,5 @@ export const truncateString = (str: string, maxLength: number): string => {
     return str;
   }
 
-  return `${str.slice(0, maxLength)}...`;
+  return `${str.slice(0, maxLength).trim()}...`;
 };
