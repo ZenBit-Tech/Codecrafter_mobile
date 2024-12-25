@@ -86,6 +86,7 @@ const useVerification = (
         setOtp('');
         setIsLocked(true);
         await verifyCode(otp, email)(dispatch);
+        navigate('/app/orders');
       } else {
         toast.error(t('verification.otpInvalid'));
       }
