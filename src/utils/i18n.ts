@@ -356,6 +356,16 @@ const resources = {
           send: 'Send to dispatcher',
         },
       },
+      baggage: {
+        loading: {
+          header: 'Baggage loading',
+          attention: 'Important',
+          description:
+            'Place the covered baggage on the trolley and transfer it to the transport vehicle',
+          back: 'Back',
+          loading: 'Loaded into Vehicle',
+        },
+      },
     },
   },
 };
