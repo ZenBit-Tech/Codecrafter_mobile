@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { t } from 'i18next';
 
 import { DescriptionContainer, Title, TitleRow } from './styles';
+import useBaggageCover from './useBaggageCover';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -13,6 +14,7 @@ import StatusIcon from '@/pages/RouteDetails/components/StatusIcon';
 
 const BaggageCoveringPage: FC = () => {
   const { handleBack } = useBaggageRecord();
+  const { handleNextPage } = useBaggageCover();
 
   return (
     <>
@@ -38,6 +40,7 @@ const BaggageCoveringPage: FC = () => {
             label={t('baggage.cover.cover')}
             variant='colored'
             fullWidth
+            onClick={handleNextPage}
           />
         </ButtonGroup>
       </Container>
