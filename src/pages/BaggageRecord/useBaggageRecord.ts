@@ -44,6 +44,7 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
 
   const fetchLuggageData = async (): Promise<void> => {
     try {
+      // "Replace with a dynamic order ID when connecting"
       const orderId = 4;
       const luggages = await getOrdersLuggages(orderId);
       const formattedPhotos = luggages.map((luggage) => {
