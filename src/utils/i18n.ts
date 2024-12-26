@@ -228,7 +228,7 @@ const resources = {
         dispatcherInfo: 'Dispatcher Information',
         dispatcherName: 'Dispatcher Name',
         failed: 'Failed',
-        luggageSize: 'Luggage Size',
+        luggageSize: 'Luggage Sizes',
         timeSlot: 'Time slot',
         phone: 'Phone',
         pickup: 'Pick up the Order',

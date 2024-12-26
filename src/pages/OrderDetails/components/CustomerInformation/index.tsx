@@ -12,7 +12,6 @@ import {
 } from '@/pages/OrderDetails/components/styles';
 
 interface CustomerInformationProps {
-  bagTitle: string;
   bagSize: string;
   bagWeight: string;
   customerName: string;
@@ -20,7 +19,6 @@ interface CustomerInformationProps {
 }
 
 const CustomerInformation: FC<CustomerInformationProps> = ({
-  bagTitle,
   bagSize,
   bagWeight,
   customerName,
@@ -36,15 +34,14 @@ const CustomerInformation: FC<CustomerInformationProps> = ({
           <CollectionHeading variant='body2'>
             {t('orderDetails.customerName')}:
           </CollectionHeading>
-          <CollectionBody variant='body1'>{bagTitle}</CollectionBody>
-          <CollectionBody variant='body1'>{bagSize}</CollectionBody>
-          <CollectionBody variant='body1'>
-            {t('orderDetails.weight')}: {bagWeight}
-          </CollectionBody>
+          <CollectionBody variant='body1'>{customerName}</CollectionBody>
           <CollectionHeading variant='body2'>
             {t('orderDetails.luggageSize')}:
           </CollectionHeading>
-          <CollectionBody variant='body1'>{customerName}</CollectionBody>
+          <CollectionBody variant='body1'>{bagSize}</CollectionBody>
+          <CollectionHeading variant='body2'>
+            {t('orderDetails.weight')}: {bagWeight}
+          </CollectionHeading>
           <CollectionHeading variant='body2'>
             {t('orderDetails.phone')}:
           </CollectionHeading>

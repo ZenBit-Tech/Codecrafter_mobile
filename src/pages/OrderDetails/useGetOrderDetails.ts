@@ -5,22 +5,23 @@ import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from '@/redux/hooks';
 
-interface OrderDetailsInterface {
-  collection_date: Date;
-  collection_time_start: Date;
-  collection_time_end: Date;
-  collection_address: string;
-  status: string;
-  airport_name: string;
-  flight_id: string;
-  dispatcher: {
-    full_name: string;
-    phone: string;
-  };
-  customer: {
-    id: number;
-    full_name: string;
-  };
+interface TransformedLuggage {
+  luggageType: 'big' | 'small' | 'middle';
+  luggageWeight: number;
+}
+
+export interface OrderDetailsInterface {
+  collectionDate: Date;
+  collectionTimeStart: Date;
+  collectionTimeEnd: Date;
+  collectionAddress: string;
+  airportName: string;
+  flightId: string;
+  customerFullName: string;
+  customerPhoneNumber: string;
+  dispatcherFullName: string;
+  dispatcherPhoneNumber: string;
+  luggages: TransformedLuggage[];
 }
 
 interface UseGetOrderDetailsHook {

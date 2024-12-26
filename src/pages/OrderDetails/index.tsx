@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import dayjs from 'dayjs';
 import { t } from 'i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,7 +10,7 @@ import CollectioInformation from './components/CollectionInformation';
 import CustomerInformation from './components/CustomerInformation';
 import DepartureInformation from './components/DepartureInformation';
 import DispatcherInformation from './components/DispatcherInformation';
-import DispatcherNote from './components/DispatcherNote';
+// import DispatcherNote from './components/DispatcherNote';
 import InformCustomer from './components/InformCustomer';
 import InformModal from './components/InformModal';
 import {
@@ -23,8 +24,10 @@ import { useGetOrderDetails } from './useGetOrderDetails';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import NavigateButtonModal from '@/components/NavigateButtonModal';
+import { DATE_FORMAT } from '@/constants/dateFormats';
 import { setChoseOrder } from '@/redux/slices/choseOrderSlice';
 import { store } from '@/redux/store';
+import { createTimeRange } from '@/utils/createTimeRange';
 
 const OrderDetails: FC = () => {
   const [isCustomerInformed, setIsCustomerInformed] = useState<boolean>(false);
@@ -33,21 +36,6 @@ const OrderDetails: FC = () => {
     useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const testData = {
-    dispatcherName: 'Aleksa',
-    dispatcherPhone: '+49015730000',
-    note: 'Red bag with the glass',
-    orderDate: '07.08.2022',
-    orderTimeSlot: '8:00 - 10:00',
-    orderDepartureAirport: 'Düsseldorf Airport',
-    bagSize: 'Max 70 x 50 x 30 cm',
-    bagWeight: '15 kg',
-    customerName: 'Semuel Garcia',
-    customerPhone: '+49015730000',
-    collectionDate: '06.08.2022',
-    collectionTimeSlot: '14:00 - 15:00',
-    collectionAddress: 'Berlin, Adlerstraße 7',
-  };
 
   const handleInformCustomer = (): void => {
     setIsModalOpened(false);
@@ -56,8 +44,6 @@ const OrderDetails: FC = () => {
   };
 
   const { orderDetails } = useGetOrderDetails();
-
-  console.log(orderDetails);
 
   return (
     <OrderDetailsWrapper>
@@ -98,28 +84,44 @@ const OrderDetails: FC = () => {
         )}
       </ButtonsWrapper>
       <InformCustomer />
-      <CollectioInformation
-        collectionDate={testData.collectionDate}
-        collectionTimeSlot={testData.collectionTimeSlot}
-        collectionAddress={testData.collectionAddress}
-      />
-      <CustomerInformation
-        bagTitle={testData.bagTitle}
-        bagSize={testData.bagSize}
-        bagWeight={testData.bagWeight}
-        customerName={testData.customerName}
-        customerPhone={testData.customerPhone}
-      />
-      <DepartureInformation
-        orderDate={testData.orderDate}
-        orderTimeSlot={testData.orderTimeSlot}
-        orderDepartureAirport={testData.orderDepartureAirport}
-      />
-      <DispatcherInformation
-        dispatcherName={testData.dispatcherName}
-        dispatcherPhone={testData.dispatcherPhone}
-      />
-      {testData.note && <DispatcherNote note={testData.note} />}
+      {orderDetails !== null && (
+        <>
+          <CollectioInformation
+            collectionDate={dayjs(orderDetails?.collectionDate).format(
+              DATE_FORMAT
+            )}
+            collectionTimeSlot={createTimeRange(
+              orderDetails?.collectionTimeStart,
+              orderDetails?.collectionTimeEnd
+            )}
+            collectionAddress={orderDetails.collectionAddress}
+          />
+          <CustomerInformation
+            bagSize={orderDetails?.luggages.reduce((accumulator, luggage) => {
+              return `${accumulator}${luggage.luggageType}, `;
+            }, '')}
+            bagWeight={orderDetails?.luggages
+              .reduce((amount, luggage) => {
+                return amount + luggage.luggageWeight;
+              }, 0)
+              .toString()}
+            customerName={orderDetails.customerFullName}
+            customerPhone={orderDetails.customerPhoneNumber}
+          />
+          <DepartureInformation
+            orderDate={dayjs(orderDetails?.collectionDate).format(DATE_FORMAT)}
+            orderTimeSlot={createTimeRange(
+              orderDetails?.collectionTimeStart,
+              orderDetails?.collectionTimeEnd
+            )}
+            orderDepartureAirport={orderDetails?.airportName}
+          />
+          <DispatcherInformation
+            dispatcherName={orderDetails?.dispatcherFullName}
+            dispatcherPhone={orderDetails?.dispatcherPhoneNumber}
+          />
+        </>
+      )}
       <BottomNavigationBar
         openNavigateModal={() => setIsNavigateModalOpened(true)}
       />
