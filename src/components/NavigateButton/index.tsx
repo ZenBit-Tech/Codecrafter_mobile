@@ -6,8 +6,15 @@ import { buttonStyles } from './styles';
 
 import Button from '@/components/Button';
 import NavigateButtonModal from '@/components/NavigateButtonModal';
+import { driverLocation } from '@/constants/constants';
 
-const NavigateButton: React.FC = () => {
+interface NavigateButtonProps {
+  destination: { lat: number; lng: number } | string;
+}
+
+const NavigateButton: React.FC<NavigateButtonProps> = ({
+  destination,
+}: NavigateButtonProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const toggleModal = (): void => setOpen((prev) => !prev);
 
@@ -20,7 +27,12 @@ const NavigateButton: React.FC = () => {
         sx={buttonStyles}
         onClick={toggleModal}
       />
-      <NavigateButtonModal open={open} handleClose={toggleModal} />
+      <NavigateButtonModal
+        open={open}
+        handleClose={toggleModal}
+        destination={destination}
+        origin={driverLocation}
+      />
     </>
   );
 };

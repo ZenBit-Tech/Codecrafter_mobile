@@ -16,13 +16,19 @@ const RouteActionButtons: React.FC = () => {
   const isRouteOnTime: boolean = useAppSelector(
     (state) => state.route.route?.status === RouteStatuses.ON_TIME
   );
+  const { validAddresses } = useAppSelector((state) => state.route);
 
   const toggleModal = (): void => setOpen((prev) => !prev);
 
   return (
     <Box>
       {isRouteOnTime ? (
-        <NavigateButton />
+        <NavigateButton
+          destination={{
+            lat: validAddresses[0].lat,
+            lng: validAddresses[0].lng,
+          }}
+        />
       ) : (
         <>
           <Button

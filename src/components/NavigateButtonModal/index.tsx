@@ -1,31 +1,70 @@
 import { Button, Typography } from '@mui/material';
 import { t } from 'i18next';
+import { toast } from 'react-toastify';
 
 import { googleMapsButtonStyles } from './styles';
 
 import Modal from '@/components/Modal';
 import { IModalProps } from '@/interfaces/Modal';
+import {
+  createGoogleMapsUrl,
+  formatLocationParam,
+  isMobileDevice,
+} from '@/utils/googleMapsUtils';
 
-const NavigateButtonModal: React.FC<IModalProps> = ({
+interface GoogleMapsButtonProps extends IModalProps {
+  destination: { lat: number; lng: number } | string | undefined;
+  origin?: { lat: number; lng: number } | string | undefined;
+}
+
+const NavigateButtonModal: React.FC<GoogleMapsButtonProps> = ({
   open,
   handleClose,
-}: IModalProps) => {
+  destination,
+  origin,
+}: GoogleMapsButtonProps) => {
+  const handleNavigation = (): void => {
+    if (!destination) {
+      toast.error(t('Destination address is not defined! Please try again'));
+      handleClose();
+
+      return;
+    }
+
+    const destinationParam = formatLocationParam(destination, 'destination');
+    const originParam = origin ? formatLocationParam(origin, 'origin') : '';
+    const isMobile = isMobileDevice();
+    const mapsUrl = createGoogleMapsUrl(
+      destinationParam,
+      isMobile,
+      originParam
+    );
+
+    handleClose();
+    window.open(mapsUrl, '_blank');
+  };
+
   return (
     <Modal
       open={open}
       title={t('modal.modalTitle')}
       description={
-        <div>
+        <>
           <Typography>{t('modal.modalConfirmation')}</Typography>
           <Typography>{t('modal.modalAttention')}</Typography>
-        </div>
+        </>
       }
       actions={
         <>
           <Button fullWidth onClick={handleClose} variant='text'>
             {t('modal.cancel')}
           </Button>
-          <Button fullWidth variant='contained' sx={googleMapsButtonStyles}>
+          <Button
+            fullWidth
+            variant='contained'
+            sx={googleMapsButtonStyles}
+            onClick={handleNavigation}
+          >
             {t('modal.modalGoogleMaps')}
           </Button>
         </>

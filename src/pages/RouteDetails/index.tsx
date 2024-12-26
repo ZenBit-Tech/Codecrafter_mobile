@@ -18,17 +18,16 @@ import { Address } from '@/types/route';
 
 const RouteDetails: React.FC = () => {
   const [isMapExpanded, setIsMapExpanded] = useState<boolean>(false);
-  const { isRouteLoading, currentRouteId } = useAppSelector(
+  const { isRouteLoading, currentRouteId, driverAddress } = useAppSelector(
     (state) => state.route
   );
 
-  const { memoizedAddresses, driverAddresses, isLoading, route } =
-    useFetchAndProcessRoute();
+  const { memoizedAddresses, isLoading, route } = useFetchAndProcessRoute();
 
   const toggleMapExpand = (): void => setIsMapExpanded((prev) => !prev);
 
   if (!currentRouteId) {
-    toast.error(t('routes.errorNotSelectedRoute'));
+    toast.warn(t('routes.errorNotSelectedRoute'));
   }
 
   if (isLoading || isRouteLoading) {
@@ -45,7 +44,7 @@ const RouteDetails: React.FC = () => {
       <Box sx={containerStyles}>
         {isMapExpanded ? (
           <MapView
-            addresses={[driverAddresses as Address, ...memoizedAddresses]}
+            addresses={[driverAddress as Address, ...memoizedAddresses]}
             isExpanded
             onDoubleClick={toggleMapExpand}
             onClose={toggleMapExpand}
@@ -53,7 +52,7 @@ const RouteDetails: React.FC = () => {
         ) : (
           <>
             <MapView
-              addresses={[driverAddresses as Address, ...memoizedAddresses]}
+              addresses={[driverAddress as Address, ...memoizedAddresses]}
               onDoubleClick={toggleMapExpand}
             />
             <AddressList addresses={memoizedAddresses} />
