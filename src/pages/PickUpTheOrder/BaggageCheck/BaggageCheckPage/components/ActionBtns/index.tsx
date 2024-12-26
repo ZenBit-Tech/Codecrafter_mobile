@@ -12,6 +12,9 @@ import {
 } from './styles';
 
 import Button from '@/components/Button';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useAppSelector } from '@/redux/hooks';
 
 interface ActionBtnsProps {
   isDisabled: boolean;
@@ -19,6 +22,8 @@ interface ActionBtnsProps {
 
 export const ActionBtns: FC<ActionBtnsProps> = ({ isDisabled }) => {
   const navigate = useNavigate();
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { changeOrderStatus } = useChangeOrderStatus();
 
   return (
     <Box sx={actionBtnsContainer}>
@@ -33,7 +38,13 @@ export const ActionBtns: FC<ActionBtnsProps> = ({ isDisabled }) => {
         label={t('Confirm')}
         variant='colored'
         disabled={isDisabled}
-        onClick={() => navigate('/app/prohibited-items')}
+        onClick={() => {
+          changeOrderStatus(
+            orderId ? +orderId : 0,
+            OrderStatuses.BAGGAGE_CONFIRMED
+          );
+          navigate('/app/prohibited-items');
+        }}
       />
     </Box>
   );

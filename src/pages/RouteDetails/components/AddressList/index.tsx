@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box, Typography } from '@mui/material';
 import { t } from 'i18next';
+import { useNavigate } from 'react-router-dom';
 
 import {
   addressBoxStyles,
@@ -21,13 +22,20 @@ interface AddressListProps {
 const AddressList: React.FC<AddressListProps> = ({
   addresses,
 }: AddressListProps) => {
+  const navigate = useNavigate();
   const { lineRef, iconRefs } = useDottedLine();
 
   return (
     <Box sx={{ position: 'relative', marginBottom: 2 }}>
       <Box ref={lineRef} sx={lineStyles} />
       {addresses.map((item, index) => (
-        <Box key={item.id} sx={addressBoxStyles}>
+        <Box
+          key={item.id}
+          sx={addressBoxStyles}
+          onClick={() => {
+            navigate(`../orders/${item.id}`);
+          }}
+        >
           <Box
             ref={(el) => {
               if (el instanceof HTMLDivElement && iconRefs.current)

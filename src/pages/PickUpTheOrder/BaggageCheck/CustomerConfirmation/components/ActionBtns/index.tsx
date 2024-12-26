@@ -7,9 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { actionBtnsContainer, backButtonStyles, buttonStyles } from './styles';
 
 import Button from '@/components/Button';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useAppSelector } from '@/redux/hooks';
 
 export const ActionBtns: FC = () => {
   const navigate = useNavigate();
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { changeOrderStatus } = useChangeOrderStatus();
 
   return (
     <Box sx={actionBtnsContainer}>
@@ -23,7 +28,13 @@ export const ActionBtns: FC = () => {
         sx={buttonStyles}
         label={t('Confirm')}
         variant='colored'
-        onClick={() => navigate('/app/identity-verification')}
+        onClick={() => {
+          changeOrderStatus(
+            orderId ? +orderId : 0,
+            OrderStatuses.CUSTOMER_CONFIRMED
+          );
+          navigate('/app/identity-verification');
+        }}
       />
     </Box>
   );

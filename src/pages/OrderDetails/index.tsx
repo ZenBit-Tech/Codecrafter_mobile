@@ -10,7 +10,6 @@ import CollectioInformation from './components/CollectionInformation';
 import CustomerInformation from './components/CustomerInformation';
 import DepartureInformation from './components/DepartureInformation';
 import DispatcherInformation from './components/DispatcherInformation';
-// import DispatcherNote from './components/DispatcherNote';
 import InformCustomer from './components/InformCustomer';
 import InformModal from './components/InformModal';
 import {
@@ -25,6 +24,8 @@ import Button from '@/components/Button';
 import Header from '@/components/Header';
 import NavigateButtonModal from '@/components/NavigateButtonModal';
 import { DATE_FORMAT } from '@/constants/dateFormats';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
 import { setChoseOrder } from '@/redux/slices/choseOrderSlice';
 import { store } from '@/redux/store';
 import { createTimeRange } from '@/utils/createTimeRange';
@@ -37,9 +38,12 @@ const OrderDetails: FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const { changeOrderStatus } = useChangeOrderStatus();
+
   const handleInformCustomer = (): void => {
     setIsModalOpened(false);
     setIsCustomerInformed(true);
+    changeOrderStatus(id ? +id : 0, OrderStatuses.CUSTOMER_INFORMED);
     toast.success(t('orderDetails.informed'));
   };
 
