@@ -362,6 +362,29 @@ const resources = {
             'An error occurred while submitting the failure reason.',
         },
       },
+      baggage: {
+        record: {
+          header: 'Baggage recording',
+          title: 'Take photos of baggage for record-keeping',
+          photo: 'Take the photo',
+          back: 'Back',
+          record: 'Baggage recorded',
+          noUploaded: 'Upload photo from your gallery',
+          deleteConfirmationTitle: 'Delete the photo',
+          deleteConfirmationDescription:
+            'Are you sure want to proceed? Changes cannot be reverted.',
+          cancel: 'Cancel',
+          confirm: 'Confirm',
+        },
+        cover: {
+          header: 'Baggage covering',
+          attention: 'Important',
+          description:
+            'Cover the baggage with Smartporters protective cover in the presence of the customer',
+          back: 'Back',
+          cover: 'Baggage covered',
+        },
+      },
     },
   },
 };

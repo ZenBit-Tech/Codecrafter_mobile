@@ -7,6 +7,9 @@ export const reasonOther = `${tBase}.reasons.other`;
 export const minLetters = 10;
 export const maxLetters = 5000;
 
+export const iconLabel = 'Info';
+export const iconSize = 20;
+
 export const driverLocation = 'New York';
 
 export const SUCCESS_STATUS = 201;

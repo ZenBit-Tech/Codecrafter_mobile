@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
+import BaggageCoveringPage from '@/pages/BaggageCover';
+import BaggageRecordingPage from '@/pages/BaggageRecord';
 import ExamplePage from '@/pages/ExamplePage';
 import FailedReasonPage from '@/pages/FailedReason';
 import MainPage from '@/pages/MainPage';
@@ -58,6 +60,8 @@ const router = createBrowserRouter([
       { path: 'map', element: <RouteDetails /> },
       { path: 'routes', element: <RoutesPage /> },
       { path: 'map/failed/:id', element: <FailedReasonPage /> },
+      { path: 'map/recording', element: <BaggageRecordingPage /> },
+      { path: 'map/covering', element: <BaggageCoveringPage /> },
       {
         path: 'orders',
         element: <OrderPage />,
