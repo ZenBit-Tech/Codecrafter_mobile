@@ -31,9 +31,16 @@ const NavigateButtonModal: React.FC<GoogleMapsButtonProps> = ({
       return;
     }
 
-    const destinationParam = formatLocationParam(destination, 'destination');
-    const originParam = origin ? formatLocationParam(origin, 'origin') : '';
     const isMobile = isMobileDevice();
+    let destinationParam;
+
+    if (isMobile) {
+      destinationParam = destination;
+    } else {
+      destinationParam = formatLocationParam(destination, 'destination');
+    }
+
+    const originParam = origin ? formatLocationParam(origin, 'origin') : '';
     const mapsUrl = createGoogleMapsUrl(
       destinationParam,
       isMobile,

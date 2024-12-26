@@ -18,16 +18,22 @@ export const formatLocationParam = (
 };
 
 export const createGoogleMapsUrl = (
-  destination: string,
+  destination: { lat: number; lng: number } | string,
   isMobile: boolean,
-  origin: string = ''
+  origin?: string
 ): string => {
   if (isMobile) {
-    return `google.navigation:${destination}${origin}`;
+    if (typeof destination === 'string') {
+      return `google.navigation:q=${destination}`;
+    }
+    const { lat, lng } = destination;
+
+    return `google.navigation:q=${lat},${lng}`;
   }
 
   const baseUrl = 'https://www.google.com/maps/dir/?api=1';
   const travelMode = 'travelmode=driving';
+  const originParam = origin ? `&${origin}` : '';
 
-  return `${baseUrl}&${destination}&${origin}&${travelMode}`;
+  return `${baseUrl}&${destination}${originParam}&${travelMode}`;
 };

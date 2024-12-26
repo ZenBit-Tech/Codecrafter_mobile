@@ -21,9 +21,9 @@ describe('Google Maps Utilities', () => {
   });
 
   test('creates mobile Google Maps URL', () => {
-    const url = createGoogleMapsUrl('destination=37.7749,-122.4194', true, '');
+    const url = createGoogleMapsUrl({ lat: 37.7749, lng: -122.4194 }, true, '');
 
-    expect(url).toBe('google.navigation:destination=37.7749,-122.4194');
+    expect(url).toBe('google.navigation:q=37.7749,-122.4194');
   });
 
   test('creates desktop Google Maps URL', () => {
