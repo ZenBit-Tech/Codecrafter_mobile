@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-import { logout } from '@/redux/slices/authSlice';
 import { setCurrentRouteId } from '@/redux/slices/routeSlice';
+import { openModal } from '@/redux/slices/tokenModalSlice';
 import { store } from '@/redux/store';
-import { history } from '@/utils/history';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL || 'http://localhost:4000',
@@ -14,7 +13,7 @@ axiosInstance.interceptors.request.use(
     const accessToken = store.getState().auth.token;
 
     if (accessToken) {
-      config.headers.Authorization = `${accessToken}`;
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
 
     return config;
@@ -29,8 +28,7 @@ axiosInstance.interceptors.response.use(
 
     if (error.response && error.response.status === unauthorizedStatus) {
       store.dispatch(setCurrentRouteId(null));
-      store.dispatch(logout());
-      history.push('/');
+      store.dispatch(openModal());
     }
 
     return Promise.reject(error);

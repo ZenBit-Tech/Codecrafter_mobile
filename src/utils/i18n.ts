@@ -152,6 +152,10 @@ const resources = {
         unknownError: 'An unknown error occurred.',
         invalidExpiredVerificationCode: 'Invalid or expired verification code.',
         verificationError: 'Code expired or not found. Please try again.',
+        missingEmail: 'User email is missing',
+        tokenTitle: 'Token Expired',
+        tokenDescription: 'Your Confirmation token was expired. ',
+        buttonText: 'Send confirmation code again',
       },
       signin: {
         welcomeMessage: 'Welcome to CodeCrafters!',

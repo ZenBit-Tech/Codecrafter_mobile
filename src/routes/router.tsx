@@ -40,11 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/verification',
-    element: (
-      <RestrictedRoute>
-        <VerificationPage />
-      </RestrictedRoute>
-    ),
+    element: <VerificationPage />,
   },
   {
     path: '/app',
