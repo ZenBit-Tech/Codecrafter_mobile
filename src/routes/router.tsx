@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
 import BaggageCoveringPage from '@/pages/BaggageCover';
+import BaggageLockingPage from '@/pages/BaggageLoad';
 import BaggageRecordingPage from '@/pages/BaggageRecord';
 import ExamplePage from '@/pages/ExamplePage';
 import FailedReasonPage from '@/pages/FailedReason';
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
       { path: 'map/failed/:id', element: <FailedReasonPage /> },
       { path: 'map/recording', element: <BaggageRecordingPage /> },
       { path: 'map/covering', element: <BaggageCoveringPage /> },
+      { path: 'map/loading', element: <BaggageLockingPage /> },
       {
         path: 'orders',
         element: <OrderPage />,

@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { t } from 'i18next';
 
 import { DescriptionContainer, Title, TitleRow } from './styles';
-import useBaggageCover from './useBaggageCover';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -14,33 +13,31 @@ import StatusIcon from '@/pages/RouteDetails/components/StatusIcon';
 
 const BaggageCoveringPage: FC = () => {
   const { handleBack } = useBaggageRecord();
-  const { handleNextPage } = useBaggageCover();
 
   return (
     <>
-      <Header pageName={t('baggage.cover.header')} hasBackIcon />
+      <Header pageName={t('baggage.loading.header')} hasBackIcon />
       <Container>
         <TitleRow>
           <StatusIcon status={iconLabel} />
-          <Title variant='h2'>{t('baggage.cover.attention')}</Title>
+          <Title variant='h2'>{t('baggage.loading.attention')}</Title>
         </TitleRow>
 
         <DescriptionContainer variant='body1'>
-          {t('baggage.cover.description')}
+          {t('baggage.loading.description')}
         </DescriptionContainer>
 
         <ButtonGroup>
           <Button
-            label={t('baggage.cover.back')}
+            label={t('baggage.loading.back')}
             variant='linedGrey'
             fullWidth
             onClick={handleBack}
           />
           <Button
-            label={t('baggage.cover.cover')}
+            label={t('baggage.loading.loading')}
             variant='colored'
             fullWidth
-            onClick={handleNextPage}
           />
         </ButtonGroup>
       </Container>
