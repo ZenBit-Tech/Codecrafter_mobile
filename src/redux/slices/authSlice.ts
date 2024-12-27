@@ -16,6 +16,7 @@ export interface AuthState {
     createdAt: string;
     updatedAt: string;
   } | null;
+  isLoading: boolean;
 }
 
 const initialState: AuthState = {
@@ -23,6 +24,7 @@ const initialState: AuthState = {
   role: null,
   isAuthenticated: false,
   user: null,
+  isLoading: false,
 };
 
 const authSlice = createSlice({
@@ -48,8 +50,11 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.user = null;
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { setAccessToken, logout } = authSlice.actions;
+export const { setAccessToken, logout, setIsLoading } = authSlice.actions;
 export default persistReducer(persistAuthConfig, authSlice.reducer);
