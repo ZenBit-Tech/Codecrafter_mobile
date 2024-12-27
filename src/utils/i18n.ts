@@ -52,7 +52,7 @@ const resources = {
           smartphone: 'Smartphone',
           scale: 'Scale for weighing baggage',
           baggageCovers: 'Baggage covers',
-          smartLock: 'Smartporters‘ Smart lock',
+          smartLock: 'CodeCrafters Smart lock',
           cleanVest: 'Clean Vest with logos',
           idBadge: 'ID badge',
           prohibitedItemsList: 'Printed list of prohibited items with pictures',
@@ -154,7 +154,7 @@ const resources = {
         verificationError: 'Code expired or not found. Please try again.',
       },
       signin: {
-        welcomeMessage: 'Welcome to Smartporters!',
+        welcomeMessage: 'Welcome to CodeCrafters!',
         instructions: 'Please sign in to your account and start the delivery',
         email: 'Email',
         submit: 'Sign In',
@@ -380,7 +380,7 @@ const resources = {
           header: 'Baggage covering',
           attention: 'Important',
           description:
-            'Cover the baggage with Smartporters protective cover in the presence of the customer',
+            'Cover the baggage with CodeCrafters protective cover in the presence of the customer',
           back: 'Back',
           cover: 'Baggage covered',
         },
