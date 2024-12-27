@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import { format } from 'date-fns';
 import { t } from 'i18next';
@@ -8,24 +8,25 @@ import { geocodeAddress } from '@/api/routeActions';
 import { driverLocation } from '@/constants/constants';
 import { FULL_TIME } from '@/constants/dateFormats';
 import { OrderStatuses } from '@/constants/status';
+import { useAppDispatch } from '@/redux/hooks';
+import {
+  setDriverAddress,
+  setIsAddressesLoading,
+  setValidAddresses,
+} from '@/redux/slices/routeSlice';
 import { Address, RouteInform } from '@/types/route';
 
 export const useProcessAddresses = (
   route: RouteInform
 ): {
   processAddresses: () => Promise<void>;
-  addresses: Address[];
-  isAddressesLoading: boolean;
-  driverAddresses: Address | undefined;
 } => {
-  const [addresses, setAddresses] = useState<Address[]>([]);
-  const [driverAddresses, setDriverAddresses] = useState<Address>();
-  const [isAddressesLoading, setIsAddressesLoading] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const processAddresses = useCallback(async () => {
     if (!route) return;
 
-    setIsAddressesLoading(true);
+    dispatch(setIsAddressesLoading(true));
     try {
       const driverLocationData = await geocodeAddress(driverLocation);
 
@@ -64,27 +65,22 @@ export const useProcessAddresses = (
         })
       );
 
-      const validAddresses = geocodedAddresses
-        .filter(
-          (
-            address
-          ): address is Address & {
-            collectionTimeStart: Date;
-          } => !!address
-        )
-        .sort(
-          (a, b) =>
-            a.collectionTimeStart.getHours() - b.collectionTimeStart.getHours()
-        );
+      const validAddresses = geocodedAddresses.filter(
+        (
+          address
+        ): address is Address & {
+          collectionTimeStart: Date;
+        } => !!address
+      );
 
-      setAddresses(validAddresses);
-      setDriverAddresses(driverAddress);
+      dispatch(setValidAddresses(validAddresses));
+      dispatch(setDriverAddress(driverAddress));
     } catch (error) {
       toast.error(t('routes.errorFetchingAddresses'));
     } finally {
-      setIsAddressesLoading(false);
+      dispatch(setIsAddressesLoading(false));
     }
-  }, [route]);
+  }, [dispatch, route]);
 
-  return { processAddresses, addresses, isAddressesLoading, driverAddresses };
+  return { processAddresses };
 };

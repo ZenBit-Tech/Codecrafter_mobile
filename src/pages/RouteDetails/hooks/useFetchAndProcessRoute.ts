@@ -8,21 +8,20 @@ import { Address, RouteInform } from '@/types/route';
 
 interface UseFetchAndProcessRouteResult {
   memoizedAddresses: Address[];
-  driverAddresses: Address | undefined;
   isLoading: boolean;
   route: RouteInform | null;
 }
 
 export const useFetchAndProcessRoute = (): UseFetchAndProcessRouteResult => {
   const user = useAppSelector((state) => state.auth.user);
-  const { route, currentRouteId } = useAppSelector((state) => state.route);
+  const { validAddresses, isAddressesLoading, route, currentRouteId } =
+    useAppSelector((state) => state.route);
 
   const { fetchRoute, isRouteLoading } = useFetchRoute(
     user?.id,
     Number(currentRouteId)
   );
-  const { processAddresses, addresses, isAddressesLoading, driverAddresses } =
-    useProcessAddresses(route as RouteInform);
+  const { processAddresses } = useProcessAddresses(route as RouteInform);
 
   useEffect(() => {
     fetchRoute().catch((error) => {
@@ -36,8 +35,8 @@ export const useFetchAndProcessRoute = (): UseFetchAndProcessRouteResult => {
     });
   }, [processAddresses]);
 
-  const memoizedAddresses = useMemo(() => addresses, [addresses]);
+  const memoizedAddresses = useMemo(() => validAddresses, [validAddresses]);
   const isLoading = isRouteLoading || isAddressesLoading;
 
-  return { memoizedAddresses, driverAddresses, isLoading, route };
+  return { memoizedAddresses, isLoading, route };
 };
