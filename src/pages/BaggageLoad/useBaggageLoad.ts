@@ -14,8 +14,8 @@ const useBaggageCover = (): UseBaggageCoverReturn => {
   const { changeOrderStatus } = useChangeOrderStatus();
 
   const handleNextPage = (): void => {
-    changeOrderStatus(orderId ? +orderId : 0, OrderStatuses.BAGGAGE_COVERED);
-    navigate('/app/map/loading');
+    changeOrderStatus(orderId ? +orderId : 0, OrderStatuses.COMPLETED);
+    navigate('/app/map/');
   };
 
   return {

@@ -8,6 +8,9 @@ import {
   getOrdersLuggages,
   uploadLuggageImage,
 } from '@/api/baggageActions';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useAppSelector } from '@/redux/hooks';
 import { truncateString } from '@/utils/stringUtils';
 
 interface PhotoItem {
@@ -41,12 +44,12 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
   const [isReadyForNextPage, setIsReadyForNextPage] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { changeOrderStatus } = useChangeOrderStatus();
 
   const fetchLuggageData = async (): Promise<void> => {
     try {
-      // TODO "Replace with a dynamic order ID when connecting"
-      const orderId = 4;
-      const luggages = await getOrdersLuggages(orderId);
+      const luggages = await getOrdersLuggages(orderId || 0);
       const formattedPhotos = luggages.map((luggage) => {
         const fullImagePath = luggage.imgs[0]?.link || '';
         const fileName = fullImagePath.split('\\').pop() || '';
@@ -134,6 +137,7 @@ const useBaggageRecord = (): UseBaggageRecordReturn => {
   };
 
   const handleNextPage = (): void => {
+    changeOrderStatus(orderId ? +orderId : 0, OrderStatuses.BAGGAGE_RECORDED);
     navigate('/app/map/covering');
   };
 

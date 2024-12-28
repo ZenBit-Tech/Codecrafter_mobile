@@ -33,7 +33,7 @@ export const ActionBtns: FC = () => {
             orderId ? +orderId : 0,
             OrderStatuses.CUSTOMER_CONFIRMED
           );
-          navigate('/app/identity-verification');
+          navigate('/app/map/recording');
         }}
       />
     </Box>
