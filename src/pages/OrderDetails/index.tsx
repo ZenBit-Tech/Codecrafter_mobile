@@ -31,6 +31,7 @@ import { store } from '@/redux/store';
 import { createTimeRange } from '@/utils/createTimeRange';
 
 const OrderDetails: FC = () => {
+  const { orderDetails } = useGetOrderDetails();
   const [isCustomerInformed, setIsCustomerInformed] = useState<boolean>(false);
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
   const [isNavigateModalOpened, setIsNavigateModalOpened] =
@@ -46,8 +47,6 @@ const OrderDetails: FC = () => {
     changeOrderStatus(id ? +id : 0, OrderStatuses.CUSTOMER_INFORMED);
     toast.success(t('orderDetails.informed'));
   };
-
-  const { orderDetails } = useGetOrderDetails();
 
   return (
     <OrderDetailsWrapper>
@@ -68,7 +67,9 @@ const OrderDetails: FC = () => {
           sx={failedButtonStyles}
           onClick={() => navigate(`/app/map/failed/${id}`)}
         />
-        {!isCustomerInformed ? (
+
+        {!isCustomerInformed &&
+        orderDetails?.status !== OrderStatuses.CUSTOMER_INFORMED ? (
           <Button
             variant='contained'
             label='orderDetails.customerInformed'

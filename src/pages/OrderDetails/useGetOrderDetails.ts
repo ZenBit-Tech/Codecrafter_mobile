@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+import { OrderStatuses } from '@/constants/status';
 import { useAppSelector } from '@/redux/hooks';
 
 interface TransformedLuggage {
@@ -12,6 +13,7 @@ interface TransformedLuggage {
 
 export interface OrderDetailsInterface {
   collectionDate: Date;
+  status: OrderStatuses;
   collectionTimeStart: Date;
   collectionTimeEnd: Date;
   collectionAddress: string;
