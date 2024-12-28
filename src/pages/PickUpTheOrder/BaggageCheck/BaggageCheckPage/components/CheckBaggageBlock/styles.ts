@@ -59,6 +59,11 @@ export const totalWeightCount: SxProps<Theme> = {
   fontWeight: FONT.fontWeight.medium,
 };
 
+export const weightInputContainer: SxProps<Theme> = {
+  display: 'flex',
+  alignItems: 'center',
+};
+
 export const weightLabel: SxProps<Theme> = {
   paddingLeft: '10px',
   fontFamily: FONT.family,

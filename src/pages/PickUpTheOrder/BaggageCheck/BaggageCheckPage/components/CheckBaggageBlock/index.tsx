@@ -15,6 +15,7 @@ import {
   maxWeightTitle,
   totalWeightCount,
   totalWeightTitle,
+  weightInputContainer,
   weightLabel,
 } from './styles';
 import { useGetCountOfLuggages } from './useGetCountOfLuggages';
@@ -24,11 +25,13 @@ import { InputField } from '@/pages/FailedReason/styles';
 interface CheckBaggageProps {
   weight: number;
   calculateWeight: () => void;
+  inputRef: React.RefObject<HTMLDivElement>;
 }
 
 export const CheckBaggageBlock: FC<CheckBaggageProps> = ({
   weight,
   calculateWeight,
+  inputRef,
 }) => {
   const { luggages } = useGetCountOfLuggages();
 
@@ -37,7 +40,7 @@ export const CheckBaggageBlock: FC<CheckBaggageProps> = ({
       <Typography sx={maxWeightTitle}>
         {t('checkBaggageBlock.maxWeightTitle')}
       </Typography>
-      <Box sx={calculatorBlock}>
+      <Box sx={calculatorBlock} ref={inputRef}>
         {luggages.length > 0 &&
           luggages.map((luggage, index) => (
             <Box key={luggage.id}>
@@ -47,7 +50,7 @@ export const CheckBaggageBlock: FC<CheckBaggageProps> = ({
               <Typography sx={bagDetails}>
                 {t('checkBaggageBlock.bagDetails')}
               </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box sx={weightInputContainer}>
                 <Typography sx={weightLabel}>
                   {t('checkBaggageBlock.weightLabel')}
                 </Typography>
