@@ -58,6 +58,7 @@ const OrderDetails: FC = () => {
       <NavigateButtonModal
         open={isNavigateModalOpened}
         handleClose={() => setIsNavigateModalOpened(false)}
+        destination={undefined}
       />
       <Header hasBackIcon pageName={`${t('orders.orderNo')} ${id}`} />
       <ButtonsWrapper>
