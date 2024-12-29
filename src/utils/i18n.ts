@@ -71,6 +71,7 @@ const resources = {
         fullNameLabel: 'Full Name',
       },
       checkBaggageBlock: {
+        maxWeightTitle: 'Baggage allowance: 40 KG',
         bagTitle: 'Medium bag 1',
         bagDetails: 'Max 70 x 50 x 30 cm',
         weightLabel: 'Weight',
@@ -227,7 +228,7 @@ const resources = {
         dispatcherInfo: 'Dispatcher Information',
         dispatcherName: 'Dispatcher Name',
         failed: 'Failed',
-        luggageSize: 'Luggage Size',
+        luggageSize: 'Luggage Sizes',
         timeSlot: 'Time slot',
         phone: 'Phone',
         pickup: 'Pick up the Order',

@@ -12,6 +12,9 @@ import {
 } from './styles';
 
 import Button from '@/components/Button';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useAppSelector } from '@/redux/hooks';
 
 interface ActionBtnsInterface {
   isNextBtnDisabled: boolean;
@@ -19,6 +22,8 @@ interface ActionBtnsInterface {
 
 export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
   const navigate = useNavigate();
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { changeOrderStatus } = useChangeOrderStatus();
 
   return (
     <Box sx={actionBtnsContainer}>
@@ -33,7 +38,13 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
         label={t('boardingPass.actionPanel.identityVerified')}
         variant='colored'
         disabled={!isNextBtnDisabled}
-        onClick={() => navigate('/app/boarding-pass-verification')}
+        onClick={() => {
+          changeOrderStatus(
+            orderId ? +orderId : 0,
+            OrderStatuses.IDENTITY_VERIFIED
+          );
+          navigate('/app/boarding-pass-verification');
+        }}
       />
     </Box>
   );

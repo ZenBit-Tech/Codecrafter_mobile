@@ -14,6 +14,7 @@ const ProfilePicture: FC<{ isLarge?: boolean }> = ({ isLarge }) => {
   return (
     <Avatar
       sx={{
+        // TODO replace by util
         width: isLarge ? '90px' : '38px',
         height: isLarge ? '90px' : '38px',
         bgcolor: COLORS.transparentViolet,

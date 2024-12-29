@@ -6,7 +6,7 @@ import { FONT } from '@/constants/font';
 export const checkBaggageBlock: SxProps<Theme> = { marginTop: '87px' };
 
 export const calculatorBlock: SxProps<Theme> = {
-  height: '175px',
+  height: 'auto',
   padding: '10px 3px',
   border: `1px solid ${COLORS.schemes.outlineVariant}`,
   width: '93vw',
@@ -15,12 +15,22 @@ export const calculatorBlock: SxProps<Theme> = {
   marginBottom: '27px',
 };
 
+export const maxWeightTitle: SxProps<Theme> = {
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.mediumPlus,
+  fontWeight: FONT.fontWeight.large,
+  color: COLORS.schemes.secondary,
+  textAlign: 'center',
+  marginBottom: '10px',
+};
+
 export const bagTitle: SxProps<Theme> = {
   fontFamily: FONT.family,
   fontSize: FONT.fontSize.mediumPlus,
   fontWeight: FONT.fontWeight.large,
   color: COLORS.schemes.secondary,
   marginLeft: '10px',
+  textTransform: 'capitalize',
 };
 
 export const bagDetails: SxProps<Theme> = {
@@ -29,6 +39,29 @@ export const bagDetails: SxProps<Theme> = {
   fontWeight: FONT.fontWeight.medium,
   color: COLORS.schemes.outline,
   marginLeft: '10px',
+};
+
+export const totalWeightTitle: SxProps<Theme> = {
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.mediumPlus,
+  fontWeight: FONT.fontWeight.medium,
+  color: COLORS.schemes.secondary,
+};
+
+export const totalWeightCount: SxProps<Theme> = {
+  width: '67px',
+  color: COLORS.white,
+  backgroundColor: COLORS.purple,
+  padding: '10px',
+  borderRadius: '20px',
+  fontFamily: FONT.family,
+  fontSize: FONT.fontSize.mediumPlus,
+  fontWeight: FONT.fontWeight.medium,
+};
+
+export const weightInputContainer: SxProps<Theme> = {
+  display: 'flex',
+  alignItems: 'center',
 };
 
 export const weightLabel: SxProps<Theme> = {

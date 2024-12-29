@@ -15,6 +15,13 @@ export const buttonStyles: SxProps<Theme> = {
   height: '40px',
 };
 
+export const disabledBtn: SxProps<Theme> = {
+  backgroundColor: COLORS.schemes.outlineVariant,
+  color: `${COLORS.white} !important`,
+  width: '183px',
+  height: '40px',
+};
+
 export const backButtonStyles: SxProps<Theme> = {
   ...buttonStyles,
   borderColor: COLORS.schemes.secondary,

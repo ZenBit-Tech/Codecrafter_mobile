@@ -14,6 +14,9 @@ import {
 import { useVerifyRequest } from './useVerifyRequest';
 
 import Button from '@/components/Button';
+import { OrderStatuses } from '@/constants/status';
+import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useAppSelector } from '@/redux/hooks';
 
 interface ActionBtnsInterface {
   isNextBtnDisabled: boolean;
@@ -23,6 +26,8 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
   const navigate = useNavigate();
   const { verifyRequest, isVerified, isOngoing, isVerifiedSuccessfully } =
     useVerifyRequest();
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { changeOrderStatus } = useChangeOrderStatus();
 
   return (
     <Box sx={isOngoing ? actionBtnsContainerLoading : actionBtnsContainer}>
@@ -52,7 +57,13 @@ export const ActionBtns: FC<ActionBtnsInterface> = ({ isNextBtnDisabled }) => {
               }
               variant='colored'
               disabled={!isNextBtnDisabled}
-              onClick={() => navigate('/app/baggage-verification')}
+              onClick={() => {
+                changeOrderStatus(
+                  orderId ? +orderId : 0,
+                  OrderStatuses.BOARDING_PASS_VERIFIED
+                );
+                navigate('/app/baggage-verification');
+              }}
             />
           )}
         </>
