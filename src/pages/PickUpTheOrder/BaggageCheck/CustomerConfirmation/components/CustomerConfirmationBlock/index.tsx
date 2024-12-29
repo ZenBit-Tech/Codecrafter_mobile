@@ -13,9 +13,9 @@ import {
   signatureBox,
   textField,
 } from './styles';
-import { useCustomerConfirm } from './useCustomerConfirm';
 
 import Button from '@/components/Button';
+import { useCustomerConfirm } from '@/pages/PickUpTheOrder/BaggageCheck/CustomerConfirmation/useCustomerConfirm';
 
 export const CustomerConfirmationBlock: FC = () => {
   const { handleRemove, setSign } = useCustomerConfirm();
