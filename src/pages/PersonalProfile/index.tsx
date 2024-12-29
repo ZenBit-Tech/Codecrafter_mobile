@@ -15,22 +15,28 @@ import TextInput from '@/components/TextInput';
 import { useAppSelector } from '@/redux/hooks';
 
 const PersonalProfile: FC = () => {
-  const { full_name, phone_number, email } = useAppSelector(
-    (store) => store.auth.user
-  );
+  const { user } = useAppSelector((store) => store.auth);
 
   return (
     <>
       <Header pageName={t('Personal Profile')} />
       <Box sx={personalProfileBlock}>
         <ProfilePicture isLarge />
-        <TextInput sx={firstInput} label={t('Full Name')} value={full_name} />
+        <TextInput
+          sx={firstInput}
+          label={t('Full Name')}
+          value={user?.full_name}
+        />
         <TextInput
           sx={personalProfileInput}
           label={t('Phone number')}
-          value={phone_number}
+          value={user?.phone_number}
         />
-        <TextInput sx={personalProfileInput} label={t('Email')} value={email} />
+        <TextInput
+          sx={personalProfileInput}
+          label={t('Email')}
+          value={user?.email}
+        />
       </Box>
     </>
   );
