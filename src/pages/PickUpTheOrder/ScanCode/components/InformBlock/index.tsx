@@ -24,8 +24,10 @@ const InformBlock: FC = () => {
       <Box sx={listContainer}>
         <ol style={listStyles}>
           {[
-            'Lock the Smartporter’s protective cover using the Smart lock ',
-            'Scan the Smart Lock to generate the secure code to customer and authorized airport personnel',
+            t('Lock the Smartporter’s protective cover using the Smart lock '),
+            t(
+              'Scan the Smart Lock to generate the secure code to customer and authorized airport personnel'
+            ),
           ].map((itemKey) => (
             <li key={itemKey} style={listItemStyles}>
               {t(itemKey)}

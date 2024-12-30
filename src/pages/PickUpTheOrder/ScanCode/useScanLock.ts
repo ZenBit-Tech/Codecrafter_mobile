@@ -18,20 +18,13 @@ type UseEffectReturnType = () => void;
 export const useScanLock = (): UseScanLockHook => {
   const [isEnabled, setEnabled] = useState<boolean>(false);
   const { value: orderId } = useAppSelector((store) => store.choseOrder);
-  const { token: accessToken } = useAppSelector((store) => store.auth);
   const navigate = useNavigate();
 
   const updateIsOrderLockedData = async (lockNumber: string): Promise<void> => {
     try {
-      await axiosInstance.patch(
-        `/orders/locking-baggage/${orderId}`,
-        { lockNumber },
-        {
-          headers: {
-            authorization: accessToken,
-          },
-        }
-      );
+      await axiosInstance.patch(`/orders/locking-baggage/${orderId}`, {
+        lockNumber,
+      });
     } catch (error) {
       throw new Error();
     }

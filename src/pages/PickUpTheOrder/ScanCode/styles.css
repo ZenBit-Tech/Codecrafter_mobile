@@ -17,7 +17,6 @@
     aspect-ratio: 1 / 1;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 #qr-shaded-region {
@@ -45,7 +44,6 @@ video {
     aspect-ratio: 1 / 1;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     border: 3px solid transparent;
     transition: border-color 0.3s ease;
     margin-left: 8px;
