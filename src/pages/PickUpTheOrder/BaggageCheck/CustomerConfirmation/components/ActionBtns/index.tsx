@@ -4,14 +4,23 @@ import { Box } from '@mui/system';
 import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { actionBtnsContainer, backButtonStyles, buttonStyles } from './styles';
+import {
+  actionBtnsContainer,
+  backButtonStyles,
+  buttonStyles,
+  disabledBtn,
+} from './styles';
 
 import Button from '@/components/Button';
 import { OrderStatuses } from '@/constants/status';
 import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
 import { useAppSelector } from '@/redux/hooks';
 
-export const ActionBtns: FC = () => {
+interface ActionBtnsProps {
+  isVisible: boolean;
+}
+
+export const ActionBtns: FC<ActionBtnsProps> = ({ isVisible }) => {
   const navigate = useNavigate();
   const { value: orderId } = useAppSelector((store) => store.choseOrder);
   const { changeOrderStatus } = useChangeOrderStatus();
@@ -25,9 +34,10 @@ export const ActionBtns: FC = () => {
         onClick={() => navigate('/app/prohibited-items')}
       />
       <Button
-        sx={buttonStyles}
+        sx={isVisible ? buttonStyles : disabledBtn}
         label={t('Confirm')}
         variant='colored'
+        disabled={!isVisible}
         onClick={() => {
           changeOrderStatus(
             orderId ? +orderId : 0,

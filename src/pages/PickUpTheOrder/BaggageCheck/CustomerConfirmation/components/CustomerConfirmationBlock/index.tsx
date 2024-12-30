@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { Box, TextField, Typography } from '@mui/material';
 import { t } from 'i18next';
@@ -15,11 +15,22 @@ import {
 } from './styles';
 
 import Button from '@/components/Button';
-import { useCustomerConfirm } from '@/pages/PickUpTheOrder/BaggageCheck/CustomerConfirmation/useCustomerConfirm';
 
-export const CustomerConfirmationBlock: FC = () => {
-  const { handleRemove, setSign } = useCustomerConfirm();
+interface CustomerConfirmationBlockProps {
+  handleRemove: () => void;
+  handleChangeCustomerFullName: (
+    input: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleCreateSign: (data: SignatureCanvas | null) => void;
+  handleSignatureChange: () => void;
+}
 
+export const CustomerConfirmationBlock: FC<CustomerConfirmationBlockProps> = ({
+  handleRemove,
+  handleChangeCustomerFullName,
+  handleCreateSign,
+  handleSignatureChange,
+}) => {
   return (
     <Box sx={customerConfirmationBlock}>
       <Box sx={importantBox}>
@@ -33,11 +44,13 @@ export const CustomerConfirmationBlock: FC = () => {
       <TextField
         sx={textField}
         label={t('customerConfirmationBlock.fullNameLabel')}
+        onChange={handleChangeCustomerFullName}
       />
       <Box sx={signatureBox}>
         <SignatureCanvas
           penColor='green'
-          ref={(data) => setSign(data)}
+          ref={handleCreateSign}
+          onEnd={handleSignatureChange}
           canvasProps={{
             width: 500,
             height: 300,
