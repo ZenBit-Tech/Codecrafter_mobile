@@ -2,8 +2,11 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
+import { useNavigate } from 'react-router-dom';
 
 import { CLOSE_SCAN_SUCCESS_DELAY } from '@/constants/numbers';
+import { useAppSelector } from '@/redux/hooks';
+import axiosInstance from '@/utils/axiosInstance';
 
 interface UseScanLockHook {
   isEnabled: boolean;
@@ -14,6 +17,25 @@ type UseEffectReturnType = () => void;
 
 export const useScanLock = (): UseScanLockHook => {
   const [isEnabled, setEnabled] = useState<boolean>(false);
+  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+  const { token: accessToken } = useAppSelector((store) => store.auth);
+  const navigate = useNavigate();
+
+  const updateIsOrderLockedData = async (lockNumber: string): Promise<void> => {
+    try {
+      await axiosInstance.patch(
+        `/orders/locking-baggage/${orderId}`,
+        { lockNumber },
+        {
+          headers: {
+            authorization: accessToken,
+          },
+        }
+      );
+    } catch (error) {
+      throw new Error();
+    }
+  };
 
   useEffect((): UseEffectReturnType | undefined => {
     const config = {
@@ -28,8 +50,15 @@ export const useScanLock = (): UseScanLockHook => {
       html5QRCode.start(
         { facingMode: 'environment' },
         config,
-        (decodedText: string) => {
-          console.log(decodedText);
+        async (decodedText: string) => {
+          try {
+            await updateIsOrderLockedData(decodedText).then(() =>
+              navigate('/app/map/lock-scaned')
+            );
+          } catch (error) {
+            throw new Error();
+          }
+
           setEnabled(false);
 
           const container = document.getElementById('qrCodeContainer');
