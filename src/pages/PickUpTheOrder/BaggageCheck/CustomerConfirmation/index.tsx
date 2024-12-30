@@ -15,6 +15,7 @@ export const CustomerConfirmationPage: FC = () => {
     isVisible,
     handleCreateSign,
     handleSignatureChange,
+    handleSignSave,
   } = useCustomerConfirm();
 
   return (
@@ -26,7 +27,7 @@ export const CustomerConfirmationPage: FC = () => {
         handleChangeCustomerFullName={handleChangeCustomerFullName}
         handleSignatureChange={handleSignatureChange}
       />
-      <ActionBtns isVisible={isVisible} />
+      <ActionBtns isVisible={isVisible} handleSignSave={handleSignSave} />
     </>
   );
 };

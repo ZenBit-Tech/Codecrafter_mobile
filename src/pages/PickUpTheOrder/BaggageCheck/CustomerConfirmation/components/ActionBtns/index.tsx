@@ -18,9 +18,13 @@ import { useAppSelector } from '@/redux/hooks';
 
 interface ActionBtnsProps {
   isVisible: boolean;
+  handleSignSave: () => Promise<void>;
 }
 
-export const ActionBtns: FC<ActionBtnsProps> = ({ isVisible }) => {
+export const ActionBtns: FC<ActionBtnsProps> = ({
+  isVisible,
+  handleSignSave,
+}) => {
   const navigate = useNavigate();
   const { value: orderId } = useAppSelector((store) => store.choseOrder);
   const { changeOrderStatus } = useChangeOrderStatus();
@@ -39,6 +43,7 @@ export const ActionBtns: FC<ActionBtnsProps> = ({ isVisible }) => {
         variant='colored'
         disabled={!isVisible}
         onClick={() => {
+          handleSignSave();
           changeOrderStatus(
             orderId ? +orderId : 0,
             OrderStatuses.CUSTOMER_CONFIRMED
