@@ -28,7 +28,7 @@ const routeSlice = createSlice({
   name: 'route',
   initialState,
   reducers: {
-    setRoute: (state, action: PayloadAction<RouteInform>) => {
+    setRoute: (state, action: PayloadAction<RouteInform | null>) => {
       state.route = action.payload;
     },
     setRoutes: (state, action: PayloadAction<Route[] | null>) => {
