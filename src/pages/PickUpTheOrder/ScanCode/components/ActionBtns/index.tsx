@@ -26,7 +26,7 @@ export const ActionBtns: FC = () => {
       />
       <Button
         sx={buttonStyles}
-        label={t('boardingPass.actionPanel.transporterLocked')}
+        label={t('Scan the lock')}
         variant='colored'
         onClick={() => {
           changeOrderStatus(
