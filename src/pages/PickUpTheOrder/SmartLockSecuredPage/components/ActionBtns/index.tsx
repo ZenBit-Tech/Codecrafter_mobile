@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 
 import { Box } from '@mui/system';
 import { t } from 'i18next';
@@ -7,14 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { actionBtnsContainer, backButtonStyles, buttonStyles } from './styles';
 
 import Button from '@/components/Button';
-import { useAppSelector } from '@/redux/hooks';
 
-interface ActionBtnsProps {
-  setEnabled: Dispatch<SetStateAction<boolean>>;
-}
-
-export const ActionBtns: FC<ActionBtnsProps> = ({ setEnabled }) => {
-  const { value: orderId } = useAppSelector((store) => store.choseOrder);
+export const ActionBtns: FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -23,14 +17,14 @@ export const ActionBtns: FC<ActionBtnsProps> = ({ setEnabled }) => {
         sx={backButtonStyles}
         label={t('boardingPass.actionPanel.backBtn')}
         variant='outlined'
-        onClick={() => navigate(`/app/orders/${orderId}`)}
+        onClick={() => navigate('/app/map/scan')}
       />
       <Button
         sx={buttonStyles}
-        label={t('Scan the lock')}
+        label={t('Smart lock secured')}
         variant='colored'
         onClick={() => {
-          setEnabled(true);
+          navigate('/app/map/loading');
         }}
       />
     </Box>
