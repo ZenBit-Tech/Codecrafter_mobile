@@ -2,28 +2,32 @@ import { FC } from 'react';
 
 import { t } from 'i18next';
 
+import { useNavigateWithinRoute } from './useNavigateWithinRoute';
+
 import ArrowLeft from '@/assets/icons/arrow-left.svg';
 import Button from '@/components/Button';
-import { ROUTE_PAGE_ID } from '@/constants/numbers';
 import {
   BottomNavigation,
   IconWrapper,
   navigateStyles,
   RightArrow,
 } from '@/pages/OrderDetails/styles';
-import { useAppSelector } from '@/redux/hooks';
 
 interface BottomBarProps {
   openNavigateModal: () => void;
 }
 
 const BottomNavigationBar: FC<BottomBarProps> = ({ openNavigateModal }) => {
-  const { pageSelected: pageId } = useAppSelector((store) => store.pages);
+  const {
+    isNavBtnsVisible,
+    handleNavigateToNextOrder,
+    handleNavigateToPreviousOrder,
+  } = useNavigateWithinRoute();
 
   return (
     <BottomNavigation>
-      {pageId === ROUTE_PAGE_ID && (
-        <IconWrapper>
+      {isNavBtnsVisible && (
+        <IconWrapper onClick={handleNavigateToPreviousOrder}>
           <img src={ArrowLeft} alt={t('orderDetails.prev')} />
         </IconWrapper>
       )}
@@ -33,8 +37,8 @@ const BottomNavigationBar: FC<BottomBarProps> = ({ openNavigateModal }) => {
         sx={navigateStyles}
         onClick={openNavigateModal}
       />
-      {pageId === ROUTE_PAGE_ID && (
-        <IconWrapper>
+      {isNavBtnsVisible && (
+        <IconWrapper onClick={handleNavigateToNextOrder}>
           <RightArrow src={ArrowLeft} alt={t('orderDetails.next')} />
         </IconWrapper>
       )}
