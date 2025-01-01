@@ -42,10 +42,18 @@ export const textField: SxProps<Theme> = {
 
 export const signatureBox: SxProps<Theme> = {
   border: `1px solid ${COLORS.schemes.outlineVariant}`,
+  position: 'relative',
   width: '93vw',
   height: '300px',
   overflow: 'hidden',
   margin: '0 auto',
   borderRadius: '5px',
   marginBottom: '15px',
+};
+
+export const removeSignature: SxProps<Theme> = {
+  position: 'absolute',
+  top: '0',
+  right: '-14px',
+  color: COLORS.status.failed.text,
 };

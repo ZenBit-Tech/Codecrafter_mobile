@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 
 import choseOrderSlice from './slices/choseOrderSlice';
+import currentCustomerIdSlice from './slices/currentCustomerIdSlice';
 
 import authReducer from '@/redux/slices/authSlice';
 import exampleReducer from '@/redux/slices/exampleSlice';
@@ -21,6 +22,7 @@ export const store = configureStore({
     unreadNotifications: unreadNotificationsSlice,
     tokenModal: tokenModalSlice,
     choseOrder: choseOrderSlice,
+    currentCustomerId: currentCustomerIdSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

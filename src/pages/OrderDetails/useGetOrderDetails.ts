@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import { OrderStatuses } from '@/constants/status';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setCustomerId } from '@/redux/slices/currentCustomerIdSlice';
 
 interface TransformedLuggage {
   luggageType: 'big' | 'small' | 'middle';
@@ -19,6 +20,7 @@ export interface OrderDetailsInterface {
   collectionAddress: string;
   airportName: string;
   flightId: string;
+  customerId: number;
   customerFullName: string;
   customerPhoneNumber: string;
   dispatcherFullName: string;
@@ -35,6 +37,7 @@ export const useGetOrderDetails = (): UseGetOrderDetailsHook => {
     useState<OrderDetailsInterface | null>(null);
   const { token: accessToken } = useAppSelector((store) => store.auth);
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
   const getOrderDetails = useCallback(async (): Promise<void> => {
     try {
@@ -48,10 +51,11 @@ export const useGetOrderDetails = (): UseGetOrderDetailsHook => {
       );
 
       setOrderDetails(data);
+      dispatch(setCustomerId(data.customerId));
     } catch (error) {
       throw new Error();
     }
-  }, [accessToken, id]);
+  }, [accessToken, dispatch, id]);
 
   useEffect(() => {
     getOrderDetails().catch();

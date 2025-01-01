@@ -21,3 +21,8 @@ export const backButtonStyles: SxProps<Theme> = {
   color: COLORS.schemes.secondary,
   fontFamily: FONT.family,
 };
+
+export const disabledBtn: SxProps<Theme> = {
+  backgroundColor: COLORS.schemes.outlineVariant,
+  color: `${COLORS.white} !important`,
+};
