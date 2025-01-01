@@ -20,6 +20,8 @@ import { ProhibitedItemsPage } from '@/pages/PickUpTheOrder/BaggageCheck/Prohibi
 import { BoardingPassVerificationPage } from '@/pages/PickUpTheOrder/BoardingPass/BoardingPassVerificationPage';
 import { IdentityVerification } from '@/pages/PickUpTheOrder/BoardingPass/IdentityVerification';
 import { PreArrivalPage } from '@/pages/PickUpTheOrder/BoardingPass/PreArrivalPage';
+import ScanCode from '@/pages/PickUpTheOrder/ScanCode';
+import SmartLockSecuredPage from '@/pages/PickUpTheOrder/SmartLockSecuredPage';
 import RouteDetails from '@/pages/RouteDetails';
 import RoutesPage from '@/pages/RoutesPage';
 import SignInPage from '@/pages/SignIn';
@@ -60,6 +62,8 @@ const router = createBrowserRouter([
       { path: 'map/recording', element: <BaggageRecordingPage /> },
       { path: 'map/covering', element: <BaggageCoveringPage /> },
       { path: 'map/loading', element: <BaggageLockingPage /> },
+      { path: 'map/scan', element: <ScanCode /> },
+      { path: 'map/lock-scaned', element: <SmartLockSecuredPage /> },
       {
         path: 'orders',
         element: <OrderPage />,

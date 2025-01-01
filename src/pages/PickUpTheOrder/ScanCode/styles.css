@@ -1,0 +1,54 @@
+.scaner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#qrCodeContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#qr-shaded-region {
+    border-width: 50px !important;
+    border-color: rgba(0, 0, 0, 0.7) !important;
+    border-style: solid;
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto !important;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+#qrCodeContainer {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease;
+    margin-left: 8px;
+}
+
+#qrCodeContainer.success {
+    border-color: green;
+}
