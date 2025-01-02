@@ -14,8 +14,15 @@ interface UseFetchAndProcessRouteResult {
 
 export const useFetchAndProcessRoute = (): UseFetchAndProcessRouteResult => {
   const user = useAppSelector((state) => state.auth.user);
-  const { validAddresses, isAddressesLoading, route, currentRouteId } =
-    useAppSelector((state) => state.route);
+  const {
+    validAddresses,
+    isAddressesLoading,
+    route,
+    currentRouteId,
+    driverAddress,
+  } = useAppSelector((state) => state.route);
+
+  const shouldFetch = !(validAddresses.length > 0 && !!driverAddress);
 
   const { fetchRoute, isRouteLoading } = useFetchRoute(
     user?.id,
@@ -24,19 +31,27 @@ export const useFetchAndProcessRoute = (): UseFetchAndProcessRouteResult => {
   const { processAddresses } = useProcessAddresses(route as RouteInform);
 
   useEffect(() => {
-    fetchRoute().catch((error) => {
-      throw new Error(`Error fetching route: ${error}`);
-    });
-  }, [fetchRoute]);
+    if (shouldFetch && currentRouteId) {
+      fetchRoute().catch((error) => {
+        throw new Error(`Error fetching route: ${error}`);
+      });
+    }
+  }, [fetchRoute, currentRouteId, shouldFetch]);
 
   useEffect(() => {
-    processAddresses().catch((error) => {
-      throw new Error(`Error processing addresses: ${error}`);
-    });
-  }, [processAddresses]);
+    if (shouldFetch && route) {
+      processAddresses().catch((error) => {
+        throw new Error(`Error processing addresses: ${error}`);
+      });
+    }
+  }, [processAddresses, route, shouldFetch]);
 
-  const memoizedAddresses = useMemo(() => validAddresses, [validAddresses]);
-  const isLoading = isRouteLoading || isAddressesLoading;
+  const memoizedAddresses = useMemo(
+    () => (shouldFetch ? validAddresses : validAddresses),
+    [validAddresses, shouldFetch]
+  );
+
+  const isLoading = shouldFetch && (isRouteLoading || isAddressesLoading);
 
   return { memoizedAddresses, isLoading, route };
 };

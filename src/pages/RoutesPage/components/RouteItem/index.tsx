@@ -17,7 +17,11 @@ import { RouteStatuses } from '@/constants/status';
 import StatusComponent from '@/pages/RoutesPage/components/StatusComponent';
 import { useAppDispatch } from '@/redux/hooks';
 import { changePage } from '@/redux/slices/pagesSlice';
-import { setCurrentRouteId } from '@/redux/slices/routeSlice';
+import {
+  setCurrentRouteId,
+  setRoute,
+  setValidAddresses,
+} from '@/redux/slices/routeSlice';
 import { addPadding } from '@/utils/stringUtils';
 
 interface RouteItemProps {
@@ -43,6 +47,8 @@ const RouteItem: FC<RouteItemProps> = ({
   const handleRouteClick = (): void => {
     dispatch(setCurrentRouteId(routeId));
     dispatch(changePage(mapPageNumber));
+    dispatch(setValidAddresses([]));
+    dispatch(setRoute(null));
     navigate(`/app/map`);
   };
 
