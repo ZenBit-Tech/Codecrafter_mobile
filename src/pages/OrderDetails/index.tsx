@@ -23,9 +23,11 @@ import { useGetOrderDetails } from './useGetOrderDetails';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import NavigateButtonModal from '@/components/NavigateButtonModal';
+import { driverLocation } from '@/constants/constants';
 import { DATE_FORMAT } from '@/constants/dateFormats';
 import { OrderStatuses } from '@/constants/status';
 import { useChangeOrderStatus } from '@/hooks/useChangeOrderStatus';
+import { useGeocodeAddress } from '@/hooks/useGeocodeAddress';
 import { setChoseOrder } from '@/redux/slices/choseOrderSlice';
 import { store } from '@/redux/store';
 import { createTimeRange } from '@/utils/createTimeRange';
@@ -36,8 +38,11 @@ const OrderDetails: FC = () => {
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
   const [isNavigateModalOpened, setIsNavigateModalOpened] =
     useState<boolean>(false);
+
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const { geolocation } = useGeocodeAddress(orderDetails?.collectionAddress);
 
   const { changeOrderStatus } = useChangeOrderStatus();
 
@@ -58,7 +63,12 @@ const OrderDetails: FC = () => {
       <NavigateButtonModal
         open={isNavigateModalOpened}
         handleClose={() => setIsNavigateModalOpened(false)}
-        destination={undefined}
+        destination={
+          geolocation
+            ? { lat: geolocation.lat, lng: geolocation.lng }
+            : orderDetails?.collectionAddress
+        }
+        origin={driverLocation}
       />
       <Header hasBackIcon pageName={`${t('orders.orderNo')} ${id}`} />
       <ButtonsWrapper>
