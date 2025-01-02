@@ -14,7 +14,7 @@ export const TabIcon = styled.div`
     transform: translateY(-39px);
   }
   &.active img {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1) brightness(1.2);
     transform: scale(${IconScale});
   }
   position: relative;
@@ -29,10 +29,6 @@ export const TabIcon = styled.div`
   img {
     width: 24px;
     height: 24px;
-  }
-
-  &.active img {
-    filter: brightness(1.2);
   }
 `;
 
