@@ -5,13 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { sendVerificationCode } from '@/api/userActions';
 import { SignInFormData, UseSignInReturnType } from '@/interfaces/SignIn';
+import { useAppDispatch } from '@/redux/hooks';
+import { setIsLoading } from '@/redux/slices/authSlice';
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const useSignIn = (): UseSignInReturnType => {
   const navigate = useNavigate();
-  const [attemptCount, setAttemptCount] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
+  const dispatch = useAppDispatch();
+  const [attemptCount, setAttemptCount] = useState<number>(0);
+  const [isLocked, setIsLocked] = useState<boolean>(false);
 
   const maxTries = 5;
 
@@ -38,6 +41,7 @@ const useSignIn = (): UseSignInReturnType => {
     const { email } = data;
 
     try {
+      dispatch(setIsLoading(true));
       const isSent = await sendVerificationCode(email)();
 
       if (isSent) {
@@ -50,6 +54,8 @@ const useSignIn = (): UseSignInReturnType => {
       }
     } catch (error) {
       throw new Error('Error occurred while sending verification code');
+    } finally {
+      dispatch(setIsLoading(false));
     }
   };
 

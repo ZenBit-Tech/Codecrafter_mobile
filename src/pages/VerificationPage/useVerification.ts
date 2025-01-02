@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 import { sendVerificationCode, verifyCode } from '@/api/userActions';
 import { useAppDispatch } from '@/redux/hooks';
+import { setIsLoading } from '@/redux/slices/authSlice';
 
 interface UseVerificationReturnType {
   otp: string;
@@ -56,7 +57,7 @@ const useVerification = (
 
   const handleResendCode = async (): Promise<void> => {
     if (isLocked) {
-      toast.error(t('signin.error.accountLocked'));
+      toast.warn(t('signin.error.accountLocked'));
 
       return;
     }
@@ -67,6 +68,7 @@ const useVerification = (
     }
 
     try {
+      dispatch(setIsLoading(true));
       setIsLocked(true);
       const isSent = await sendVerificationCode(email)();
 
@@ -76,6 +78,7 @@ const useVerification = (
     } catch (error) {
       throw new Error('Error occurred while sending verification code');
     } finally {
+      dispatch(setIsLoading(false));
       setIsLocked(false);
     }
   };
@@ -85,6 +88,7 @@ const useVerification = (
       if (otp.length === numInputs) {
         setOtp('');
         setIsLocked(true);
+        dispatch(setIsLoading(true));
         await verifyCode(otp, email)(dispatch);
         navigate('/app/routes');
       } else {
@@ -93,6 +97,7 @@ const useVerification = (
     } catch (error) {
       throw new Error('Error occurred while verifying OTP');
     } finally {
+      dispatch(setIsLoading(false));
       setIsLocked(false);
     }
   };
