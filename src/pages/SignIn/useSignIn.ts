@@ -13,8 +13,8 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const useSignIn = (): UseSignInReturnType => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [attemptCount, setAttemptCount] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
+  const [attemptCount, setAttemptCount] = useState<number>(0);
+  const [isLocked, setIsLocked] = useState<boolean>(false);
 
   const maxTries = 5;
 
