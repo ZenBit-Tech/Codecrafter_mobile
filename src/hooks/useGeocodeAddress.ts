@@ -21,7 +21,6 @@ export const useGeocodeAddress = (
     const fetchGeolocation = async (): Promise<void> => {
       if (!address) {
         setGeolocation(null);
-        toast.warn(t('An error occurred while fetching geolocation.'));
 
         return;
       }
