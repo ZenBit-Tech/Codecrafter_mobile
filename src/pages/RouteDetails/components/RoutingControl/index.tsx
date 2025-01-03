@@ -1,27 +1,29 @@
 import { useEffect, useRef } from 'react';
 
 import L from 'leaflet';
+import 'leaflet-routing-machine';
 import { useMap } from 'react-leaflet';
 
-import 'leaflet-routing-machine';
+import { customIcon } from '@/components/CustomMapPin';
 
-import 'leaflet/dist/leaflet.css';
-import { Address } from '@/types/route';
+interface Address {
+  lat: number;
+  lng: number;
+  address: string;
+}
 
 interface ExtendedRoutingControlOptions
   extends L.Routing.RoutingControlOptions {
-  createMarker?: (i: number, waypoint: L.Routing.Waypoint) => L.Marker;
+  createMarker?: (
+    i: number,
+    waypoint: L.Routing.Waypoint,
+    n: number
+  ) => L.Marker;
 }
 
-interface RouteControlProps {
-  addresses: Address[];
-}
-
-const RoutingControl: React.FC<RouteControlProps> = ({
-  addresses,
-}: RouteControlProps) => {
+const RoutingComponent = ({ addresses }: { addresses: Address[] }): null => {
   const map = useMap();
-  const routingControlRef = useRef<L.Routing.Control>();
+  const routingControlRef = useRef<L.Routing.Control | null>(null);
 
   useEffect(() => {
     routingControlRef.current = L.Routing.control({
@@ -29,9 +31,9 @@ const RoutingControl: React.FC<RouteControlProps> = ({
       routeWhileDragging: true,
       show: false,
       createMarker: (i, waypoint) =>
-        L.marker(waypoint.latLng).bindPopup(
-          i === 0 ? 'Driver Location' : addresses[i].address
-        ),
+        L.marker(waypoint.latLng, {
+          icon: customIcon,
+        }).bindPopup(i === 0 ? 'Driver Location' : addresses[i].address),
     } as ExtendedRoutingControlOptions).addTo(map);
 
     return (): void => {
@@ -44,4 +46,4 @@ const RoutingControl: React.FC<RouteControlProps> = ({
   return null;
 };
 
-export default RoutingControl;
+export default RoutingComponent;
