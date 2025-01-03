@@ -14,7 +14,8 @@
 }
 
 .blackLink {
- color: var(--black)
+ color: var(--black);
+ text-decoration: underline;
 }
 
 a {

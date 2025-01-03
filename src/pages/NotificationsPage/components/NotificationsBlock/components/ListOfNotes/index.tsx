@@ -24,6 +24,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               <MapPinNotification
                 key={notification.id}
                 routeId={`${createIdString(`${notification.linkHref}`)}`}
+                routeHref={`${notification.linkHref}`}
                 timeDifference={notification.timeDifference}
               />
             );
@@ -33,6 +34,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               <LuggageNotification
                 key={notification.id}
                 routeId={`${createIdString(`${notification.linkHref}`)}`}
+                routeHref={`${notification.linkHref}`}
                 timeDifference={notification.timeDifference}
                 shouldBeStarted={notification.linkText}
               />
@@ -51,6 +53,7 @@ const ListOfNotes: React.FC<ListOfNotesProps> = ({ notifications }) => {
               <RouteNotification
                 key={notification.id}
                 routeId={`${createIdString(`${notification.linkHref}`)}`}
+                routeHref={`${notification.linkHref}`}
                 timeDifference={notification.timeDifference}
               />
             );
