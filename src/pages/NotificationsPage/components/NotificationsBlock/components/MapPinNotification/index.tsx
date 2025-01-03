@@ -2,7 +2,8 @@ import { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import { t } from 'i18next';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   notificationContainer,
@@ -12,25 +13,37 @@ import {
 } from './styles';
 
 import notificationIcon from '@/assets/icons/map-pin.svg';
+import { setCurrentRouteId } from '@/redux/slices/routeSlice';
 
 interface MapPinNotificationProps {
   routeId: string;
+  routeHref: string;
   timeDifference: string;
 }
 
 const MapPinNotification: FC<MapPinNotificationProps> = ({
   routeId,
+  routeHref,
   timeDifference,
 }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <Box sx={notificationContainer}>
       <img src={notificationIcon} alt='notificationIcon' />
       <Box sx={textContainer}>
         <Typography sx={notificationTitle}>
           {t('You have received new route ')}
-          <Link className='blackLink' to={`/routes/${routeId}`}>
+          <Typography
+            className='blackLink'
+            onClick={() => {
+              dispatch(setCurrentRouteId(+routeHref));
+              navigate('/app/map/');
+            }}
+          >
             #{routeId}
-          </Link>
+          </Typography>
         </Typography>
         <Typography sx={timeDifferenceTextStyles}>{timeDifference}</Typography>
       </Box>
