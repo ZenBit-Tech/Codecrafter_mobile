@@ -13,7 +13,8 @@ import {
   tBase,
 } from '@/constants/constants';
 import { PREVIOUS_PAGE } from '@/constants/numbers';
-import { UseFailedReasonReturn } from '@/interfaces/FailedReason';
+import { Order, UseFailedReasonReturn } from '@/interfaces/FailedReason';
+import axiosInstance from '@/utils/axiosInstance';
 
 interface FailedReasonForm {
   customReason: string;
@@ -78,6 +79,37 @@ const useFailedReason = (orderId: number): UseFailedReasonReturn => {
       };
 
       await sendFailedReasonMessage(payload)();
+
+      const response = await axiosInstance.get<Order[]>(
+        `/orders/route/${orderId}`
+      );
+      const orders = response.data;
+
+      const currentOrder = orders.find((order) => order.id === orderId);
+
+      if (!currentOrder) {
+        throw new Error('Current order not found');
+      }
+
+      const currentOrderTime = new Date(currentOrder.collection_time_start);
+
+      const futureOrder = orders
+        .filter(
+          (order) => new Date(order.collection_time_start) > currentOrderTime
+        )
+        .sort(
+          (a, b) =>
+            new Date(a.collection_time_start).getTime() -
+            new Date(b.collection_time_start).getTime()
+        )[0];
+
+      if (futureOrder) {
+        navigate(`/app/orders/${futureOrder.id}`);
+
+        return;
+      }
+
+      navigate('/app/map');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         throw new Error(error.message);
