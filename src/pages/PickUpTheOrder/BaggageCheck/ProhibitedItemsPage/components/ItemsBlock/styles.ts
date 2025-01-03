@@ -5,6 +5,9 @@ import { FONT } from '@/constants/font';
 
 export const itemsBlock: SxProps<Theme> = {
   marginTop: '87px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 };
 
 export const importantBox: SxProps<Theme> = {
@@ -33,4 +36,5 @@ export const importantText: SxProps<Theme> = {
 
 export const prohibitedItemsImage: React.CSSProperties = {
   marginBottom: '20px',
+  width: '100%',
 };

@@ -12,7 +12,7 @@ const RestrictedRoute: React.FC<RestrictedRouteProps> = ({ children }) => {
   const { isAuthenticated, role } = useAppSelector((state) => state.auth);
 
   if (isAuthenticated && role === 'driver') {
-    return <Navigate to='/app/orders' />;
+    return <Navigate to='/app/routes' />;
   }
 
   return children;

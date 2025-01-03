@@ -8,6 +8,7 @@ export const actionBtnsContainer: SxProps<Theme> = {
   display: 'flex',
   justifyContent: 'space-between',
   margin: '0 auto',
+  paddingBottom: '160px',
 };
 
 export const buttonStyles: SxProps<Theme> = {
