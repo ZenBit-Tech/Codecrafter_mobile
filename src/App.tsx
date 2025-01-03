@@ -9,7 +9,7 @@ function App(): ReactNode {
   return (
     <>
       <ToastContainer />
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </>
   );
 }
