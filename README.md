@@ -4,7 +4,7 @@
   Create your own delivery company, manage users, orders, routes, and much more.
 
 ## Domain
-  The product enables users to efficiently create and manage their own delivery company by overseeing users, orders, routes, and other key operational aspects, providing tools for streamlined logistics and optimized processes.
+  The product empowers drivers to efficiently manage their delivery tasks by providing tools to track assigned orders, optimize routes, and update order statuses in real-time, ensuring seamless communication and enhanced productivity on the go.
 
 ## Key Features:
   1. Modular Architecture:
