@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import L from 'leaflet';
 import 'leaflet-routing-machine';
+import 'leaflet/dist/leaflet.css';
 import { useMap } from 'react-leaflet';
 
 import { customIcon } from '@/components/CustomMapPin';
@@ -21,7 +22,7 @@ interface ExtendedRoutingControlOptions
   ) => L.Marker;
 }
 
-const RoutingComponent = ({ addresses }: { addresses: Address[] }): null => {
+const RoutingControl = ({ addresses }: { addresses: Address[] }): null => {
   const map = useMap();
   const routingControlRef = useRef<L.Routing.Control | null>(null);
 
@@ -46,4 +47,4 @@ const RoutingComponent = ({ addresses }: { addresses: Address[] }): null => {
   return null;
 };
 
-export default RoutingComponent;
+export default RoutingControl;
