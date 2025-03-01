@@ -7,7 +7,7 @@ module.exports = {
     '.eslintrc.cjs',
     'node_modules/**',
     'vite-env.d.ts',
-    'vite.config.ts',
+    'vite.config.*',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -116,7 +116,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.slice.ts'],
+      files: ['*.slice.ts', '*vite.config.*'],
       rules: {
         'no-param-reassign': 'off',
       },
