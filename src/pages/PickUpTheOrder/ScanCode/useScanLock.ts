@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
+import Quagga from 'quagga';
 import { useNavigate } from 'react-router-dom';
 
 import { CLOSE_SCAN_SUCCESS_DELAY } from '@/constants/numbers';
@@ -12,8 +11,6 @@ interface UseScanLockHook {
   isEnabled: boolean;
   setEnabled: Dispatch<SetStateAction<boolean>>;
 }
-
-type UseEffectReturnType = () => void;
 
 export const useScanLock = (): UseScanLockHook => {
   const [isEnabled, setEnabled] = useState<boolean>(false);
@@ -26,54 +23,69 @@ export const useScanLock = (): UseScanLockHook => {
         lockNumber,
       });
     } catch (error) {
-      throw new Error();
+      console.error('Error updating lock data:', error);
     }
   };
 
-  useEffect((): UseEffectReturnType | undefined => {
-    const config = {
-      fps: 10,
-      qrbox: { width: 400, height: 150 },
-      formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13],
-    };
+  useEffect(() => {
+    if (!isEnabled) return;
 
-    const html5QRCode = new Html5Qrcode('qrCodeContainer');
+    const container = document.getElementById('qrCodeContainer');
 
-    if (isEnabled) {
-      html5QRCode.start(
-        { facingMode: 'environment' },
-        config,
-        async (decodedText: string) => {
-          try {
-            await updateIsOrderLockedData(decodedText).then(() =>
-              navigate('/app/map/lock-scaned')
-            );
-          } catch (error) {
-            throw new Error();
-          }
+    if (!container) {
+      console.error('QR code container not found');
 
-          setEnabled(false);
-
-          const container = document.getElementById('qrCodeContainer');
-
-          if (container) {
-            container.classList.add('success');
-
-            setTimeout(() => {
-              container.classList.remove('success');
-            }, CLOSE_SCAN_SUCCESS_DELAY);
-          }
-        },
-        () => {}
-      );
-
-      return () => {
-        html5QRCode.stop();
-      };
+      return;
     }
 
-    return undefined;
-  }, [isEnabled]);
+    Quagga.init(
+      {
+        inputStream: {
+          type: 'LiveStream',
+          target: container,
+          constraints: { facingMode: 'environment' },
+        },
+        decoder: { readers: ['ean_reader'] },
+        locate: true,
+      },
+      (err: unknown) => {
+        if (err) {
+          console.error('Quagga initialization failed:', err);
+
+          return;
+        }
+        Quagga.start();
+      }
+    );
+
+    const onDetected = async (result: {
+      codeResult: { code: string };
+    }): Promise<void> => {
+      const decodedText = result.codeResult.code;
+
+      try {
+        await updateIsOrderLockedData(decodedText);
+        navigate('/app/map/lock-scaned');
+      } catch (error) {
+        console.error('Error processing scanned code:', error);
+      }
+
+      setEnabled(false);
+      container.classList.add('success');
+      setTimeout(
+        () => container.classList.remove('success'),
+        CLOSE_SCAN_SUCCESS_DELAY
+      );
+    };
+
+    Quagga.onDetected(onDetected);
+
+    // eslint-disable-next-line consistent-return, @typescript-eslint/explicit-function-return-type
+    return () => {
+      Quagga.stop();
+      Quagga.offDetected(onDetected);
+    };
+  }, [isEnabled, navigate, updateIsOrderLockedData]);
 
   return { isEnabled, setEnabled };
 };
