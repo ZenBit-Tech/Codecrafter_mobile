@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Quagga from 'quagga';
 import { useNavigate } from 'react-router-dom';
 
